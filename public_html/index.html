@@ -1,0 +1,2651 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beneficios Total | San Luis</title>
+    <link rel="preload" as="image" href="assets/v3/events_bg.jpg" fetchpriority="high">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles-v3.css?v=16">
+    <link rel="stylesheet" href="css/mobile-v1.css">
+    <link rel="stylesheet" href="css/rifa-v1.css?v=12">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style id="theme-styles">
+        /* THEME TOGGLE BUTTON */
+        .theme-toggle-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .theme-toggle-btn:hover {
+            background: rgba(147, 51, 234, 0.2);
+            border-color: rgba(147, 51, 234, 0.4);
+            transform: scale(1.05);
+        }
+
+        .theme-toggle-btn svg {
+            position: absolute;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Default (Dark) state */
+        .theme-toggle-btn .sun-icon {
+            opacity: 0;
+            transform: rotate(-90deg) scale(0.5);
+        }
+
+        .theme-toggle-btn .moon-icon {
+            opacity: 1;
+            transform: rotate(0) scale(1);
+        }
+
+        /* Light state */
+        body.light-theme .theme-toggle-btn .sun-icon {
+            opacity: 1;
+            transform: rotate(0) scale(1);
+            color: #8B5CF6;
+        }
+
+        body.light-theme .theme-toggle-btn .moon-icon {
+            opacity: 0;
+            transform: rotate(90deg) scale(0.5);
+        }
+
+        body.light-theme .theme-toggle-btn {
+            background: #fff;
+            border-color: rgba(0, 0, 0, 0.1);
+            color: #111;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* LIGHT THEME OVERRIDES FOR V3 */
+        .main-brand-logo {
+            height: 30px;
+            width: auto;
+            display: block;
+            margin-top: 0;
+            transition: filter 0.2s ease;
+        }
+
+        body:not(.light-theme) .main-brand-logo {
+            filter: brightness(0) invert(1);
+        }
+
+        body.light-theme {
+            background: #F8F7FF !important;
+            color: #111 !important;
+        }
+
+        body.light-theme .dashboard-container-v3 {
+            background: #F8F7FF !important;
+        }
+
+        body.light-theme .navbar-v3 {
+            background: rgba(248, 247, 255, 0.76) !important;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.12) !important;
+            box-shadow: 0 18px 48px rgba(139, 92, 246, 0.08) !important;
+        }
+
+        body.light-theme .nav-center-v3 {
+            background: rgba(255, 255, 255, 0.62) !important;
+            border-color: rgba(139, 92, 246, 0.16) !important;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78), 0 10px 26px rgba(139, 92, 246, 0.08) !important;
+        }
+
+        body.light-theme .nav-pill-v3 {
+            color: #444 !important;
+        }
+
+        body.light-theme .nav-pill-v3.active {
+            color: #fff !important;
+        }
+
+        body.light-theme .help-pill-v3 {
+            background: rgba(147, 51, 234, 0.05) !important;
+            border-color: rgba(147, 51, 234, 0.2) !important;
+            color: #111 !important;
+        }
+
+        body.light-theme .help-pill-v3 b {
+            color: #111 !important;
+        }
+
+        body.light-theme .user-icon-v3 {
+            background: #fff !important;
+            border-color: rgba(0, 0, 0, 0.1) !important;
+            color: #444 !important;
+        }
+
+        /* Hero text adjustments */
+        body.light-theme .hero-title-eyebrow-v3 {
+            color: #fff !important;
+            text-shadow: 0 10px 28px rgba(0, 0, 0, 0.34) !important;
+        }
+
+        body.light-theme .hero-title-place-v3 {
+            color: #fff !important;
+        }
+
+        body.light-theme .hero-title-logo-v3 {
+            filter: none !important;
+        }
+
+        body.light-theme .hero-card-v3 p {
+            color: rgba(255, 255, 255, 0.78) !important;
+        }
+
+        body.light-theme .hero-overlay-v3,
+        body.light-theme .hero-card-overlay-v3 {
+            background: radial-gradient(circle at center, rgba(22, 20, 34, 0.9) 0%, rgba(13, 13, 24, 0.98) 78%) !important;
+        }
+
+        body.light-theme .btn-white-v3 {
+            background: linear-gradient(135deg, #8B5CF6 0%, #d94389 100%) !important;
+            color: #fff !important;
+            border-color: rgba(139, 92, 246, 0.15) !important;
+        }
+
+        body.light-theme .btn-icon-v3 {
+            background: rgba(255, 255, 255, 0.8) !important;
+            color: #111 !important;
+            border-color: rgba(0, 0, 0, 0.1) !important;
+        }
+
+        body.light-theme .quick-action-label {
+            color: rgba(17, 17, 17, 0.66) !important;
+        }
+
+        /* Side Cards */
+        body.light-theme .payment-card-v3 {
+            background: #fff !important;
+            border-color: rgba(0, 0, 0, 0.08) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03) !important;
+            color: #111 !important;
+        }
+
+        body.light-theme .payment-card-v3 h2 {
+            color: #111 !important;
+        }
+
+        body.light-theme .payment-card-v3 p {
+            color: #666 !important;
+        }
+
+        body.light-theme .progress-container-v3 {
+            background: rgba(0, 0, 0, 0.05) !important;
+        }
+
+        body.light-theme .btn-payment-v3 {
+            background: rgba(139, 92, 246, 0.08) !important;
+            border-color: rgba(139, 92, 246, 0.16) !important;
+            color: #6D3FD1 !important;
+        }
+
+        body.light-theme .btn-payment-v3:hover {
+            background: #8B5CF6 !important;
+            color: #fff !important;
+        }
+
+        body.light-theme .event-card-v3 {
+            border-color: rgba(0, 0, 0, 0.08) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        body.light-theme .quick-card-v3 {
+            background: rgba(255, 255, 255, 0.72) !important;
+            border-color: rgba(139, 92, 246, 0.14) !important;
+            box-shadow: 0 12px 28px rgba(139, 92, 246, 0.08) !important;
+            color: #111 !important;
+        }
+
+        body.light-theme .quick-card-v3 p {
+            color: rgba(17, 17, 17, 0.58) !important;
+        }
+
+        body.light-theme .quick-card-icon-v3 {
+            background: rgba(139, 92, 246, 0.08) !important;
+            color: #8B5CF6 !important;
+        }
+
+        body.light-theme .quick-card-action-v3 {
+            color: #7C3AED !important;
+        }
+
+        body.light-theme .quick-card-kicker-v3 {
+            color: rgba(124, 58, 237, 0.72) !important;
+        }
+
+        body.light-theme .pdf-modal-content-v3 {
+            background: rgba(248, 247, 255, 0.9) !important;
+            border-color: rgba(139, 92, 246, 0.18) !important;
+            color: #111 !important;
+        }
+
+        body.light-theme .pdf-modal-header-v3 {
+            border-bottom-color: rgba(139, 92, 246, 0.14) !important;
+        }
+
+        body.light-theme .pdf-modal-header-v3 p {
+            color: rgba(17, 17, 17, 0.58) !important;
+        }
+
+        body.light-theme .pdf-close-v3,
+        body.light-theme .pdf-open-v3 {
+            background: rgba(255, 255, 255, 0.82) !important;
+            border-color: rgba(139, 92, 246, 0.16) !important;
+            color: #7C3AED !important;
+        }
+
+        body.light-theme .payment-modal-tabs-v3 {
+            background: rgba(139, 92, 246, 0.06) !important;
+            border-color: rgba(139, 92, 246, 0.16) !important;
+        }
+
+        body.light-theme .payment-tab-v3 {
+            color: #7C3AED !important;
+        }
+
+        body.light-theme .payment-tab-v3.active {
+            color: #fff !important;
+        }
+
+        /* Mobile Adjustments */
+        body.light-theme .mobile-wrapper {
+            background:
+                radial-gradient(circle at 50% -10%, rgba(139, 92, 246, 0.14), transparent 34%),
+                linear-gradient(180deg, #fbfaff 0%, #f8f7ff 52%, #f4f1ff 100%) !important;
+        }
+
+        body.light-theme .mobile-header {
+            background: rgba(248, 247, 255, 0.78) !important;
+            border-bottom-color: rgba(139, 92, 246, 0.12) !important;
+            box-shadow: 0 14px 34px rgba(139, 92, 246, 0.1) !important;
+            backdrop-filter: blur(18px) saturate(140%) !important;
+            -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
+        }
+
+        body.light-theme .mobile-header h1 {
+            color: #111 !important;
+        }
+
+        body.light-theme .mobile-brand-welcome span {
+            color: #5f5a6d !important;
+        }
+
+        body.light-theme .icon-btn {
+            color: #7C3AED !important;
+            background: rgba(255, 255, 255, 0.82) !important;
+            border: 1px solid rgba(139, 92, 246, 0.14) !important;
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.08) !important;
+        }
+
+        body.light-theme .mobile-support-pill .support-btn-mobile {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border-color: rgba(139, 92, 246, 0.14) !important;
+            color: #111 !important;
+            box-shadow: 0 12px 28px rgba(139, 92, 246, 0.08) !important;
+        }
+
+        body.light-theme .section-header h2 {
+            color: #111 !important;
+        }
+
+        body.light-theme .badge-slp {
+            background: #8B5CF6 !important;
+            color: #fff !important;
+        }
+
+        body.light-theme .mobile-status-card {
+            background: #fff !important;
+            border-color: rgba(0, 0, 0, 0.08) !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03) !important;
+        }
+
+        body.light-theme .mobile-status-card h4 {
+            color: #111 !important;
+        }
+
+        body.light-theme .mobile-status-card p {
+            color: #666 !important;
+        }
+
+        body.light-theme .mobile-action-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(250, 248, 255, 0.9)) !important;
+            border-color: rgba(139, 92, 246, 0.14) !important;
+            color: #111 !important;
+            box-shadow: 0 16px 40px rgba(139, 92, 246, 0.09) !important;
+        }
+
+        body.light-theme .mobile-action-card p {
+            color: #6d6878 !important;
+        }
+
+        body.light-theme .mobile-action-icon {
+            background: rgba(139, 92, 246, 0.1) !important;
+            color: #8B5CF6 !important;
+        }
+
+        body.light-theme .status-icon {
+            background: rgba(147, 51, 234, 0.05) !important;
+            color: #8B5CF6 !important;
+        }
+
+        body.light-theme .mobile-nav {
+            background: rgba(248, 247, 255, 0.82) !important;
+            border: 1px solid rgba(139, 92, 246, 0.14) !important;
+            box-shadow: 0 -18px 44px rgba(139, 92, 246, 0.1) !important;
+            backdrop-filter: blur(18px) saturate(140%) !important;
+            -webkit-backdrop-filter: blur(18px) saturate(140%) !important;
+        }
+
+        body.light-theme .mobile-nav .nav-item {
+            color: #6f6a78 !important;
+        }
+
+        body.light-theme .mobile-nav .nav-item.active {
+            color: #8B5CF6 !important;
+            background: rgba(139, 92, 246, 0.1) !important;
+        }
+
+        body.light-theme .mobile-nav .nav-item .nav-icon {
+            background: transparent !important;
+            border: 1px solid transparent !important;
+            color: #5f5b68 !important;
+            box-shadow: none !important;
+        }
+
+        body.light-theme .mobile-nav .nav-item.active .nav-icon {
+            background: linear-gradient(135deg, #8B5CF6 0%, #A855F7 100%) !important;
+            border-color: rgba(255, 255, 255, 0.55) !important;
+            color: #fff !important;
+            box-shadow: 0 12px 28px rgba(139, 92, 246, 0.34) !important;
+        }
+
+        body.light-theme .mobile-icon-item {
+            color: #111 !important;
+        }
+
+        body.light-theme .icon-square {
+            background: #fff !important;
+            border-color: rgba(0, 0, 0, 0.08) !important;
+            color: #8B5CF6 !important;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03) !important;
+        }
+
+        /* Mostrar texto en mayúsculas mientras el usuario escribe */
+        #rifa-nombre,
+        #rifa-cuenta,
+        #tutorial-advice-form input[name="nombre"],
+        #tutorial-advice-form input[name="tema"],
+        #tutorial-advice-form textarea[name="duda"],
+        #tutorial-suggestion-form input[name="temaSugerido"],
+        #tutorial-suggestion-form input[name="plataforma"],
+        #tutorial-suggestion-form textarea[name="comentario"] {
+            text-transform: uppercase;
+        }
+
+        /* Mostrar correo en minúsculas por defecto */
+        #rifa-email {
+            text-transform: lowercase;
+        }
+
+        /* Alinear el banner de la rifa con el contenedor del dashboard */
+        @media (min-width: 1101px) {
+            .rifa-banner-wrapper {
+                max-width: 1680px;
+                margin: 0 auto;
+                padding: 16px clamp(26px, 4vw, 64px) 0;
+            }
+        }
+
+        /* Estilo para que el SVG de Instagram se dibuje como outline en vez de relleno */
+        .brand-icon-instagram-v3 {
+            fill: none !important;
+            stroke: currentColor !important;
+        }
+    </style>
+</head>
+
+<body class="light-theme">
+
+    <div class="desktop-only">
+        <nav class="navbar-v3">
+            <div class="nav-left-v3">
+                <div class="tp-brand">
+                    <img id="main-brand-logo" class="main-brand-logo" src="logos_total/logo total png (1)-1.png"
+                        alt="Totalplay">
+                </div>
+            </div>
+            <div class="nav-center-v3">
+                <a href="index.html" class="nav-pill-v3 active">
+                    <i data-lucide="activity" style="width:14px;"></i>
+                    Mi Servicio
+                </a>
+                <a href="calendario.html" class="nav-pill-v3">
+                    <i data-lucide="star" style="width:14px;"></i>
+                    Exclusivos
+                </a>
+                <a href="#" class="nav-pill-v3" data-construction-modal>
+                    <i data-lucide="settings-2" style="width:14px;"></i>
+                    Ajustar mi plan
+                </a>
+                <a href="#" class="nav-pill-v3" data-tutorial-modal>
+                    <i data-lucide="info" style="width:14px;"></i>
+                    Saber Más
+                </a>
+            </div>
+            <div class="nav-right-v3">
+                <a href="tel:8005100510" class="help-pill-v3">
+                    <span>Atención a clientes:</span> <b>800 510 0510</b>
+                </a>
+                <a href="https://mitotalplay.com.mx/" class="user-icon-v3">
+                    <i data-lucide="user"></i>
+                </a>
+                <button class="theme-toggle-btn" title="Cambiar tema">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="moon-icon"
+                        style="width:18px;height:18px;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="sun-icon"
+                        style="width:18px;height:18px;">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <div class="dashboard-container-v3">
+            <div class="rifa-banner-wrapper">
+                <a href="#" class="rifa-banner" data-rifa-modal>
+                    <span class="rifa-banner-glow" aria-hidden="true"></span>
+                    <span class="rifa-banner-icon" aria-hidden="true">🎁</span>
+                    <span class="rifa-banner-text">
+                        <strong>SORTEO TOTAL FENAPO 2026</strong>
+                        <span id="rifa-banner-sub">Completa las misiones y participa gratis</span>
+                    </span>
+                    <span class="rifa-banner-progress">
+                        <span class="rifa-banner-bar"><span class="rifa-banner-fill"
+                                id="rifa-banner-fill"></span></span>
+                        <b id="rifa-banner-pct">0%</b>
+                    </span>
+                    <span class="rifa-banner-btn" id="rifa-banner-btn">🔒 Desbloquear</span>
+                </a>
+            </div>
+            <main class="main-v3">
+                <div class="desktop-grid-v3">
+                    <!-- LEFT: HERO CARD -->
+                    <div class="hero-card-v3" id="desktop-hero">
+                        <div class="desktop-card-slider"
+                            style="overflow: hidden; pointer-events: none; border-radius: 40px; position: absolute; inset: 0; z-index: 0;">
+                            <!-- El video se cargará vía API de YouTube -->
+                            <div id="bg-youtube-video" class="youtube-bg-iframe"
+                                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 130%; height: 130%; pointer-events: none; border: none; opacity: 0; transition: opacity 2s ease;">
+                            </div>
+                        </div>
+
+                        <!-- BOTÓN DE SONIDO (Desktop) -->
+                        <button id="unmute-btn" class="audio-toggle-btn" style="opacity: 0; pointer-events: none;">
+                            <i data-lucide="volume-x"></i>
+                            <span>Activar Sonido</span>
+                        </button>
+
+                        <div class="hero-card-bg-image-v3"></div>
+                        <div class="hero-card-overlay-v3"></div>
+
+                        <div class="hero-content-wrapper-v3">
+                            <div id="hero-text-block-v3">
+                                <div class="hero-badge-v3">APP TOTALPLAY</div>
+                                <h1 class="hero-title-v3">
+                                    <span class="hero-title-eyebrow-v3">Bienvenido a</span>
+                                    <img class="hero-title-logo-v3" src="logos_total/logo total png (1)-1.png"
+                                        alt="Totalplay">
+                                    <span class="hero-title-place-v3">San Luis</span>
+                                </h1>
+                                <p>Tu app, beneficios, pagos y experiencias en un solo lugar.</p>
+                            </div>
+
+                            <div class="hero-actions-v3">
+                                <a href="#" class="btn-white-v3" data-app-modal>
+                                    <i data-lucide="download"></i>
+                                    Descargar App
+                                </a>
+                                <a href="#" class="btn-icon-v3" aria-label="Administrar WiFi" data-tutorial-modal
+                                    data-tutorial-query="Club Totalplay WiFi">
+                                    <i data-lucide="wifi"></i>
+                                    <span class="quick-action-label">Mi WiFi</span>
+                                </a>
+                                <a href="#" class="btn-icon-v3" aria-label="Domiciliar pago" data-tutorial-modal
+                                    data-tutorial-query="Domiciliar pago">
+                                    <i data-lucide="credit-card"></i>
+                                    <span class="quick-action-label">Domiciliar pago</span>
+                                </a>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <!-- RIGHT: WELCOME HUB -->
+                    <div class="side-cards-v3">
+                        <div class="side-card-v3 event-card-v3"
+                            style="background-image: url('assets/v3/events_bg.jpg'); background-size: cover; background-position: center;">
+                            <div class="event-card-overlay-v3"></div>
+                            <div class="event-card-content-v3">
+                                <div class="event-top-info-v3">
+                                    <h3 style="color:white; font-size: 2rem; font-weight: 900; margin-bottom: 0.2rem;">
+                                        Totalplay te Invita</h3>
+                                    <p class="invite-subtitle"
+                                        style="color:rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 1.5rem; transition: opacity 0.4s ease;">
+                                        Experiencias exclusivas para ti en San Luis.</p>
+                                </div>
+
+                                <a href="calendario.html" class="btn-event-v3-glass">
+                                    <span>Ver eventos</span>
+                                    <i data-lucide="calendar"></i>
+                                </a>
+                                <div class="event-social-row-v3" aria-label="Redes sociales Totalplay te Invita">
+                                    <a href="https://www.tiktok.com/@consultoriaslp?_r=1&_t=ZS-95u5lPvCwvB"
+                                        target="_blank" rel="noopener" class="social-item-v3"
+                                        aria-label="TikTok Totalplay te Invita">
+                                        <svg class="brand-icon-v3" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path
+                                                d="M16.7 3c.35 2.05 1.54 3.42 3.55 4.12v3.1a7.8 7.8 0 0 1-3.48-.9v5.68c0 3.43-2.46 5.9-5.9 5.9-3.08 0-5.12-1.88-5.12-4.64 0-2.97 2.32-5.1 5.55-5.1.42 0 .8.04 1.13.12v3.22a3.3 3.3 0 0 0-1.06-.16c-1.42 0-2.34.74-2.34 1.85 0 1.03.8 1.7 1.9 1.7 1.36 0 2.14-.86 2.14-2.48V3h3.63Z" />
+                                        </svg>
+                                    </a>
+                                    <a href="https://www.facebook.com/share/14czbhK2GBD/" target="_blank" rel="noopener"
+                                        class="social-item-v3" aria-label="Facebook Totalplay te Invita">
+                                        <svg class="brand-icon-v3 brand-icon-facebook-v3" viewBox="0 0 24 24"
+                                            aria-hidden="true">
+                                            <path
+                                                d="M14.3 8.1V6.4c0-.82.53-1.02.9-1.02h2.3V2.16L14.33 2.15c-3.52 0-4.32 2.64-4.32 4.32v1.63H7.68v3.32H10v9.43h3.52v-9.43h3l.4-3.32h-2.62Z" />
+                                        </svg>
+                                    </a>
+                                    <a href="https://www.instagram.com/totalplaymx/" target="_blank" rel="noopener"
+                                        class="social-item-v3" aria-label="Instagram Totalplay te Invita">
+                                        <svg class="brand-icon-v3 brand-icon-instagram-v3" viewBox="0 0 24 24"
+                                            aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                        </svg>
+                                    </a>
+                                    <a href="#" class="social-item-v3" data-rifa-share
+                                        aria-label="Compartir Totalplay por WhatsApp" title="Comparte Totalplay">
+                                        <i data-lucide="share-2"></i>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="quick-actions-grid-v3">
+                            <a href="formas_pago_tp/pdf%20jeha/Formas%20de%20pago.pdf"
+                                class="quick-card-v3 quick-card-pay" data-pdf-modal>
+                                <span class="quick-card-icon-v3"><i data-lucide="receipt"></i></span>
+                                <span class="quick-card-kicker-v3">PAGOS</span>
+                                <strong>Referencias y pagos</strong>
+                                <p>Lugares y formas para pagar.</p>
+                                <span class="quick-card-action-v3">Dónde pagar</span>
+                            </a>
+                            <a href="#" class="quick-card-v3 quick-card-streaming" data-tutorial-modal>
+                                <span class="quick-card-icon-v3"><i data-lucide="tv"></i></span>
+                                <span class="quick-card-kicker-v3">STREAMING</span>
+                                <strong>HBO, Netflix, Vix y más.</strong>
+                                <p>Activa y disfruta tus plataformas.</p>
+                                <span class="quick-card-action-v3">Ver tutoriales</span>
+                            </a>
+                            <a href="tel:4447736119" class="quick-card-v3" data-rifa-explore="beneficios">
+                                <span class="quick-card-icon-v3"><i data-lucide="phone-call"></i></span>
+                                <span class="quick-card-kicker-v3">BENEFICIOS</span>
+                                <strong>Conoce tus beneficios</strong>
+                                <p>Te atendemos en San Luis.</p>
+                                <span class="quick-card-action-v3">444 773 6119</span>
+                            </a>
+                            <a href="https://mitotalplay.com.mx/" class="quick-card-v3">
+                                <span class="quick-card-icon-v3"><i data-lucide="sliders-horizontal"></i></span>
+                                <span class="quick-card-kicker-v3">PLAN</span>
+                                <strong>Ajusta tu plan</strong>
+                                <p>Administra servicios y paquetes.</p>
+                                <span class="quick-card-action-v3">Ajustar</span>
+                            </a>
+                            <a href="#" class="quick-card-v3">
+                                <span class="quick-card-icon-v3"><i data-lucide="heart-handshake"></i></span>
+                                <span class="quick-card-kicker-v3">REFERIDOS</span>
+                                <strong>Recomienda y gana</strong>
+                                <p>Comparte Totalplay con amigos.</p>
+                                <span class="quick-card-action-v3">Recomendar</span>
+                            </a>
+                            <a href="#" class="quick-card-v3">
+                                <span class="quick-card-icon-v3"><i data-lucide="briefcase-business"></i></span>
+                                <span class="quick-card-kicker-v3">TALENTO</span>
+                                <strong>Únete al equipo</strong>
+                                <p>Forma parte de Totalplay San Luis.</p>
+                                <span class="quick-card-action-v3">Aplicar</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="pdf-modal-v3" id="pdf-modal-v3" aria-hidden="true">
+        <div class="pdf-modal-backdrop-v3" data-pdf-close></div>
+        <div class="pdf-modal-content-v3" role="dialog" aria-modal="true" aria-labelledby="pdf-modal-title-v3">
+            <div class="pdf-modal-header-v3">
+                <div>
+                    <h2 id="pdf-modal-title-v3">Referencias y lugares de pago</h2>
+                    <p>Consulta dónde pagar con tu referencia única.</p>
+                </div>
+                <div class="pdf-modal-actions-v3">
+                    <div class="payment-modal-tabs-v3" role="tablist" aria-label="Vista de pagos">
+                        <button class="payment-tab-v3 active" type="button" data-payment-tab="guide">Guía
+                            rápida</button>
+                        <button class="payment-tab-v3" type="button" data-payment-tab="pdf">PDF</button>
+                    </div>
+                    <a class="pdf-open-v3" href="formas_pago_tp/pdf%20jeha/Formas%20de%20pago.pdf" target="_blank"
+                        rel="noopener" download>
+                        <span>Abrir PDF</span>
+                        <i data-lucide="external-link"></i>
+                    </a>
+                    <button class="pdf-close-v3" type="button" data-pdf-close aria-label="Cerrar">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="payment-modal-body-v3">
+                <section class="payment-guide-v3 active" data-payment-panel="guide">
+                    <div class="payment-sheet-v3" aria-label="Establecimientos para pago con referencia única">
+                        <h3>Paga con tu referencia única en los siguientes establecimientos</h3>
+                        <div class="payment-main-places-v3">
+                            <article class="payment-place-v3 payment-place-featured-v3">
+                                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Logo%20Banco%20Azteca.svg"
+                                    alt="Banco Azteca">
+                                <span>Inmediato</span>
+                            </article>
+                            <article class="payment-place-v3 payment-place-featured-v3">
+                                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Oxxo%20Logo.svg"
+                                    alt="OXXO">
+                                <span>Inmediato</span>
+                            </article>
+                            <article class="payment-place-v3 payment-place-featured-v3">
+                                <img src="https://static.cdnlogo.com/logos/f/36/farmacias-del-ahorro.svg"
+                                    alt="Farmacias del Ahorro">
+                                <span>Inmediato</span>
+                            </article>
+                        </div>
+                        <p class="payment-instant-v3">Tu pago se verá reflejado de inmediato.</p>
+                        <div class="payment-divider-v3"></div>
+                        <div class="payment-banks-v3">
+                            <article class="payment-bank-v3">
+                                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/BBVA%202019.svg"
+                                    alt="BBVA">
+                                <strong>CONV:</strong>
+                                <span>XXXXXXX</span>
+                            </article>
+                            <article class="payment-bank-v3">
+                                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Banco%20Santander%20Logotipo.svg"
+                                    alt="Santander">
+                                <strong>CONV:</strong>
+                                <span>XXXX</span>
+                            </article>
+                            <article class="payment-bank-v3">
+                                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/HSBC%20logo%20%282018%29.svg"
+                                    alt="HSBC">
+                                <strong>TRANS: XXX</strong>
+                                <span>CVE: XXX</span>
+                            </article>
+                            <article class="payment-bank-v3">
+                                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Citibanamex%20logo.svg"
+                                    alt="Citibanamex">
+                                <strong>NO. SERV.</strong>
+                                <span>XXXX</span>
+                            </article>
+                            <article class="payment-bank-v3">
+                                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Banorte%20logo.svg"
+                                    alt="Banorte">
+                                <strong>EMISORA:</strong>
+                                <span>XXXX</span>
+                            </article>
+                            <article class="payment-bank-v3">
+                                <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Logo%20de%20BanCoppel.svg"
+                                    alt="BanCoppel">
+                                <strong>B:</strong>
+                                <span>XXXXXXXX...</span>
+                            </article>
+                        </div>
+                        <div class="payment-notice-v3">
+                            <strong>En bancos se verá reflejado en 24 hrs. hábiles.</strong>
+                            <span>Se cobra una comisión por operación sujeta a la sucursal.</span>
+                        </div>
+                    </div>
+                </section>
+                <section class="payment-pdf-panel-v3" data-payment-panel="pdf">
+                    <div class="pdf-frame-wrap-v3">
+                        <iframe src="formas_pago_tp/pdf%20jeha/Formas%20de%20pago.pdf#toolbar=1&navpanes=0"
+                            title="Referencias y lugares de pago"></iframe>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-download-modal-v3" id="app-download-modal-v3" aria-hidden="true">
+        <div class="app-download-backdrop-v3" data-app-close></div>
+        <div class="app-download-content-v3" role="dialog" aria-modal="true" aria-labelledby="app-download-title-v3">
+            <button class="app-download-close-v3" type="button" data-app-close aria-label="Cerrar">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="app-download-head-v3">
+                <img src="logos_total/logo total png (1)-1.png" alt="Totalplay">
+                <span class="app-download-kicker-v3">APP TOTALPLAY</span>
+            </div>
+            <h2 id="app-download-title-v3">Descarga la app</h2>
+            <p>Administra pagos, WiFi y más desde tu celular.</p>
+            <div class="app-store-actions-v3">
+                <button class="app-store-btn-v3 app-store-ios-v3" type="button" data-app-store="ios">
+                    <span class="store-logo-v3 store-logo-apple-v3" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M16.55 12.08c-.02-2.34 1.91-3.47 2-3.52-1.09-1.59-2.78-1.81-3.37-1.83-1.42-.15-2.8.85-3.52.85-.73 0-1.84-.83-3.03-.81-1.55.02-2.99.9-3.79 2.29-1.64 2.84-.42 7.02 1.15 9.31.79 1.13 1.71 2.39 2.91 2.35 1.18-.05 1.62-.75 3.04-.75s1.82.75 3.06.73c1.27-.02 2.07-1.13 2.83-2.27.91-1.3 1.27-2.58 1.28-2.65-.03-.01-2.53-.97-2.56-3.7ZM14.25 5.22c.64-.78 1.08-1.84.96-2.92-.93.04-2.09.64-2.76 1.4-.6.68-1.13 1.79-.99 2.84 1.05.08 2.13-.53 2.79-1.32Z" />
+                        </svg>
+                    </span>
+                    <span>
+                        <small>Descargar en</small>
+                        App Store
+                    </span>
+                </button>
+                <button class="app-store-btn-v3 app-store-android-v3" type="button" data-app-store="android">
+                    <span class="store-logo-v3 store-logo-play-v3" aria-hidden="true">
+                        <svg viewBox="0 0 32 32">
+                            <path fill="#00f076"
+                                d="M4.8 3.2c-.5.4-.8 1.1-.8 2v21.6c0 .9.3 1.6.8 2l12.7-12.8L4.8 3.2Z" />
+                            <path fill="#00a7ff" d="m17.5 16 3.9-3.9L6.9 3.8c-.8-.5-1.5-.7-2.1-.6L17.5 16Z" />
+                            <path fill="#ffcc00" d="m17.5 16-12.7 12.8c.6.1 1.3-.1 2.1-.6l14.5-8.3-3.9-3.9Z" />
+                            <path fill="#ff3d3d"
+                                d="m21.4 12.1-3.9 3.9 3.9 3.9 4.9-2.8c1.6-.9 1.6-2.3 0-3.2l-4.9-2.8Z" />
+                        </svg>
+                    </span>
+                    <span>
+                        <small>Descargar en</small>
+                        Google Play
+                    </span>
+                </button>
+            </div>
+            <div class="app-download-footnote-v3">Disponible para iPhone y Android.</div>
+        </div>
+    </div>
+
+    <div class="wicho-modal-v3" id="wicho-modal-v3" aria-hidden="true">
+        <div class="wicho-modal-backdrop-v3" data-wicho-close></div>
+        <div class="wicho-modal-content-v3" role="dialog" aria-modal="true" aria-labelledby="wicho-modal-title-v3">
+            <button class="wicho-modal-close-v3" type="button" data-wicho-close aria-label="Cerrar">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="wicho-modal-head-v3">
+                <span class="wicho-icon-v3"><i data-lucide="message-circle"></i></span>
+                <span class="wicho-kicker-v3">AGENTE EN LINEA</span>
+            </div>
+            <h2 id="wicho-modal-title-v3">WhatsApp Wicho</h2>
+            <p>Escanea el QR o abre el chat para recibir apoyo directo.</p>
+            <div class="wicho-qr-card-v3">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=280x280&margin=12&data=https%3A%2F%2Fwa.me%2F524447110396"
+                    alt="QR para abrir WhatsApp Wicho">
+            </div>
+            <a class="wicho-whatsapp-btn-v3" href="https://wa.me/524447110396" target="_blank" rel="noopener">
+                <i data-lucide="send"></i>
+                Enviar WhatsApp ahora
+            </a>
+        </div>
+    </div>
+
+    <div class="construction-modal-v3" id="construction-modal-v3" aria-hidden="true">
+        <div class="construction-backdrop-v3" data-construction-close></div>
+        <div class="construction-content-v3" role="dialog" aria-modal="true" aria-labelledby="construction-title-v3">
+            <button class="construction-close-v3" type="button" data-construction-close aria-label="Cerrar">
+                <i data-lucide="x"></i>
+            </button>
+            <span class="construction-kicker-v3">PRÓXIMAMENTE</span>
+            <h2 id="construction-title-v3">Ajustar mi plan</h2>
+            <p>Esta sección está en construcción. Por ahora puedes administrar tu servicio desde la tarjeta “Ajusta tu
+                plan”.</p>
+            <a href="https://mitotalplay.com.mx/" target="_blank" rel="noopener" class="construction-action-v3">
+                Entrar a Mi Totalplay
+            </a>
+        </div>
+    </div>
+
+    <div class="tutorial-modal-v3" id="tutorial-modal-v3" aria-hidden="true">
+        <div class="tutorial-modal-backdrop-v3" data-tutorial-close></div>
+        <div class="tutorial-modal-content-v3" role="dialog" aria-modal="true"
+            aria-labelledby="tutorial-modal-title-v3">
+            <header class="tutorial-modal-header-v3">
+                <div>
+                    <span class="tutorial-kicker-v3">TUTORIALES</span>
+                    <h2 id="tutorial-modal-title-v3">Academia Total</h2>
+                    <p>Aprende a activar, usar tus plataformas y resolver dudas.</p>
+                </div>
+                <button class="tutorial-close-v3" type="button" data-tutorial-close aria-label="Cerrar">
+                    <i data-lucide="x"></i>
+                </button>
+            </header>
+            <div class="tutorial-layout-v3">
+                <aside class="tutorial-sidebar-v3">
+                    <div class="tutorial-search-v3">
+                        <i data-lucide="search"></i>
+                        <input id="tutorial-search-input" type="search" placeholder="Buscar tutorial">
+                    </div>
+                    <div class="tutorial-chips-v3" id="tutorial-category-chips"></div>
+                    <div class="tutorial-list-v3" id="tutorial-list"></div>
+                </aside>
+                <main class="tutorial-player-v3">
+                    <div class="tiktok-web-player-container">
+                        <!-- Top Search Bar -->
+                        <div class="tiktok-top-bar">
+                            <div class="tiktok-search-box">
+                                <input type="text" id="tiktok-search-input" placeholder="Buscar contenido relacionado" autocomplete="off" />
+                                <button type="button" class="tiktok-search-btn" aria-label="Buscar">
+                                    <i data-lucide="search"></i>
+                                </button>
+                            </div>
+                            <button class="tiktok-more-btn" type="button" aria-label="Opciones">
+                                <i data-lucide="more-horizontal"></i>
+                            </button>
+                        </div>
+
+                        <!-- Video Stage & Caption Overlay -->
+                        <div class="tiktok-video-stage" id="tiktok-video-stage">
+                            <div class="tutorial-player-shell-v3" id="tutorial-player-shell">
+                                <div class="tutorial-empty-v3">
+                                    <i data-lucide="play-circle"></i>
+                                    <strong>Selecciona un tutorial</strong>
+                                    <span>Los videos se están cargando.</span>
+                                </div>
+                            </div>
+
+                            <div class="tiktok-caption-overlay" id="tiktok-caption-overlay">
+                                <span class="tiktok-caption-tag" id="tiktok-caption-tag">Totalplay 🇲🇽</span>
+                                <p class="tiktok-caption-title" id="tiktok-caption-title">Selecciona un video para comenzar</p>
+                            </div>
+                        </div>
+
+                        <!-- Right Side Control Buttons -->
+                        <div class="tiktok-side-controls">
+                            <button type="button" class="tiktok-side-btn" id="tutorial-feed-prev" title="Video anterior" aria-label="Video anterior">
+                                <i data-lucide="chevron-up"></i>
+                            </button>
+                            <button type="button" class="tiktok-side-btn" id="tutorial-feed-next" title="Siguiente video" aria-label="Siguiente video">
+                                <i data-lucide="chevron-down"></i>
+                            </button>
+                            <button type="button" class="tiktok-side-btn" id="tutorial-side-copy" title="Copiar enlace" aria-label="Copiar enlace">
+                                <i data-lucide="copy"></i>
+                            </button>
+                            <button type="button" class="tiktok-side-btn" id="tutorial-side-mute" title="Sonido" aria-label="Sonido">
+                                <i data-lucide="volume-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </main>
+                <aside class="tutorial-help-v3">
+                    <div class="tutorial-selected-card-v3" id="tutorial-selected-card">
+                        <span>CURSO</span>
+                        <h3>Elige un tutorial</h3>
+                        <p>Selecciona un video para ver el paso a paso, pedir asesoría o sugerir nuevos temas.</p>
+                    </div>
+                    <div class="tutorial-actions-v3" id="tutorial-actions">
+                        <button class="tutorial-like-v3" type="button" id="tutorial-like-btn" data-tutorial-like-action>
+                            <i data-lucide="heart"></i>
+                            <span id="tutorial-like-count" data-tutorial-like-count>0</span>
+                        </button>
+                        <button class="tutorial-share-v3" type="button" id="tutorial-share-btn"
+                            data-tutorial-share-action>
+                            <i data-lucide="share-2"></i>
+                            Compartir
+                        </button>
+                    </div>
+                    <div class="tutorial-forms-v3">
+                        <form class="tutorial-form-v3" id="tutorial-advice-form">
+                            <h3>Quiero solicitar asesoría</h3>
+                            <div class="tutorial-form-grid-v3">
+                                <input name="nombre" type="text" placeholder="Nombre" required>
+                                <input name="telefono" type="tel" placeholder="Teléfono" required>
+                            </div>
+                            <input name="tema" type="text" placeholder="Tema o plataforma">
+                            <textarea name="duda" rows="3" placeholder="Cuéntanos tu duda" required></textarea>
+                            <button type="submit">Solicitar asesoría</button>
+                            <p class="tutorial-form-status-v3" id="tutorial-advice-status"></p>
+                        </form>
+                        <form class="tutorial-form-v3" id="tutorial-suggestion-form">
+                            <h3>Quiero sugerir un nuevo tutorial</h3>
+                            <input name="temaSugerido" type="text" placeholder="¿Qué tutorial te gustaría ver?"
+                                required>
+                            <input name="plataforma" type="text" placeholder="Plataforma o tema">
+                            <textarea name="comentario" rows="3" placeholder="Comentario opcional"></textarea>
+                            <button type="submit">Enviar sugerencia</button>
+                            <p class="tutorial-form-status-v3" id="tutorial-suggestion-status"></p>
+                        </form>
+                    </div>
+                </aside>
+            </div>
+            <div class="tutorial-video-modal-v3" id="tutorial-video-modal-v3" aria-hidden="true">
+                <button class="tutorial-video-backdrop-v3" type="button" data-tutorial-video-close
+                    aria-label="Cerrar video"></button>
+                <div class="tutorial-video-content-v3">
+                    <button class="tutorial-video-close-floating-v3" type="button" data-tutorial-video-close aria-label="Cerrar video">
+                        <i data-lucide="x"></i>
+                    </button>
+                    
+                    <div class="tutorial-video-head-v3">
+                        <span class="tutorial-kicker-badge-v3">🎓 ACADEMIA TOTAL</span>
+                        <div class="tutorial-title-scroll-container-v3">
+                            <strong id="tutorial-video-title">Tutorial Totalplay</strong>
+                        </div>
+                    </div>
+
+                    <div class="tutorial-player-shell-v3 tutorial-mobile-player-shell-v3"
+                        id="tutorial-mobile-player-shell">
+                        <div class="tutorial-empty-v3">
+                            <i data-lucide="play-circle"></i>
+                            <strong>Selecciona un tutorial</strong>
+                        </div>
+                    </div>
+
+                    <div class="tutorial-swipe-hint-v3">
+                        <i data-lucide="arrow-left-right"></i>
+                        <span>Desliza para ver más videos</span>
+                    </div>
+
+                    <div class="tutorial-video-actions-v3">
+                        <button class="tutorial-like-v3" type="button" data-tutorial-like-action>
+                            <i data-lucide="heart"></i>
+                            <span data-tutorial-like-count>0</span>
+                        </button>
+                        <button class="tutorial-share-v3" type="button" data-tutorial-share-action>
+                            <i data-lucide="share-2"></i>
+                            Compartir
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="tutorial-share-modal-v3" id="tutorial-share-modal-v3" aria-hidden="true">
+                <button class="tutorial-share-backdrop-v3" type="button" data-tutorial-share-close
+                    aria-label="Cerrar compartir"></button>
+                <div class="tutorial-share-content-v3" role="dialog" aria-modal="true"
+                    aria-labelledby="tutorial-share-title-v3">
+                    <div class="tutorial-share-header-v3">
+                        <div>
+                            <span>COMPARTIR</span>
+                            <h3 id="tutorial-share-title-v3">Enviar tutorial</h3>
+                        </div>
+                        <button type="button" data-tutorial-share-close aria-label="Cerrar compartir">
+                            <i data-lucide="x"></i>
+                        </button>
+                    </div>
+                    <div class="tutorial-share-options-v3">
+                        <button type="button" data-tutorial-share-platform="whatsapp">
+                            <i data-lucide="message-circle"></i>
+                            WhatsApp
+                        </button>
+                        <button type="button" data-tutorial-share-platform="facebook">
+                            <i data-lucide="share-2"></i>
+                            Facebook
+                        </button>
+                        <button type="button" data-tutorial-share-platform="x">
+                            <i data-lucide="send"></i>
+                            X
+                        </button>
+                        <button type="button" data-tutorial-share-platform="email">
+                            <i data-lucide="mail"></i>
+                            Email
+                        </button>
+                        <button type="button" data-tutorial-share-platform="copy">
+                            <i data-lucide="link"></i>
+                            Copiar enlace
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MOBILE VERSION -->
+    <div class="mobile-only mobile-wrapper">
+        <header class="mobile-header">
+            <div class="mobile-brand-welcome">
+                <img src="logos_total/logo total png (1)-1.png" alt="Totalplay">
+                <span>Te damos la bienvenida</span>
+            </div>
+            <div class="mobile-header-actions">
+                <button class="theme-toggle-btn" title="Cambiar tema" style="width: 36px; height: 36px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="moon-icon"
+                        style="width:16px;height:16px;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="sun-icon"
+                        style="width:16px;height:16px;">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <a href="https://mitotalplay.com.mx/" class="icon-btn"><i data-lucide="user"></i></a>
+            </div>
+        </header>
+
+        <div class="mobile-support-pill">
+            <a href="tel:8005100510" class="support-btn-mobile">
+                <span>Atención a clientes:</span>
+                <b>800 510 0510</b>
+            </a>
+        </div>
+
+        <a href="#" class="rifa-banner" data-rifa-modal>
+            <span class="rifa-banner-glow" aria-hidden="true"></span>
+            <span class="rifa-banner-icon" aria-hidden="true">🎁</span>
+            <span class="rifa-banner-text">
+                <strong>SORTEO TOTAL FENAPO 2026</strong>
+                <span id="rifa-banner-sub-m">Completa las misiones y participa gratis</span>
+            </span>
+            <span class="rifa-banner-progress">
+                <span class="rifa-banner-bar"><span class="rifa-banner-fill" id="rifa-banner-fill-m"></span></span>
+                <b id="rifa-banner-pct-m">0%</b>
+            </span>
+            <span class="rifa-banner-btn" id="rifa-banner-btn-m">🔒 Desbloquear</span>
+        </a>
+
+        <section class="mobile-tab-panel active" data-mobile-panel="service">
+            <div class="mobile-multi-card mobile-app-card"
+                style="min-height: 300px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-slider">
+                    <img src="imagenes_app/app_1" alt="App 1" class="slider-img active">
+                    <img src="imagenes_app/app2.jpeg" alt="App 2" class="slider-img">
+                    <img src="imagenes_app/app3.jpeg" alt="App 3" class="slider-img">
+                    <img src="imagenes_app/app4.jpeg" alt="App 4" class="slider-img">
+                    <img src="imagenes_app/app5.jpeg" alt="App 5" class="slider-img">
+                    <img src="imagenes_app/app6.jpeg" alt="App 6" class="slider-img">
+                    <img src="imagenes_app/app7.jpeg" alt="App 7" class="slider-img">
+                    <img src="imagenes_app/app8.jpeg" alt="App 8" class="slider-img">
+                    <img src="imagenes_app/app9.jpeg" alt="App 9" class="slider-img">
+                    <img src="imagenes_app/app10.jpeg" alt="App 10" class="slider-img">
+                    <img src="imagenes_app/app11.jpeg" alt="App 11" class="slider-img">
+                    <img src="imagenes_app/app12.jpeg" alt="App 12" class="slider-img">
+                    <img src="imagenes_app/app15.jpeg" alt="App 15" class="slider-img">
+                </div>
+                <div class="card-overlay"></div>
+                <div id="card-title-1" style="position:relative; z-index:2; transition:opacity 0.6s ease;">
+                    <h3 style="margin: 0; font-size: 1.5rem; font-weight: 900; color: #fff;">Todo en un solo lugar</h3>
+                    <p style="margin: 4px 0 0 0; font-size: 0.8rem; color: rgba(255,255,255,0.7);">Descubre los
+                        beneficios
+                        de Totalplay en la app.</p>
+                </div>
+                <div id="h-menu" style="position:relative; z-index:5; width:100%; height:90px;">
+                    <a href="#" id="hbtn-0" data-app-modal
+                        style="position:absolute; top:0; left:0; width:100%; height:40px; background:rgba(255,255,255,0.11); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.14); border-radius:12px; display:flex; align-items:center; justify-content:center; gap:8px; color:#fff; text-decoration:none; font-size:0.72rem; font-weight:700; transition:all 0.7s cubic-bezier(0.4,0,0.2,1);">
+                        <i data-lucide="download" style="width:15px;height:15px;"></i><span>Descargar la App</span>
+                    </a>
+                    <a href="#" id="hbtn-1" data-tutorial-modal data-tutorial-query="Club Totalplay WiFi"
+                        style="position:absolute; bottom:0; left:0; width:calc(50% - 5px); height:40px; background:rgba(255,255,255,0.11); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.14); border-radius:12px; display:flex; align-items:center; justify-content:center; gap:8px; color:#fff; text-decoration:none; font-size:0.72rem; font-weight:700; transition:all 0.7s cubic-bezier(0.4,0,0.2,1);">
+                        <i data-lucide="wifi" style="width:15px;height:15px;"></i><span>Club WiFi</span>
+                    </a>
+                    <a href="#" id="hbtn-2" data-tutorial-modal data-tutorial-query="Domiciliar pago"
+                        style="position:absolute; bottom:0; right:0; width:calc(50% - 5px); height:40px; background:rgba(255,255,255,0.11); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.14); border-radius:12px; display:flex; align-items:center; justify-content:center; gap:8px; color:#fff; text-decoration:none; font-size:0.72rem; font-weight:700; transition:all 0.7s cubic-bezier(0.4,0,0.2,1);">
+                        <i data-lucide="credit-card" style="width:15px;height:15px;"></i><span>Domiciliar pago</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mobile-multi-card mobile-events-card">
+                <img src="assets/v3/events_bg.jpg" alt="Events" class="card-img" fetchpriority="high" loading="eager">
+                <div class="card-overlay"></div>
+                <div class="card-info">
+                    <h3>Totalplay te Invita</h3>
+                    <p class="invite-subtitle" style="transition: opacity 0.4s ease;">Experiencias exclusivas en San
+                        Luis.</p>
+                    <a href="calendario.html" class="card-action-pill">
+                        <span>Calendario de Eventos</span>
+                        <i data-lucide="calendar"></i>
+                    </a>
+                    <div class="mobile-social-row-v3" aria-label="Redes sociales Totalplay te Invita">
+                        <a href="https://www.tiktok.com/@consultoriaslp?_r=1&_t=ZS-95u5lPvCwvB" target="_blank"
+                            rel="noopener" aria-label="TikTok Totalplay te Invita">
+                            <svg class="brand-icon-v3" viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M16.7 3c.35 2.05 1.54 3.42 3.55 4.12v3.1a7.8 7.8 0 0 1-3.48-.9v5.68c0 3.43-2.46 5.9-5.9 5.9-3.08 0-5.12-1.88-5.12-4.64 0-2.97 2.32-5.1 5.55-5.1.42 0 .8.04 1.13.12v3.22a3.3 3.3 0 0 0-1.06-.16c-1.42 0-2.34.74-2.34 1.85 0 1.03.8 1.7 1.9 1.7 1.36 0 2.14-.86 2.14-2.48V3h3.63Z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/share/14czbhK2GBD/" target="_blank" rel="noopener"
+                            aria-label="Facebook Totalplay te Invita">
+                            <svg class="brand-icon-v3 brand-icon-facebook-v3" viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M14.3 8.1V6.4c0-.82.53-1.02.9-1.02h2.3V2.16L14.33 2.15c-3.52 0-4.32 2.64-4.32 4.32v1.63H7.68v3.32H10v9.43h3.52v-9.43h3l.4-3.32h-2.62Z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/totalplaymx/" target="_blank" rel="noopener"
+                            aria-label="Instagram Totalplay te Invita">
+                            <svg class="brand-icon-v3 brand-icon-instagram-v3" viewBox="0 0 24 24" aria-hidden="true"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" data-rifa-share aria-label="Compartir Totalplay por WhatsApp">
+                            <i data-lucide="share-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mobile-tab-panel" data-mobile-panel="learn">
+            <div class="section-header">
+                <h2>Saber más</h2>
+                <span class="badge-slp">Guía rápida</span>
+            </div>
+            <div class="mobile-action-grid">
+                <a href="formas_pago_tp/pdf%20jeha/Formas%20de%20pago.pdf" class="mobile-action-card" data-pdf-modal>
+                    <span class="mobile-action-icon"><i data-lucide="receipt"></i></span>
+                    <strong>Referencias y lugares de pago</strong>
+                    <p>Consulta dónde, cuándo y cómo pagar tu servicio.</p>
+                </a>
+                <a href="#" class="mobile-action-card" data-tutorial-modal>
+                    <span class="mobile-action-icon"><i data-lucide="tv"></i></span>
+                    <strong>Tutoriales</strong>
+                    <p>HBO, Netflix, Vix y más plataformas incluidas.</p>
+                </a>
+                <a href="tel:4447736119" class="mobile-action-card" data-rifa-explore="beneficios">
+                    <span class="mobile-action-icon"><i data-lucide="phone-call"></i></span>
+                    <strong>Conoce tus beneficios</strong>
+                    <p>Te atendemos en San Luis.</p>
+                </a>
+                <a href="#" class="mobile-action-card">
+                    <span class="mobile-action-icon"><i data-lucide="heart-handshake"></i></span>
+                    <strong>Recomienda y gana</strong>
+                    <p>Comparte Totalplay con familiares y amigos.</p>
+                </a>
+                <a href="#" class="mobile-action-card">
+                    <span class="mobile-action-icon"><i data-lucide="briefcase-business"></i></span>
+                    <strong>Únete al equipo</strong>
+                    <p>Forma parte de Totalplay San Luis.</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="mobile-tab-panel" data-mobile-panel="plan">
+            <div class="section-header">
+                <h2>Ajustar mi plan</h2>
+                <span class="badge-slp">Soporte</span>
+            </div>
+            <div class="mobile-action-grid">
+                <a href="https://mitotalplay.com.mx/" class="mobile-action-card">
+                    <span class="mobile-action-icon"><i data-lucide="settings-2"></i></span>
+                    <strong>Ajustar mi plan</strong>
+                    <p>Administra servicios y paquetes.</p>
+                </a>
+                <a href="https://mitotalplay.com.mx/" class="mobile-action-card">
+                    <span class="mobile-action-icon"><i data-lucide="badge-dollar-sign"></i></span>
+                    <strong>Regularizar mi cuenta</strong>
+                    <p>Revisa pagos y saldo pendiente.</p>
+                </a>
+                <a href="https://wa.me/524447110396" class="mobile-action-card" data-wicho-modal>
+                    <span class="mobile-action-icon"><i data-lucide="qr-code"></i></span>
+                    <strong>Wicho, tu agente en línea WhatsApp</strong>
+                    <p>Escanea o abre WhatsApp 24/7</p>
+                </a>
+                <a href="https://wa.me/524401050758" class="mobile-action-card">
+                    <span class="mobile-action-icon"><i data-lucide="headphones"></i></span>
+                    <strong>Hablar con un asesor</strong>
+                    <p>Atención directa para San Luis.</p>
+                </a>
+            </div>
+        </section>
+
+        <nav class="mobile-nav">
+            <a href="#" class="nav-item" data-mobile-tab="learn">
+                <div class="nav-icon"><i data-lucide="info"></i></div>
+                <span>SABER MÁS</span>
+            </a>
+            <a href="#" class="nav-item active" data-mobile-tab="service">
+                <div class="nav-icon"><i data-lucide="activity"></i></div>
+                <span>MI SERVICIO</span>
+            </a>
+            <a href="#" class="nav-item" data-mobile-tab="plan">
+                <div class="nav-icon"><i data-lucide="settings-2"></i></div>
+                <span>AJUSTAR MI PLAN</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- ═══ SORTEO TOTAL FENAPO 2026 ═══ -->
+    <div class="rifa-modal" id="rifa-modal" aria-hidden="true">
+        <div class="rifa-backdrop" data-rifa-close></div>
+        <div class="rifa-dialog" role="dialog" aria-modal="true" aria-labelledby="rifa-title">
+
+            <!-- PASO 1 · MISIONES + INSTRUCCIONES -->
+            <section class="rifa-step rifa-step-active" data-rifa-step="1">
+                <div class="rifa-banner-shell">
+                    <img src="assets/rifa/baner_rifa.jpeg" alt="Sorteo Total FENAPO 2026" class="rifa-banner-img">
+                    <div class="rifa-banner-shade"></div>
+                    <img src="logos_total/logo total png blanco (1)-1.png" alt="Totalplay Logo" class="rifa-banner-logo">
+                    <span class="rifa-banner-disclaimer">* Imagen ilustrativa, sujeto a disponibilidad</span>
+                </div>
+                <button class="rifa-close" type="button" data-rifa-close aria-label="Cerrar">✕</button>
+                <div class="rifa-step-content">
+                    <span class="rifa-kicker">🎁 Totalplay te invita</span>
+                    <h2 class="rifa-title" id="rifa-title">SORTEO TOTAL<span>FENAPO 2026</span></h2>
+                    <div class="rifa-prize-pill"><span>Premio:</span> <b id="rifa-prize">A definir</b></div>
+                    <p class="rifa-sub" id="rifa-modal-sub">Completa las <b>misiones</b> y desbloquea tu participación.
+                        ¡Solo te tomará un
+                        minuto!</p>
+                    <!-- SVG Definition for Gradients (hidden) -->
+                    <svg style="width:0;height:0;position:absolute;" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="rifa-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#8B5CF6" />
+                                <stop offset="100%" stop-color="#d94389" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+
+                    <!-- Circular Progress Indicator -->
+                    <div class="rifa-progress-circle-wrap">
+                        <svg class="rifa-progress-svg" viewBox="0 0 120 120">
+                            <circle class="rifa-circle-bg" cx="60" cy="60" r="50" fill="none" stroke-width="8"></circle>
+                            <circle class="rifa-circle-fill" id="rifa-mission-fill-circle" cx="60" cy="60" r="50"
+                                fill="none" stroke-width="8" stroke-dasharray="314.16" stroke-dashoffset="314.16">
+                            </circle>
+                        </svg>
+                        <div class="rifa-progress-circle-text">
+                            <strong id="rifa-mission-pct">0%</strong>
+                            <span>TU AVANCE</span>
+                        </div>
+                    </div>
+                    <span class="rifa-mission-summary" id="rifa-mission-summary">0 / 7 Misiones completadas</span>
+                    <div class="rifa-checklist" id="rifa-checklist"></div>
+                    <p class="rifa-note">Durante el sorteo se dará preferencia a los boletos de clientes para los
+                        mejores premios. 💜</p>
+                    <button class="rifa-cta" type="button" id="rifa-btn-participar" data-rifa-start disabled>🔒 Completa
+                        las misiones para participar</button>
+                </div>
+            </section>
+
+            <!-- PASO 2 · FORMULARIO -->
+            <section class="rifa-step" data-rifa-step="2">
+                <button class="rifa-close" type="button" data-rifa-close aria-label="Cerrar">✕</button>
+                <button class="rifa-back" type="button" data-rifa-back aria-label="Atrás">←</button>
+                <div class="rifa-form-wrap">
+                    <div class="rifa-form-head">
+                        <span class="rifa-kicker">Paso 1 de 2 · Tus datos</span>
+                        <h3>Regístrate en segundos</h3>
+                        <p>Llena tus datos y valida tu WhatsApp para generar tu boleto.</p>
+                    </div>
+                    <form class="rifa-form" id="rifa-form" novalidate>
+                        <label class="rifa-field">
+                            <span>Nombre completo</span>
+                            <input type="text" id="rifa-nombre" placeholder="Ej. María López" autocomplete="name">
+                        </label>
+                        <div class="rifa-field">
+                            <span>¿Eres cliente Totalplay?</span>
+                            <div class="rifa-radio-row">
+                                <label class="rifa-radio"><input type="radio" name="rifa-cliente"
+                                        value="si"><span>Sí</span></label>
+                                <label class="rifa-radio"><input type="radio" name="rifa-cliente" value="no"
+                                        checked><span>No</span></label>
+                            </div>
+                        </div>
+                        <label class="rifa-field rifa-hidden" id="rifa-cuenta-group">
+                            <span>Número de cuenta</span>
+                            <input type="text" id="rifa-cuenta" inputmode="numeric" placeholder="Ej. 0110123456">
+                        </label>
+                        <p class="rifa-tip" id="rifa-tip-cliente">Durante el sorteo se dará preferencia a los boletos de
+                            clientes para los mejores premios. 💜</p>
+                        <label class="rifa-field">
+                            <span>WhatsApp</span>
+                            <input type="tel" id="rifa-whatsapp" inputmode="numeric" maxlength="10"
+                                placeholder="10 dígitos · ej. 4441234567" autocomplete="tel-national">
+                        </label>
+                        <label class="rifa-field">
+                            <span>Correo (opcional)</span>
+                            <input type="email" id="rifa-email" placeholder="tu@correo.com" autocomplete="email">
+                        </label>
+                        <label class="rifa-check">
+                            <input type="checkbox" id="rifa-accept">
+                            <span>Acepto las bases y el aviso de privacidad del sorteo.</span>
+                        </label>
+                        <p class="rifa-err" id="rifa-form-err"></p>
+                        <button class="rifa-cta" type="submit" id="rifa-btn-codigo">Enviar código por WhatsApp
+                            📲</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- PASO 3 · OTP -->
+            <section class="rifa-step" data-rifa-step="3">
+                <button class="rifa-close" type="button" data-rifa-close aria-label="Cerrar">✕</button>
+                <button class="rifa-back" type="button" data-rifa-back aria-label="Atrás">←</button>
+                <div class="rifa-otp-wrap">
+                    <span class="rifa-kicker">Paso 2 de 2 · Confirma</span>
+                    <h3>Te enviamos un código</h3>
+                    <p>Revísalo en tu WhatsApp y escríbelo aquí para validar tu número.</p>
+                    <div class="rifa-otp-inputs" id="rifa-otp-box"></div>
+                    <p class="rifa-tip rifa-tip-demo" id="rifa-otp-demo-hint" style="display:none">Modo prueba: el
+                        código es <b>000000</b></p>
+                    <button class="rifa-cta" type="button" id="rifa-btn-confirmar">Validar y generar mi boleto
+                        🎫</button>
+                    <p class="rifa-resend">¿No llegó? <button type="button" id="rifa-resend-btn">Reenviar</button><span
+                            id="rifa-resend-countdown"></span></p>
+                    <p class="rifa-err" id="rifa-otp-err"></p>
+                </div>
+            </section>
+
+            <!-- PASO 4 · CELEBRACIÓN / BOLETO -->
+            <section class="rifa-step" data-rifa-step="4">
+                <div class="rifa-celebr-video-shell">
+                    <video class="rifa-video" autoplay muted loop playsinline
+                        poster="assets/rifa/poster_celebracion.jpg">
+                        <source src="assets/rifa/video_celebracion.mp4" type="video/mp4">
+                    </video>
+                    <div class="rifa-celebr-shade"></div>
+                </div>
+                <button class="rifa-close" type="button" data-rifa-close aria-label="Cerrar">✕</button>
+                <div class="rifa-celebr-content">
+                    <span class="rifa-success-badge"><svg viewBox="0 0 24 24" width="14" height="14" fill="none"
+                            stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                            style="margin-right: 6px; vertical-align: middle; display: inline-block;">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>Participación confirmada</span>
+                    <h3 class="rifa-greeting" id="rifa-greeting">¡Participación confirmada!</h3>
+
+                    <div class="rifa-ticket" id="rifa-ticket">
+                        <div class="rifa-ticket-top">
+                            <img src="logos_total/logo total png (1)-1.png" alt="Totalplay">
+                            <b>SORTEO TOTAL FENAPO 2026</b>
+                            <span>BOLETO DIGITAL</span>
+                        </div>
+                        <div class="rifa-ticket-body">
+                            <div class="rifa-ticket-folio">
+                                <span>TU FOLIO</span>
+                                <strong id="rifa-folio">TPF2026-XXXXXX</strong>
+                            </div>
+                            <div class="rifa-ticket-info-grid">
+                                <div class="rifa-info-item">
+                                    <span>PARTICIPANTE</span>
+                                    <b id="rifa-ticket-nombre">—</b>
+                                </div>
+                                <div class="rifa-info-item">
+                                    <span>PREMIO</span>
+                                    <b id="rifa-ticket-premio">A definir</b>
+                                </div>
+                                <div class="rifa-info-item">
+                                    <span>DÍA DEL SORTEO</span>
+                                    <b id="rifa-ticket-fecha">Próximamente</b>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rifa-ticket-perf"></div>
+                        <div class="rifa-ticket-stub">
+                            <div class="rifa-qr-container">
+                                <canvas id="rifa-qr" width="180" height="180"
+                                    aria-label="Código QR del boleto"></canvas>
+                            </div>
+                            <span class="rifa-stub-note">SORTEO TOTALPLAY FENAPO 2026</span>
+                        </div>
+                    </div>
+
+                    <div class="rifa-countdown" id="rifa-countdown">
+                        <span class="rifa-countdown-label">El sorteo llega en</span>
+                        <div class="rifa-countdown-cols">
+                            <div><b id="rifa-cd-dias">0</b><span>DÍAS</span></div>
+                            <div><b id="rifa-cd-horas">0</b><span>HRS</span></div>
+                            <div><b id="rifa-cd-mins">0</b><span>MIN</span></div>
+                            <div><b id="rifa-cd-secs">0</b><span>SEG</span></div>
+                        </div>
+                    </div>
+
+                    <div class="rifa-ticket-actions">
+                        <button class="rifa-btn-primary" type="button" id="rifa-btn-download-img" title="Descargar Imagen (PNG)" aria-label="Descargar Imagen">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            <span class="btn-text">Descargar Imagen (PNG)</span>
+                        </button>
+                        <button class="rifa-btn-secondary" type="button" id="rifa-btn-print" title="Imprimir / PDF" aria-label="Imprimir / PDF">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2">
+                                </path>
+                                <rect x="6" y="14" width="12" height="8"></rect>
+                            </svg>
+                            <span class="btn-text">Imprimir / PDF</span>
+                        </button>
+                        <button class="rifa-btn-secondary rifa-btn-whatsapp" type="button" id="rifa-btn-share" title="Compartir por WhatsApp" aria-label="Compartir por WhatsApp">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"
+                                style="color: #25D366;">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.704 1.459h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z">
+                                </path>
+                            </svg>
+                            <span class="btn-text">Compartir por WhatsApp</span>
+                        </button>
+                    </div>
+                    <p class="rifa-celebr-note" id="rifa-celebr-note">Revisa tu WhatsApp: te enviamos tu folio y boleto
+                        digital.</p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- YouTube API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        // Variables globales para YouTube
+        let player;
+        let isPlayerReady = false;
+
+        function onYouTubeIframeAPIReady() {
+            // El player se inicializa pero sin video aún
+            player = new YT.Player('bg-youtube-video', {
+                height: '100%',
+                width: '100%',
+                videoId: 'kLvhFUktdwU', // ID del video
+                playerVars: {
+                    'autoplay': 0,
+                    'controls': 0,
+                    'mute': 1,
+                    'showinfo': 0,
+                    'rel': 0,
+                    'modestbranding': 1,
+                    'iv_load_policy': 3
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            isPlayerReady = true;
+        }
+
+        function onPlayerStateChange(event) {
+            // Si el video termina (State 0), reiniciamos todo el ciclo
+            if (event.data === YT.PlayerState.ENDED) {
+                startCinematicCycle();
+            }
+        }
+
+        function toggleAudio() {
+            if (!player) return;
+            const btn = document.getElementById('unmute-btn');
+            const icon = btn.querySelector('i');
+
+            if (player.isMuted()) {
+                player.unMute();
+                btn.innerHTML = '<i data-lucide="volume-2"></i><span>Desactivar Sonido</span>';
+                btn.classList.add('audio-on');
+            } else {
+                player.mute();
+                btn.innerHTML = '<i data-lucide="volume-x"></i><span>Activar Sonido</span>';
+                btn.classList.remove('audio-on');
+            }
+            lucide.createIcons();
+        }
+
+        document.getElementById('unmute-btn').addEventListener('click', toggleAudio);
+
+        lucide.createIcons();
+
+        // Mobile Slider Logic
+        const sliderImgs = document.querySelectorAll('.slider-img');
+        const cardTitle1 = document.getElementById('card-title-1');
+        if (sliderImgs.length > 0) {
+            let currentIdx = 0;
+            setInterval(() => {
+                sliderImgs[currentIdx].classList.remove('active');
+                currentIdx = (currentIdx + 1) % sliderImgs.length;
+                sliderImgs[currentIdx].classList.add('active');
+                // Mostrar título solo en las primeras 3 imágenes (índices 0, 1, 2)
+                if (cardTitle1) {
+                    cardTitle1.style.opacity = currentIdx < 3 ? '1' : '0';
+                    cardTitle1.style.pointerEvents = currentIdx < 3 ? '' : 'none';
+                }
+            }, 4000);
+        }
+
+        // Desktop Slider Logic (Cinematic Loop)
+        const dSliderImgs = document.querySelectorAll('.d-slider-img');
+        const heroCard = document.getElementById('desktop-hero');
+        const ytVideo = document.getElementById('bg-youtube-video');
+
+        let dCurrentIdx = 0;
+        let sliderInterval;
+
+        function startCinematicCycle() {
+            // Initial State: Text is visible (no clean-mode)
+            if (heroCard) heroCard.classList.remove('clean-mode');
+
+            // Reiniciar animaciones de CSS (hack para dispararlas de nuevo)
+            const bgImg = document.querySelector('.hero-card-bg-image-v3');
+            const bgOverlay = document.querySelector('.hero-card-overlay-v3');
+            if (bgImg) {
+                bgImg.style.animation = 'none';
+                void bgImg.offsetWidth; // trigger reflow
+                bgImg.style.animation = '';
+            }
+            if (bgOverlay) {
+                bgOverlay.style.animation = 'none';
+                void bgOverlay.offsetWidth;
+                bgOverlay.style.animation = '';
+            }
+
+            if (ytVideo) {
+                ytVideo.style.opacity = '0';
+                // No quitamos el src para evitar parpadeos, solo pausamos
+                if (isPlayerReady) player.stopVideo();
+            }
+
+            // Ocultar botón de sonido al inicio del ciclo
+            const audioBtn = document.getElementById('unmute-btn');
+            if (audioBtn) {
+                audioBtn.style.opacity = '0';
+                audioBtn.style.pointerEvents = 'none';
+            }
+
+            // Wait 15 seconds before starting the video.
+            setTimeout(() => {
+                // Enter clean mode (text fades, overlay fades, buttons move down to bottom edge)
+                if (heroCard) heroCard.classList.add('clean-mode');
+
+                // Load and start the YouTube video EXACTLY when the text disappears
+                if (isPlayerReady) {
+                    player.playVideo();
+                    document.getElementById('bg-youtube-video').style.opacity = '1';
+
+                    // Mostrar botón de sonido
+                    if (audioBtn) {
+                        audioBtn.style.opacity = '1';
+                        audioBtn.style.pointerEvents = 'all';
+                    }
+                }
+
+                // If there are slider images (mobile or alternative fallback), slide them
+                if (dSliderImgs.length > 0) {
+                    sliderInterval = setInterval(() => {
+                        dSliderImgs[dCurrentIdx].classList.remove('active');
+                        dCurrentIdx = (dCurrentIdx + 1) % dSliderImgs.length;
+                        dSliderImgs[dCurrentIdx].classList.add('active');
+
+                        // If we loop back to the first image, reset the cinematic cycle
+                        if (dCurrentIdx === 0) {
+                            clearInterval(sliderInterval);
+                            startCinematicCycle();
+                        }
+                    }, 5000);
+                }
+            }, 15000);
+        }
+
+        // Start the infinite cinematic loop
+        startCinematicCycle();
+
+        // H-Aplastada: rotate button positions every 10s
+        (function () {
+            var btns = [document.getElementById('hbtn-0'), document.getElementById('hbtn-1'), document.getElementById('hbtn-2')];
+            if (!btns[0]) return;
+            if (window.matchMedia('(max-width: 768px)').matches) return;
+            var positions = [
+                { top: '0', bottom: '', left: '0', right: '', width: '100%' },
+                { top: '', bottom: '0', left: '0', right: '', width: 'calc(50% - 5px)' },
+                { top: '', bottom: '0', left: '', right: '0', width: 'calc(50% - 5px)' }
+            ];
+            var order = [0, 1, 2];
+            function applyPositions() {
+                btns.forEach(function (btn, i) {
+                    var p = positions[order[i]];
+                    btn.style.top = p.top || '';
+                    btn.style.bottom = p.bottom || '';
+                    btn.style.left = p.left || '';
+                    btn.style.right = p.right || '';
+                    btn.style.width = p.width;
+                    // Botón en posición TOP → más transparente para ver las imágenes
+                    if (order[i] === 0) {
+                        btn.style.background = 'rgba(255,255,255,0.04)';
+                        btn.style.borderColor = 'rgba(255,255,255,0.08)';
+                    } else {
+                        btn.style.background = 'rgba(255,255,255,0.11)';
+                        btn.style.borderColor = 'rgba(255,255,255,0.14)';
+                    }
+                });
+            }
+            applyPositions(); // aplicar al inicio
+            setInterval(function () {
+                order.push(order.shift());
+                applyPositions();
+            }, 10000);
+        })();
+
+        // --- LÓGICA DE TEMAS ---
+        const savedTheme = localStorage.getItem('tp_theme') || localStorage.getItem('tp_calendar_theme') || 'light';
+        document.body.classList.toggle('light-theme', savedTheme !== 'dark');
+
+        // Add event listeners to toggles (desktop and mobile)
+        const themeToggles = document.querySelectorAll('.theme-toggle-btn');
+        themeToggles.forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.body.classList.toggle('light-theme');
+                const isLight = document.body.classList.contains('light-theme');
+                localStorage.setItem('tp_theme', isLight ? 'light' : 'dark');
+                localStorage.setItem('tp_calendar_theme', isLight ? 'light' : 'dark');
+            });
+        });
+
+        const pdfModal = document.getElementById('pdf-modal-v3');
+
+        function openPdfModal(event) {
+            if (!pdfModal) return;
+            event.preventDefault();
+            pdfModal.classList.add('open');
+            pdfModal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('pdf-modal-open');
+        }
+
+        function closePdfModal() {
+            if (!pdfModal) return;
+            pdfModal.classList.remove('open');
+            pdfModal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('pdf-modal-open');
+        }
+
+        document.querySelectorAll('[data-pdf-modal]').forEach(trigger => {
+            trigger.addEventListener('click', openPdfModal);
+        });
+
+        document.querySelectorAll('[data-pdf-close]').forEach(trigger => {
+            trigger.addEventListener('click', closePdfModal);
+        });
+
+        document.querySelectorAll('[data-payment-tab]').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.dataset.paymentTab;
+                document.querySelectorAll('[data-payment-tab]').forEach(item => {
+                    item.classList.toggle('active', item === tab);
+                });
+                document.querySelectorAll('[data-payment-panel]').forEach(panel => {
+                    panel.classList.toggle('active', panel.dataset.paymentPanel === target);
+                });
+            });
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') closePdfModal();
+        });
+
+        const appDownloadModal = document.getElementById('app-download-modal-v3');
+        const appStoreLinks = {
+            ios: 'https://apps.apple.com/mx/app/totalplay/id847892109',
+            android: 'https://play.google.com/store/apps/details?id=com.TotalPlay.totalplay&hl=es_MX',
+            androidNative: 'market://details?id=com.TotalPlay.totalplay'
+        };
+
+        function openAppDownloadModal(event) {
+            if (!appDownloadModal) return;
+            event.preventDefault();
+            appDownloadModal.classList.add('open');
+            appDownloadModal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('app-modal-open');
+        }
+
+        function closeAppDownloadModal() {
+            if (!appDownloadModal) return;
+            appDownloadModal.classList.remove('open');
+            appDownloadModal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('app-modal-open');
+        }
+
+        function openStoreLink(store) {
+            const isAndroid = /Android/i.test(navigator.userAgent);
+            const url = store === 'ios' ? appStoreLinks.ios : appStoreLinks.android;
+
+            if (store === 'android' && isAndroid) {
+                window.location.href = appStoreLinks.androidNative;
+                window.setTimeout(() => {
+                    window.location.href = appStoreLinks.android;
+                }, 800);
+                return;
+            }
+
+            window.open(url, '_blank', 'noopener');
+        }
+
+        document.querySelectorAll('[data-app-modal]').forEach(trigger => {
+            trigger.addEventListener('click', openAppDownloadModal);
+        });
+
+        document.querySelectorAll('[data-app-close]').forEach(trigger => {
+            trigger.addEventListener('click', closeAppDownloadModal);
+        });
+
+        document.querySelectorAll('[data-app-store]').forEach(trigger => {
+            trigger.addEventListener('click', () => openStoreLink(trigger.dataset.appStore));
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') closeAppDownloadModal();
+        });
+
+        const wichoModal = document.getElementById('wicho-modal-v3');
+
+        function openWichoModal(event) {
+            if (!wichoModal) return;
+            event.preventDefault();
+            wichoModal.classList.add('open');
+            wichoModal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('app-modal-open');
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function closeWichoModal() {
+            if (!wichoModal) return;
+            wichoModal.classList.remove('open');
+            wichoModal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('app-modal-open');
+        }
+
+        document.querySelectorAll('[data-wicho-modal]').forEach(trigger => {
+            trigger.addEventListener('click', openWichoModal);
+        });
+
+        document.querySelectorAll('[data-wicho-close]').forEach(trigger => {
+            trigger.addEventListener('click', closeWichoModal);
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') closeWichoModal();
+        });
+
+        const constructionModal = document.getElementById('construction-modal-v3');
+
+        function openConstructionModal(event) {
+            if (!constructionModal) return;
+            event.preventDefault();
+            constructionModal.classList.add('open');
+            constructionModal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('app-modal-open');
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function closeConstructionModal() {
+            if (!constructionModal) return;
+            constructionModal.classList.remove('open');
+            constructionModal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('app-modal-open');
+        }
+
+        document.querySelectorAll('[data-construction-modal]').forEach(trigger => {
+            trigger.addEventListener('click', openConstructionModal);
+        });
+
+        document.querySelectorAll('[data-construction-close]').forEach(trigger => {
+            trigger.addEventListener('click', closeConstructionModal);
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') closeConstructionModal();
+        });
+
+        const TUTORIALS_API_URL = 'https://script.google.com/macros/s/AKfycbzyKwfqkNbUkqy3kfY7q1em6niZrIqMKtN3VizctTt3keba-PoeJ2Gq9JS54ab-bdTcVg/exec';
+        const TUTORIALS_CACHE_KEY = 'tp_tutorials_cache_v1';
+        const TUTORIALS_CACHE_TTL = 10 * 60 * 1000;
+        const tutorialModal = document.getElementById('tutorial-modal-v3');
+        const tutorialListEl = document.getElementById('tutorial-list');
+        const tutorialChipsEl = document.getElementById('tutorial-category-chips');
+        const tutorialPlayerEl = document.getElementById('tutorial-player-shell');
+        const tutorialMobileVideoModal = document.getElementById('tutorial-video-modal-v3');
+        const tutorialMobilePlayerEl = document.getElementById('tutorial-mobile-player-shell');
+        const tutorialMobileVideoTitle = document.getElementById('tutorial-video-title');
+        const tutorialShareModal = document.getElementById('tutorial-share-modal-v3');
+        const tutorialShareTitle = document.getElementById('tutorial-share-title-v3');
+        const tutorialSelectedCard = document.getElementById('tutorial-selected-card');
+        const tutorialSearchInput = document.getElementById('tutorial-search-input');
+        const tutorialLikeBtn = document.getElementById('tutorial-like-btn');
+        const tutorialLikeCount = document.getElementById('tutorial-like-count');
+        const tutorialShareBtn = document.getElementById('tutorial-share-btn');
+        let tutorials = [];
+        let tutorialsLoadPromise = null;
+        let selectedTutorialId = '';
+        let selectedTutorialCategory = 'Todos';
+        let tutorialSearchQuery = '';
+
+        const tutorialFallback = [
+            {
+                ID: 'demo-app-totalplay',
+                Titulo: 'Cómo usar la app Totalplay',
+                Plataforma: 'App Totalplay',
+                Categoria: 'App',
+                Descripcion: 'Conoce las funciones principales de la app.',
+                LinkTikTok: '',
+                Duracion: '1:00',
+                Orden: 1,
+                Activo: 'SI',
+                Destacado: 'SI'
+            }
+        ];
+
+        function getTutorialLikes() {
+            try { return JSON.parse(localStorage.getItem('tp_tutorial_likes') || '{}'); }
+            catch { return {}; }
+        }
+
+        function saveTutorialLikes(likes) {
+            localStorage.setItem('tp_tutorial_likes', JSON.stringify(likes));
+        }
+
+        function extractTikTokId(value) {
+            const str = String(value || '');
+            const dataIdMatch = str.match(/data-video-id=["'](\d{15,20})["']/i);
+            if (dataIdMatch) return dataIdMatch[1];
+            const pathMatch = str.match(/(?:\/video\/|\/embed\/v2\/|\/embed\/)(\d{15,20})/i);
+            if (pathMatch) return pathMatch[1];
+            const digitsMatch = str.match(/\b(\d{15,20})\b/);
+            return digitsMatch ? digitsMatch[1] : '';
+        }
+
+        function extractTikTokUrl(value) {
+            const text = String(value || '');
+            const id = extractTikTokId(text);
+            if (id) return `https://www.tiktok.com/@consultoriaslp/video/${id}`;
+            const citeMatch = text.match(/cite=["']([^"']*tiktok\.com[^"']*)["']/i);
+            if (citeMatch) return citeMatch[1];
+            const urlMatch = text.match(/https?:\/\/[^\s"'<>]*tiktok\.com[^\s"'<>]*/i);
+            return urlMatch ? urlMatch[0] : text;
+        }
+
+        function escapeHtml(value) {
+            return String(value || '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function normalizeTutorialSearch(value) {
+            return String(value || '')
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .toLowerCase()
+                .trim();
+        }
+
+        function isTutorialMobile() {
+            return window.matchMedia('(max-width: 700px)').matches;
+        }
+
+        function retryTikTokEmbed(videoId) {
+            const wrappers = document.querySelectorAll('.tiktok-iframe-wrapper');
+            wrappers.forEach(container => {
+                const iframe = container.querySelector('iframe');
+                if (iframe) {
+                    iframe.src = `https://www.tiktok.com/embed/${videoId}?autoplay=1&rel=0&t=${Date.now()}`;
+                }
+            });
+        }
+
+        function tutorialVideoMarkup(item) {
+            const videoId = extractTikTokId(item.tiktok);
+            const title = escapeHtml(item.title);
+            const url = escapeHtml(item.tiktok || `https://www.tiktok.com/@consultoriaslp/video/${videoId}`);
+            const ts = Date.now();
+            return videoId
+                ? `<div class="tiktok-iframe-wrapper">
+                    <iframe src="https://www.tiktok.com/embed/${videoId}?autoplay=1&rel=0&t=${ts}" allow="accelerated; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    <div class="tiktok-fallback-banner">
+                        <button type="button" class="tiktok-retry-btn" onclick="retryTikTokEmbed('${videoId}')">
+                            <i data-lucide="rotate-cw" style="width:13px;height:13px;"></i> Reintentar reproductor
+                        </button>
+                        <a href="${url}" target="_blank" rel="noopener" class="tiktok-direct-btn">
+                            <i data-lucide="external-link" style="width:13px;height:13px;"></i> Abrir en TikTok
+                        </a>
+                    </div>
+                   </div>`
+                : `<div class="tutorial-empty-v3"><i data-lucide="video"></i><strong>${title}</strong><span>Agrega un link de TikTok en Sheets para mostrar el video.</span></div>`;
+        }
+
+        function stopAllVideoPlayers() {
+            [tutorialPlayerEl, tutorialMobilePlayerEl].forEach(container => {
+                if (!container) return;
+                const iframes = container.querySelectorAll('iframe');
+                iframes.forEach(iframe => {
+                    try {
+                        iframe.src = 'about:blank';
+                        iframe.remove();
+                    } catch {}
+                });
+            });
+        }
+
+        function openTutorialVideo(item) {
+            if (!tutorialMobileVideoModal || !tutorialMobilePlayerEl) return;
+            stopAllVideoPlayers();
+            tutorialMobilePlayerEl.innerHTML = tutorialVideoMarkup(item);
+            if (tutorialMobileVideoTitle) tutorialMobileVideoTitle.textContent = item.title;
+            tutorialMobileVideoModal.classList.add('open');
+            tutorialMobileVideoModal.setAttribute('aria-hidden', 'false');
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function closeTutorialVideo() {
+            if (!tutorialMobileVideoModal) return;
+            stopAllVideoPlayers();
+            tutorialMobileVideoModal.classList.remove('open');
+            tutorialMobileVideoModal.setAttribute('aria-hidden', 'true');
+            if (tutorialMobilePlayerEl) {
+                tutorialMobilePlayerEl.innerHTML = '<div class="tutorial-empty-v3"><i data-lucide="play-circle"></i><strong>Selecciona un tutorial</strong></div>';
+            }
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function currentTutorial() {
+            return tutorials.find(tutorial => tutorial.id === selectedTutorialId) || null;
+        }
+
+        function currentTutorialShareData() {
+            const item = currentTutorial();
+            if (!item) return null;
+            const url = item.tiktok || window.location.href;
+            return {
+                item,
+                url,
+                text: `Mira este tutorial de Totalplay: ${item.title}`
+            };
+        }
+
+        function syncTutorialLikeUI() {
+            const item = currentTutorial();
+            if (!item) return;
+            const likes = getTutorialLikes();
+            const isLiked = Boolean(likes[item.id]);
+            const count = likes[item.id] || item.likes || 0;
+
+            document.querySelectorAll('[data-tutorial-like-action]').forEach(button => {
+                button.classList.toggle('liked', isLiked);
+            });
+            document.querySelectorAll('[data-tutorial-like-count]').forEach(countEl => {
+                countEl.textContent = count;
+            });
+        }
+
+        function animateTutorialLike() {
+            document.querySelectorAll('[data-tutorial-like-action]').forEach(button => {
+                button.classList.remove('pop');
+                void button.offsetWidth;
+                button.classList.add('pop');
+            });
+        }
+
+        function syncTutorialCardLikeUI(item) {
+            if (!item) return;
+            const likes = getTutorialLikes();
+            const isLiked = Boolean(likes[item.id]);
+            const count = likes[item.id] || item.likes || 0;
+
+            document.querySelectorAll('[data-tutorial-card-like]').forEach(button => {
+                if (button.dataset.tutorialCardLike === item.id) {
+                    button.classList.toggle('liked', isLiked);
+                }
+            });
+            document.querySelectorAll('[data-tutorial-card-like-count]').forEach(countEl => {
+                if (countEl.dataset.tutorialCardLikeCount === item.id) {
+                    countEl.textContent = count;
+                }
+            });
+        }
+
+        function animateTutorialCardLike(item) {
+            if (!item) return;
+            document.querySelectorAll('[data-tutorial-card-like]').forEach(button => {
+                if (button.dataset.tutorialCardLike === item.id) {
+                    button.classList.remove('pop');
+                    void button.offsetWidth;
+                    button.classList.add('pop');
+                }
+            });
+        }
+
+        async function likeCurrentTutorial() {
+            const item = currentTutorial();
+            if (!item) return;
+            const likes = getTutorialLikes();
+            if (likes[item.id]) return;
+            likes[item.id] = (item.likes || 0) + 1;
+            saveTutorialLikes(likes);
+            syncTutorialLikeUI();
+            syncTutorialCardLikeUI(item);
+            animateTutorialLike();
+            animateTutorialCardLike(item);
+            try { await postTutorialAction({ action: 'like', tutorialId: item.id }); } catch { }
+        }
+
+        function openTutorialShareModal() {
+            const data = currentTutorialShareData();
+            if (!data || !tutorialShareModal) return;
+            if (tutorialShareTitle) tutorialShareTitle.textContent = data.item.title;
+            tutorialShareModal.classList.add('open');
+            tutorialShareModal.setAttribute('aria-hidden', 'false');
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function closeTutorialShareModal() {
+            if (!tutorialShareModal) return;
+            tutorialShareModal.classList.remove('open');
+            tutorialShareModal.setAttribute('aria-hidden', 'true');
+        }
+
+        async function shareTutorialTo(platform) {
+            const data = currentTutorialShareData();
+            if (!data) return;
+            const encodedText = encodeURIComponent(`${data.text} ${data.url}`);
+            const encodedUrl = encodeURIComponent(data.url);
+            const subject = encodeURIComponent(data.item.title);
+            let shareUrl = '';
+
+            if (platform === 'whatsapp') shareUrl = `https://api.whatsapp.com/send?text=${encodedText}`;
+            if (platform === 'facebook') shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+            if (platform === 'x') shareUrl = `https://twitter.com/intent/tweet?text=${encodedText}`;
+            if (platform === 'email') shareUrl = `mailto:?subject=${subject}&body=${encodedText}`;
+
+            if (platform === 'copy') {
+                await navigator.clipboard.writeText(`${data.text} ${data.url}`);
+                closeTutorialShareModal();
+                return;
+            }
+
+            if (shareUrl) window.open(shareUrl, '_blank', 'noopener');
+        }
+
+        function normalizeTutorial(raw) {
+            const title = raw.Titulo || raw.title || 'Tutorial';
+            return {
+                id: raw.ID || raw.id || raw.TutorialID || String(title).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+                title,
+                platform: raw.Plataforma || raw.platform || 'General',
+                category: raw.Categoria || raw.category || raw.Plataforma || 'General',
+                description: raw.Descripcion || raw.description || '',
+                tiktok: extractTikTokUrl(raw.LinkTikTok || raw.TikTok || raw.tiktok || ''),
+                thumbnail: raw.Thumbnail || raw.thumbnail || '',
+                duration: raw.Duracion || raw.duration || '',
+                order: Number(raw.Orden || raw.order || 9999),
+                featured: String(raw.Destacado || '').toUpperCase() === 'SI',
+                likes: Number(raw.Likes || raw.likes || 0)
+            };
+        }
+
+        function setTutorialRows(rows) {
+            tutorials = (rows.length ? rows : tutorialFallback)
+                .map(normalizeTutorial)
+                .filter(item => item.id || item.title)
+                .sort((a, b) => a.order - b.order);
+        }
+
+        function readTutorialCache() {
+            try {
+                const cached = JSON.parse(localStorage.getItem(TUTORIALS_CACHE_KEY) || 'null');
+                if (!cached || !Array.isArray(cached.data)) return null;
+                if (Date.now() - Number(cached.savedAt || 0) > TUTORIALS_CACHE_TTL) return null;
+                return cached.data;
+            } catch {
+                return null;
+            }
+        }
+
+        function writeTutorialCache(rows) {
+            try {
+                localStorage.setItem(TUTORIALS_CACHE_KEY, JSON.stringify({
+                    savedAt: Date.now(),
+                    data: rows
+                }));
+            } catch { }
+        }
+
+        async function loadTutorials(options = {}) {
+            const { force = false, useCache = true } = options;
+            if (tutorials.length && !force) return;
+            if (tutorialsLoadPromise && !force) return tutorialsLoadPromise;
+
+            if (useCache && !tutorials.length) {
+                const cachedRows = readTutorialCache();
+                if (cachedRows) {
+                    setTutorialRows(cachedRows);
+                    return;
+                }
+            }
+
+            tutorialsLoadPromise = (async () => {
+                try {
+                    const res = await fetch(`${TUTORIALS_API_URL}?action=tutoriales`);
+                    const json = await res.json();
+                    const rows = Array.isArray(json.data) ? json.data : [];
+                    writeTutorialCache(rows);
+                    setTutorialRows(rows);
+                } catch (error) {
+                    console.warn('No se pudieron cargar tutoriales:', error);
+                    if (!tutorials.length) setTutorialRows(tutorialFallback);
+                } finally {
+                    tutorialsLoadPromise = null;
+                }
+            })();
+
+            return tutorialsLoadPromise;
+        }
+
+        function warmTutorialsCache() {
+            loadTutorials();
+        }
+
+        function filteredTutorials() {
+            const q = normalizeTutorialSearch(tutorialSearchQuery);
+            return tutorials.filter(item => {
+                const matchesCategory = selectedTutorialCategory === 'Todos' || item.category === selectedTutorialCategory || item.platform === selectedTutorialCategory;
+                const haystack = normalizeTutorialSearch(`${item.title} ${item.platform} ${item.category} ${item.description}`);
+                return matchesCategory && tutorialMatchesQuery(haystack, q);
+            });
+        }
+
+        function tutorialMatchesQuery(haystack, query) {
+            if (!query) return true;
+            if (haystack.includes(query)) return true;
+            const terms = query.split(/\s+/).filter(term => term.length > 2 && term !== 'totalplay');
+            if (!terms.length) return true;
+            return terms.every(term => haystack.includes(term));
+        }
+
+        function getTutorialScore(item, query) {
+            const q = normalizeTutorialSearch(query);
+            if (!q) return 0;
+            const title = normalizeTutorialSearch(item.title);
+            const haystack = normalizeTutorialSearch(`${item.title} ${item.platform} ${item.category} ${item.description}`);
+            const terms = q.split(/\s+/).filter(term => term.length > 2 && term !== 'totalplay');
+            let score = 0;
+            if (haystack.includes(q)) score += 80;
+            terms.forEach(term => {
+                if (title.includes(term)) score += 24;
+                else if (haystack.includes(term)) score += 10;
+            });
+            if (terms.length && terms.every(term => haystack.includes(term))) score += 35;
+            return score;
+        }
+
+        function findTutorialByQuery(query) {
+            const terms = normalizeTutorialSearch(query).split(/\s+/).filter(Boolean);
+            if (!terms.length) return null;
+            return tutorials
+                .map(item => ({ item, score: getTutorialScore(item, query) }))
+                .filter(entry => entry.score > 0)
+                .sort((a, b) => b.score - a.score)[0]?.item || null;
+        }
+
+        function renderTutorialLoading(query = '') {
+            if (tutorialChipsEl) tutorialChipsEl.innerHTML = query
+                ? `<button type="button" class="tutorial-chip-v3 active">${escapeHtml(query)}</button>`
+                : '<button type="button" class="tutorial-chip-v3 active">Cargando</button>';
+            if (tutorialListEl) {
+                tutorialListEl.innerHTML = `
+                    <div class="tutorial-empty-v3">
+                        <i data-lucide="loader-circle"></i>
+                        <strong>Buscando tutoriales</strong>
+                        <span>${query ? `Filtro: ${escapeHtml(query)}` : 'Cargando desde Google Sheets.'}</span>
+                    </div>
+                `;
+            }
+            if (tutorialSelectedCard) {
+                tutorialSelectedCard.innerHTML = `
+                    <span>ACADEMIA</span>
+                    <h3>${query ? escapeHtml(query) : 'Cargando tutoriales'}</h3>
+                    <p>Estamos preparando los cursos disponibles.</p>
+                `;
+            }
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function renderTutorialChips() {
+            if (!tutorialChipsEl) return;
+            const categories = ['Todos', ...new Set(tutorials.map(item => item.category || item.platform).filter(Boolean))];
+            tutorialChipsEl.innerHTML = categories.map(cat =>
+                `<button type="button" class="tutorial-chip-v3 ${cat === selectedTutorialCategory ? 'active' : ''}" data-tutorial-cat="${escapeHtml(cat)}">${escapeHtml(cat)}</button>`
+            ).join('');
+            tutorialChipsEl.querySelectorAll('[data-tutorial-cat]').forEach(chip => {
+                chip.addEventListener('click', () => {
+                    selectedTutorialCategory = chip.dataset.tutorialCat;
+                    renderTutorials();
+                });
+            });
+        }
+
+        function renderTutorials() {
+            renderTutorialChips();
+            const likes = getTutorialLikes();
+            const items = filteredTutorials();
+            if (!tutorialListEl) return;
+
+            if (!items.length) {
+                tutorialListEl.innerHTML = '<div class="tutorial-empty-v3"><strong>Sin tutoriales</strong><span>Agrega videos activos en Google Sheets.</span></div>';
+                if (tutorialSelectedCard) {
+                    tutorialSelectedCard.innerHTML = '<span>CURSO</span><h3>Sin resultados</h3><p>Cambia la búsqueda o selecciona otra categoría.</p>';
+                }
+                return;
+            }
+
+            tutorialListEl.innerHTML = items.map(item => {
+                const isLiked = Boolean(likes[item.id]);
+                const count = likes[item.id] || item.likes || 0;
+                return `
+                <article class="tutorial-card-v3 ${item.id === selectedTutorialId ? 'active' : ''}">
+                    <button type="button" class="tutorial-card-main-v3" data-tutorial-id="${escapeHtml(item.id)}">
+                        <span>${escapeHtml(item.platform)}${item.duration ? ` · ${escapeHtml(item.duration)}` : ''}</span>
+                        <strong>${escapeHtml(item.title)}</strong>
+                        <p>${escapeHtml(item.description || 'Ver tutorial paso a paso.')}</p>
+                    </button>
+                    <div class="tutorial-card-actions-v3">
+                        <button type="button" class="tutorial-card-like-v3 ${isLiked ? 'liked' : ''}" data-tutorial-card-like="${escapeHtml(item.id)}" aria-label="Me gusta">
+                            <i data-lucide="heart"></i>
+                            <span data-tutorial-card-like-count="${escapeHtml(item.id)}">${count}</span>
+                        </button>
+                        <button type="button" class="tutorial-card-share-v3" data-tutorial-card-share="${escapeHtml(item.id)}" aria-label="Compartir">
+                            <i data-lucide="share-2"></i>
+                        </button>
+                    </div>
+                </article>
+                `;
+            }).join('');
+
+            tutorialListEl.querySelectorAll('[data-tutorial-id]').forEach(card => {
+                card.addEventListener('click', () => selectTutorial(card.dataset.tutorialId));
+            });
+            tutorialListEl.querySelectorAll('[data-tutorial-card-like]').forEach(button => {
+                button.addEventListener('click', () => {
+                    selectTutorial(button.dataset.tutorialCardLike, { openVideo: false });
+                    likeCurrentTutorial();
+                });
+            });
+            tutorialListEl.querySelectorAll('[data-tutorial-card-share]').forEach(button => {
+                button.addEventListener('click', () => {
+                    selectTutorial(button.dataset.tutorialCardShare, { openVideo: false });
+                    openTutorialShareModal();
+                });
+            });
+
+            if (!items.some(item => item.id === selectedTutorialId) && items[0]) {
+                selectTutorial(items[0].id, { openVideo: false });
+                return;
+            }
+            const current = tutorials.find(item => item.id === selectedTutorialId);
+            if (current && tutorialLikeCount) tutorialLikeCount.textContent = likes[current.id] || current.likes || 0;
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function selectTutorial(id, options = {}) {
+            const shouldOpenVideo = options.openVideo !== false;
+            selectedTutorialId = id;
+            const item = tutorials.find(tutorial => tutorial.id === id);
+            if (!item || !tutorialPlayerEl) return;
+
+            stopAllVideoPlayers();
+
+            const tagEl = document.getElementById('tiktok-caption-tag');
+            const titleEl = document.getElementById('tiktok-caption-title');
+            if (tagEl) tagEl.textContent = `${item.platform || 'Totalplay'} 🇲🇽`;
+            if (titleEl) titleEl.textContent = item.title || '';
+
+            if (isTutorialMobile()) {
+                tutorialPlayerEl.innerHTML = '<div class="tutorial-empty-v3"><i data-lucide="play-circle"></i><strong>Elige un curso</strong><span>El video se abrirá en una ventana enfocada.</span></div>';
+                if (shouldOpenVideo) openTutorialVideo(item);
+            } else {
+                tutorialPlayerEl.innerHTML = tutorialVideoMarkup(item);
+            }
+
+            if (tutorialSelectedCard) {
+                tutorialSelectedCard.innerHTML = `
+                    <span>${escapeHtml(item.platform)}${item.duration ? ` · ${escapeHtml(item.duration)}` : ''}</span>
+                    <h3>${escapeHtml(item.title)}</h3>
+                    <p>${escapeHtml(item.description || 'Tutorial paso a paso para clientes Totalplay.')}</p>
+                    <button type="button" class="tutorial-watch-v3" data-tutorial-watch>Ver tutorial</button>
+                    ${item.tiktok ? `<a href="${escapeHtml(item.tiktok)}" target="_blank" rel="noopener">Abrir en TikTok</a>` : ''}
+                `;
+                const watchBtn = tutorialSelectedCard.querySelector('[data-tutorial-watch]');
+                if (watchBtn) watchBtn.addEventListener('click', () => openTutorialVideo(item));
+            }
+
+            const likes = getTutorialLikes();
+            if (tutorialLikeCount) tutorialLikeCount.textContent = likes[item.id] || item.likes || 0;
+            syncTutorialLikeUI();
+            renderTutorials();
+            if (window.lucide) lucide.createIcons();
+        }
+
+        async function openTutorialModal(event) {
+            if (!tutorialModal) return;
+            event.preventDefault();
+            const query = event.currentTarget?.dataset?.tutorialQuery || '';
+            selectedTutorialCategory = 'Todos';
+            tutorialSearchQuery = query;
+            selectedTutorialId = '';
+            if (tutorialSearchInput) tutorialSearchInput.value = query;
+
+            tutorialModal.classList.add('open');
+            tutorialModal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('tutorial-modal-open');
+            renderTutorialLoading(query);
+
+            await loadTutorials();
+            const match = findTutorialByQuery(query);
+            if (match) {
+                selectedTutorialId = match.id;
+            }
+            renderTutorials();
+            if (match) selectTutorial(match.id, { openVideo: false });
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function closeTutorialModal() {
+            if (!tutorialModal) return;
+            stopAllVideoPlayers();
+            closeTutorialVideo();
+            closeTutorialShareModal();
+            if (tutorialPlayerEl) {
+                tutorialPlayerEl.innerHTML = '<div class="tutorial-empty-v3"><i data-lucide="play-circle"></i><strong>Selecciona un tutorial</strong></div>';
+            }
+            tutorialModal.classList.remove('open');
+            tutorialModal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('tutorial-modal-open');
+        }
+
+        async function postTutorialAction(payload) {
+            await fetch(TUTORIALS_API_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify(payload)
+            });
+        }
+
+        document.querySelectorAll('[data-tutorial-modal]').forEach(trigger => {
+            trigger.addEventListener('click', openTutorialModal);
+        });
+
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(warmTutorialsCache, { timeout: 1800 });
+        } else {
+            window.setTimeout(warmTutorialsCache, 900);
+        }
+
+        function navigateTutorial(direction) {
+            const list = filteredTutorials();
+            if (!list.length) return;
+            const currentItem = currentTutorial();
+            if (!currentItem) return;
+
+            let currentIndex = list.findIndex(item => item.id === currentItem.id);
+            if (currentIndex === -1) currentIndex = 0;
+
+            let nextIndex = currentIndex + direction;
+            if (nextIndex >= list.length) nextIndex = 0;
+            if (nextIndex < 0) nextIndex = list.length - 1;
+
+            const nextItem = list[nextIndex];
+            if (nextItem) {
+                selectTutorial(nextItem.id);
+            }
+        }
+
+        // Swiping support for mobile video navigation
+        let touchStartX = 0;
+        let touchStartY = 0;
+
+        if (tutorialMobileVideoModal) {
+            tutorialMobileVideoModal.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+            }, { passive: true });
+
+            tutorialMobileVideoModal.addEventListener('touchend', (e) => {
+                const touchEndX = e.changedTouches[0].clientX;
+                const touchEndY = e.changedTouches[0].clientY;
+
+                const diffX = touchEndX - touchStartX;
+                const diffY = touchEndY - touchStartY;
+
+                // Thresholds: horizontal swipe must be significant, and vertical swipe must be minor
+                if (Math.abs(diffX) > 60 && Math.abs(diffY) < 55) {
+                    if (diffX < 0) {
+                        navigateTutorial(1); // Swipe Left -> Next Video
+                    } else {
+                        navigateTutorial(-1); // Swipe Right -> Previous Video
+                    }
+                }
+            }, { passive: true });
+        }
+
+        const feedPrevBtn = document.getElementById('tutorial-feed-prev');
+        if (feedPrevBtn) {
+            feedPrevBtn.addEventListener('click', () => navigateTutorial(-1));
+        }
+
+        const feedNextBtn = document.getElementById('tutorial-feed-next');
+        if (feedNextBtn) {
+            feedNextBtn.addEventListener('click', () => navigateTutorial(1));
+        }
+
+        const tiktokSearchInput = document.getElementById('tiktok-search-input');
+        if (tiktokSearchInput) {
+            tiktokSearchInput.addEventListener('input', event => {
+                tutorialSearchQuery = event.target.value;
+                if (tutorialSearchInput) tutorialSearchInput.value = event.target.value;
+                renderTutorials();
+            });
+        }
+
+        const sideCopyBtn = document.getElementById('tutorial-side-copy');
+        if (sideCopyBtn) {
+            sideCopyBtn.addEventListener('click', openTutorialShareModal);
+        }
+
+        const sideMuteBtn = document.getElementById('tutorial-side-mute');
+        if (sideMuteBtn) {
+            sideMuteBtn.addEventListener('click', () => {
+                const currentMuteState = sideMuteBtn.getAttribute('data-muted') === 'true';
+                const nextState = !currentMuteState;
+                sideMuteBtn.setAttribute('data-muted', String(nextState));
+                sideMuteBtn.innerHTML = nextState
+                    ? '<i data-lucide="volume-x"></i>'
+                    : '<i data-lucide="volume-2"></i>';
+                if (window.lucide) lucide.createIcons();
+                const iframe = tutorialPlayerEl?.querySelector('iframe');
+                if (iframe && iframe.contentWindow) {
+                    try {
+                        iframe.contentWindow.postMessage({ type: nextState ? 'mute' : 'unmute' }, '*');
+                    } catch { }
+                }
+            });
+        }
+
+        document.querySelectorAll('[data-tutorial-close]').forEach(trigger => {
+            trigger.addEventListener('click', closeTutorialModal);
+        });
+
+        document.querySelectorAll('[data-tutorial-video-close]').forEach(trigger => {
+            trigger.addEventListener('click', closeTutorialVideo);
+        });
+
+        document.querySelectorAll('[data-tutorial-share-close]').forEach(trigger => {
+            trigger.addEventListener('click', closeTutorialShareModal);
+        });
+
+        if (tutorialSearchInput) {
+            tutorialSearchInput.addEventListener('input', event => {
+                tutorialSearchQuery = event.target.value;
+                renderTutorials();
+            });
+        }
+
+        document.querySelectorAll('[data-tutorial-like-action]').forEach(button => {
+            button.addEventListener('click', likeCurrentTutorial);
+        });
+
+        document.querySelectorAll('[data-tutorial-share-action]').forEach(button => {
+            button.addEventListener('click', openTutorialShareModal);
+        });
+
+        document.querySelectorAll('[data-tutorial-share-platform]').forEach(button => {
+            button.addEventListener('click', () => {
+                shareTutorialTo(button.dataset.tutorialSharePlatform);
+            });
+        });
+
+        function currentTutorialPayload() {
+            const item = tutorials.find(tutorial => tutorial.id === selectedTutorialId) || {};
+            return {
+                tutorialId: item.id || '',
+                tutorialTitulo: item.title || ''
+            };
+        }
+
+        const adviceForm = document.getElementById('tutorial-advice-form');
+        if (adviceForm) {
+            adviceForm.addEventListener('submit', async event => {
+                event.preventDefault();
+                const status = document.getElementById('tutorial-advice-status');
+                const data = Object.fromEntries(new FormData(adviceForm).entries());
+                if (status) status.textContent = 'Enviando...';
+                try {
+                    await postTutorialAction({ action: 'asesoria', ...data, ...currentTutorialPayload(), origen: 'Landing Index v3' });
+                    adviceForm.reset();
+                    if (status) status.textContent = 'Solicitud enviada.';
+                } catch {
+                    if (status) status.textContent = 'No se pudo enviar. Intenta de nuevo.';
+                }
+            });
+        }
+
+        const suggestionForm = document.getElementById('tutorial-suggestion-form');
+        if (suggestionForm) {
+            suggestionForm.addEventListener('submit', async event => {
+                event.preventDefault();
+                const status = document.getElementById('tutorial-suggestion-status');
+                const data = Object.fromEntries(new FormData(suggestionForm).entries());
+                if (status) status.textContent = 'Enviando...';
+                try {
+                    await postTutorialAction({ action: 'sugerencia', ...data, origen: 'Landing Index v3' });
+                    suggestionForm.reset();
+                    if (status) status.textContent = 'Sugerencia enviada.';
+                } catch {
+                    if (status) status.textContent = 'No se pudo enviar. Intenta de nuevo.';
+                }
+            });
+        }
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && tutorialShareModal?.classList.contains('open')) {
+                closeTutorialShareModal();
+                return;
+            }
+            if (event.key === 'Escape' && tutorialMobileVideoModal?.classList.contains('open')) {
+                closeTutorialVideo();
+                return;
+            }
+            if (event.key === 'Escape') closeTutorialModal();
+        });
+
+        const mobileTabButtons = document.querySelectorAll('[data-mobile-tab]');
+        const mobilePanels = document.querySelectorAll('[data-mobile-panel]');
+
+        mobileTabButtons.forEach(button => {
+            button.addEventListener('click', event => {
+                event.preventDefault();
+                const target = button.dataset.mobileTab;
+
+                mobileTabButtons.forEach(item => {
+                    item.classList.toggle('active', item === button);
+                });
+
+                mobilePanels.forEach(panel => {
+                    panel.classList.toggle('active', panel.dataset.mobilePanel === target);
+                });
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // Convertir automáticamente a mayúsculas los textos de los formularios
+        const uppercaseSelectors = [
+            '#rifa-nombre',
+            '#rifa-cuenta',
+            '#tutorial-advice-form input[name="nombre"]',
+            '#tutorial-advice-form input[name="tema"]',
+            '#tutorial-advice-form textarea[name="duda"]',
+            '#tutorial-suggestion-form input[name="temaSugerido"]',
+            '#tutorial-suggestion-form input[name="plataforma"]',
+            '#tutorial-suggestion-form textarea[name="comentario"]'
+        ];
+
+        uppercaseSelectors.forEach(selector => {
+            const input = document.querySelector(selector);
+            if (input) {
+                input.addEventListener('input', (e) => {
+                    e.target.value = e.target.value.toUpperCase();
+                });
+            }
+        });
+
+        // Convertir automáticamente a minúsculas el correo
+        const emailInput = document.getElementById('rifa-email');
+        if (emailInput) {
+            emailInput.addEventListener('input', (e) => {
+                e.target.value = e.target.value.toLowerCase();
+            });
+        }
+    </script>
+
+    <!-- SORTEO TOTAL FENAPO 2026 -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="js/rifa-misiones.js?v=5"></script>
+    <script src="js/vip-greeting.js?v=4"></script>
+    <script src="js/rifa-v1.js?v=5"></script>
+    <script async src="https://www.tiktok.com/embed.js"></script>
+</body>
+
+</html>

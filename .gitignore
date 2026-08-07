@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+backend/node_modules/
+
+# Environment & Sessions
+.env
+backend/.env
+whatsapp-session/
+backend/whatsapp-session/
+*.session
+
+# Temporary binaries and logs
+temp_bin/
+*.log
+
+# Operating System
+.DS_Store
+Thumbs.db

@@ -1,0 +1,1771 @@
+/* ═══════════════════════════════════════════════════════
+   SORTEO TOTAL FENAPO 2026 — styles
+   ═══════════════════════════════════════════════════════ */
+
+.rifa-hidden {
+    display: none !important;
+}
+
+/* ── Banner CTA (landing) · compacto + glass ──────────── */
+.rifa-banner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 64px;
+    padding: 10px 14px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: linear-gradient(120deg, rgba(124, 58, 237, 0.3), rgba(217, 67, 137, 0.24));
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    box-shadow: 0 12px 32px rgba(124, 58, 237, 0.16);
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    margin-bottom: 18px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    animation: rifa-buzz-shine 6s ease-in-out infinite;
+}
+
+.rifa-banner:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(124, 58, 237, 0.24);
+    border-color: rgba(255, 255, 255, 0.28);
+}
+
+.rifa-banner-glow {
+    position: absolute;
+    top: -60%;
+    left: -20%;
+    width: 140%;
+    height: 220%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.22), transparent 60%);
+    opacity: 0.5;
+    pointer-events: none;
+    animation: rifa-banner-shine 6s linear infinite;
+}
+
+@keyframes rifa-buzz-shine {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(1) rotate(0);
+    }
+
+    82%,
+    86%,
+    90%,
+    94%,
+    98% {
+        transform: scale(1.02) rotate(-1.5deg);
+    }
+
+    84%,
+    88%,
+    92%,
+    96% {
+        transform: scale(1.02) rotate(1.5deg);
+    }
+}
+
+@keyframes rifa-banner-shine {
+    0% {
+        transform: translateX(-30%);
+    }
+
+    100% {
+        transform: translateX(30%);
+    }
+}
+
+.rifa-banner-icon {
+    flex: 0 0 auto;
+    font-size: 1.7rem;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.25));
+    animation: rifa-bounce 2.4s ease-in-out infinite;
+}
+
+@keyframes rifa-bounce {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-6deg);
+    }
+
+    50% {
+        transform: translateY(-6px) rotate(6deg);
+    }
+}
+
+.rifa-banner-text {
+    flex: 1 1 auto;
+    min-width: 0;
+    position: relative;
+    height: 36px;
+}
+
+.rifa-banner-text strong {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    font-size: 0.92rem;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    animation: rifa-slide-1 7s infinite ease-in-out;
+}
+
+.rifa-banner-text span {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    font-size: 0.7rem;
+    opacity: 0.9;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    animation: rifa-slide-2 7s infinite ease-in-out;
+}
+
+@keyframes rifa-slide-1 {
+
+    0%,
+    45%,
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    50%,
+    95% {
+        opacity: 0;
+        transform: translateY(-8px);
+        pointer-events: none;
+    }
+}
+
+@keyframes rifa-slide-2 {
+
+    0%,
+    45%,
+    100% {
+        opacity: 0;
+        transform: translateY(8px);
+        pointer-events: none;
+    }
+
+    50%,
+    95% {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+}
+
+/* Barrita de progreso en el banner */
+.rifa-banner-progress {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 110px;
+}
+
+.rifa-banner-bar {
+    flex: 1 1 auto;
+    height: 7px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.22);
+    overflow: hidden;
+}
+
+.rifa-banner-fill {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #8B5CF6, #ff6bb2);
+    transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.rifa-banner-progress b {
+    font-size: 0.82rem;
+    font-weight: 900;
+    min-width: 38px;
+    text-align: right;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.rifa-banner-btn {
+    flex: 0 0 auto;
+    background: #fff;
+    color: #7C3AED;
+    font-weight: 800;
+    font-size: 0.76rem;
+    padding: 9px 14px;
+    border-radius: 999px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+    white-space: nowrap;
+}
+
+/* Tema claro: glass claro y texto oscuro */
+body.light-theme .rifa-banner {
+    background: linear-gradient(120deg, rgba(124, 58, 237, 0.12), rgba(217, 67, 137, 0.1));
+    border-color: rgba(139, 92, 246, 0.26);
+    box-shadow: 0 10px 28px rgba(124, 58, 237, 0.1);
+    color: #16142a;
+}
+
+body.light-theme .rifa-banner:hover {
+    border-color: rgba(139, 92, 246, 0.4);
+    box-shadow: 0 14px 34px rgba(124, 58, 237, 0.16);
+}
+
+body.light-theme .rifa-banner-text strong {
+    color: #16142a;
+    text-shadow: none;
+}
+
+body.light-theme .rifa-banner-text span {
+    color: #5f5a6d;
+}
+
+body.light-theme .rifa-banner-progress b {
+    color: #7C3AED;
+    text-shadow: none;
+}
+
+body.light-theme .rifa-banner-bar {
+    background: rgba(124, 58, 237, 0.16);
+}
+
+body.light-theme .rifa-banner-btn {
+    background: linear-gradient(120deg, #8B5CF6, #d94389);
+    color: #fff;
+    box-shadow: 0 6px 16px rgba(124, 58, 237, 0.28);
+}
+
+/* ── Progreso del modal (misiones) ────────────────────── */
+.rifa-mission-progress {
+    max-width: 460px;
+    margin: 0 auto 18px;
+    text-align: left;
+}
+
+.rifa-mission-progress-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #4a4460;
+    margin-bottom: 8px;
+}
+
+.rifa-mission-progress-head b {
+    font-size: 1rem;
+    background: linear-gradient(120deg, #7C3AED, #d94389);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.rifa-progress {
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(124, 58, 237, 0.14);
+    overflow: hidden;
+}
+
+.rifa-progress-fill {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #8B5CF6, #ff6bb2);
+    box-shadow: 0 0 14px rgba(139, 92, 246, 0.6);
+    transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Checklist de misiones ────────────────────────────── */
+.rifa-checklist {
+    max-width: 460px;
+    margin: 0 auto 16px;
+    text-align: left;
+    display: grid;
+    gap: 8px;
+    max-height: 240px;
+    overflow-y: auto;
+    padding-right: 4px;
+    scrollbar-width: thin;
+}
+
+.rifa-mission-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 8px 0 2px;
+    padding: 0 2px;
+}
+
+.rifa-mission-group h4 {
+    margin: 0;
+    font-size: 0.74rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8B5CF6;
+}
+
+.rifa-mission-group span {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: #9a93b0;
+}
+
+.rifa-checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 12px;
+    background: rgba(139, 92, 246, 0.06);
+    border: 1px solid rgba(139, 92, 246, 0.14);
+    transition: all 0.25s ease;
+}
+
+.rifa-checklist-item.done {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+.rifa-check-ico {
+    flex: 0 0 auto;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    background: rgba(139, 92, 246, 0.12);
+    transition: all 0.3s ease;
+}
+
+.rifa-checklist-item.done .rifa-check-ico {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: #fff;
+    animation: rifa-check-pop 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes rifa-check-pop {
+    0% {
+        transform: scale(0.5);
+    }
+
+    60% {
+        transform: scale(1.25);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.rifa-check-label {
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: #3d3850;
+}
+
+.rifa-checklist-item.done .rifa-check-label {
+    color: #2c2740;
+    font-weight: 700;
+}
+
+body.light-theme .rifa-mission-progress-head {
+    color: #4a4460;
+}
+
+/* ── Toast de misión completada ──────────────────────── */
+.rifa-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 28px;
+    transform: translateX(-50%) translateY(0);
+    z-index: 9999;
+    max-width: min(92vw, 430px);
+    padding: 12px 18px;
+    border-radius: 14px;
+    background: rgba(22, 20, 42, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+    text-align: center;
+    animation: rifa-toast-in 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.rifa-toast.rifa-toast-hide {
+    opacity: 0;
+    transform: translateX(-50%) translateY(12px);
+}
+
+@keyframes rifa-toast-in {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(16px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* ── Modal base ───────────────────────────────────────── */
+.rifa-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.rifa-modal.rifa-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.rifa-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 8, 22, 0.66);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.rifa-dialog {
+    position: relative;
+    width: min(760px, 100%);
+    max-height: 92vh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border-radius: 28px;
+    background: rgba(18, 12, 38, 0.72);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #fff;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.75);
+    transform: translateY(24px) scale(0.97);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    scrollbar-width: thin;
+}
+
+/* Ajustes de textos en el modal para fondo oscuro */
+.rifa-dialog h3,
+.rifa-dialog .rifa-otp-wrap h3,
+.rifa-dialog .rifa-field label,
+.rifa-dialog .rifa-check,
+.rifa-dialog .rifa-tip b,
+.rifa-dialog .rifa-resend {
+    color: #ffffff;
+}
+
+.rifa-dialog p,
+.rifa-dialog .rifa-otp-wrap>p,
+.rifa-dialog .rifa-resend span {
+    color: rgba(226, 232, 240, 0.75);
+}
+
+.rifa-dialog .rifa-field label {
+    color: #C4B5FD;
+}
+
+.rifa-dialog .rifa-close {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.rifa-dialog .rifa-close:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.rifa-dialog .rifa-back {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.rifa-dialog .rifa-back:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.rifa-modal.rifa-open .rifa-dialog {
+    transform: translateY(0) scale(1);
+}
+
+.rifa-step {
+    display: none;
+    position: relative;
+}
+
+.rifa-step.rifa-step-active {
+    display: block;
+}
+
+/* ── Video & Banner Shells ───────────────────────────── */
+.rifa-banner-shell,
+.rifa-video-shell {
+    position: relative;
+    height: 260px;
+    border-radius: 28px 28px 0 0;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 30% 20%, rgba(168, 85, 247, 0.7), transparent 50%),
+        radial-gradient(circle at 80% 90%, rgba(217, 67, 137, 0.6), transparent 50%),
+        linear-gradient(135deg, #241a3f, #0e0d1c);
+}
+
+.rifa-banner-img,
+.rifa-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.rifa-banner-shade,
+.rifa-video-shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10, 8, 22, 0.35) 0%, rgba(10, 8, 22, 0.15) 50%, rgba(10, 8, 22, 0.92) 100%);
+    pointer-events: none;
+}
+
+.rifa-banner-logo {
+    position: absolute;
+    top: 1px;
+    left: 3px;
+    height: 68px;
+    width: auto;
+    z-index: 25;
+    filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.95));
+}
+
+.rifa-banner-disclaimer {
+    position: absolute;
+    bottom: 12px;
+    left: 20px;
+    right: 20px;
+    z-index: 5;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+    letter-spacing: 0.04em;
+    text-align: left;
+}
+
+.rifa-celebr-video-shell {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: 28px;
+    background: linear-gradient(135deg, #2b1c56, #7c1666);
+}
+
+.rifa-celebr-video-shell .rifa-video {
+    z-index: 0;
+}
+
+.rifa-celebr-shade {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.16), transparent 46%),
+        linear-gradient(180deg, rgba(20, 10, 40, 0.25) 0%, rgba(20, 10, 40, 0.86) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.rifa-celebr-content {
+    position: relative;
+    z-index: 2;
+    padding: 30px 26px 26px;
+    text-align: center;
+    color: #fff;
+}
+
+/* ── Botones flotantes del modal ──────────────────────── */
+.rifa-close,
+.rifa-back {
+    position: absolute;
+    top: 20px;
+    z-index: 6;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.rifa-close {
+    right: 20px;
+}
+
+.rifa-back {
+    left: 20px;
+}
+
+.rifa-close:hover,
+.rifa-back:hover {
+    background: rgba(255, 255, 255, 0.32);
+    transform: scale(1.06);
+}
+
+/* ── Step 1: anuncio ──────────────────────────────────── */
+.rifa-step-content {
+    position: relative;
+    padding: 22px 26px 30px;
+    text-align: center;
+    background: transparent;
+    border-radius: 0 0 28px 28px;
+}
+
+.rifa-kicker {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #a78bfa;
+    background: rgba(139, 92, 246, 0.15);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    padding: 6px 14px;
+    border-radius: 999px;
+}
+
+.rifa-title {
+    font-size: 2.4rem;
+    font-weight: 900;
+    line-height: 1.02;
+    margin: 14px 0 10px;
+    color: #ffffff;
+}
+
+.rifa-title span {
+    display: block;
+    font-size: 1.25rem;
+    letter-spacing: 0.14em;
+    margin-top: 4px;
+    background: linear-gradient(120deg, #a78bfa, #f43f5e);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.rifa-prize-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 4px 0 8px;
+    padding: 8px 18px;
+    border-radius: 999px;
+    background: linear-gradient(120deg, #7C3AED, #d94389);
+    color: #fff;
+    font-size: 0.92rem;
+    box-shadow: 0 10px 24px rgba(124, 58, 237, 0.32);
+}
+
+.rifa-prize-pill span {
+    opacity: 0.85;
+    font-weight: 500;
+}
+
+.rifa-prize-pill b {
+    font-weight: 900;
+}
+
+.rifa-sub {
+    color: rgba(226, 232, 240, 0.95);
+    font-size: 0.95rem;
+    margin: 6px 0 16px;
+}
+
+.rifa-steps {
+    list-style: none;
+    margin: 0 auto 16px;
+    padding: 0;
+    max-width: 430px;
+    text-align: left;
+    display: grid;
+    gap: 10px;
+}
+
+.rifa-steps li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 0.92rem;
+    color: #3d3850;
+    background: rgba(139, 92, 246, 0.06);
+    border: 1px solid rgba(139, 92, 246, 0.14);
+    padding: 12px 14px;
+    border-radius: 14px;
+}
+
+.rifa-steps li::before {
+    content: attr(data-n);
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #8B5CF6, #d94389);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 900;
+}
+
+.rifa-note {
+    font-size: 0.8rem;
+    color: #6f6a7d;
+    margin: 0 0 18px;
+}
+
+.rifa-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 430px;
+    border: none;
+    border-radius: 16px;
+    padding: 16px 22px;
+    font-size: 1rem;
+    font-weight: 900;
+    color: #fff;
+    cursor: pointer;
+    background: linear-gradient(120deg, #7C3AED, #d94389);
+    box-shadow: 0 16px 34px rgba(124, 58, 237, 0.34);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.rifa-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 42px rgba(124, 58, 237, 0.44);
+}
+
+.rifa-cta:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ── Step 2: formulario ───────────────────────────────── */
+.rifa-form-wrap {
+    padding: 26px;
+    text-align: center;
+}
+
+.rifa-form-head h3 {
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin: 10px 0 2px;
+    color: #16142a;
+}
+
+.rifa-form-head p {
+    color: #6f6a7d;
+    font-size: 0.9rem;
+    margin: 0 0 18px;
+}
+
+.rifa-form {
+    display: grid;
+    gap: 14px;
+    text-align: left;
+    max-width: 460px;
+    margin: 0 auto;
+}
+
+.rifa-field span {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #4a4460;
+    margin-bottom: 6px;
+}
+
+.rifa-field input[type="text"],
+.rifa-field input[type="tel"],
+.rifa-field input[type="email"] {
+    width: 100%;
+    padding: 13px 15px;
+    border-radius: 13px;
+    border: 1.5px solid rgba(124, 58, 237, 0.2);
+    background: #faf9ff;
+    color: #16142a;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rifa-field input:focus {
+    border-color: #8B5CF6;
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.14);
+    background: #fff;
+}
+
+.rifa-field input.rifa-input-error {
+    border-color: #ff4757;
+    box-shadow: 0 0 0 4px rgba(255, 71, 87, 0.16);
+    animation: rifa-shake 0.3s ease;
+}
+
+@keyframes rifa-shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+.rifa-radio-row {
+    display: flex;
+    gap: 10px;
+}
+
+.rifa-radio {
+    flex: 1;
+    cursor: pointer;
+}
+
+.rifa-radio input {
+    display: none;
+}
+
+.rifa-radio span {
+    display: block;
+    text-align: center;
+    padding: 11px;
+    border-radius: 13px;
+    border: 1.5px solid rgba(124, 58, 237, 0.2);
+    background: #faf9ff;
+    color: #4a4460;
+    font-weight: 800;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.rifa-radio input:checked+span {
+    background: linear-gradient(120deg, #7C3AED, #9333EA);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 10px 22px rgba(124, 58, 237, 0.3);
+}
+
+.rifa-tip {
+    font-size: 0.78rem;
+    color: #8b5cf6;
+    background: rgba(139, 92, 246, 0.08);
+    border: 1px dashed rgba(139, 92, 246, 0.4);
+    border-radius: 12px;
+    padding: 9px 12px;
+    line-height: 1.45;
+    margin: 0;
+}
+
+.rifa-check {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    cursor: pointer;
+    font-size: 0.8rem;
+    color: #6f6a7d;
+    line-height: 1.45;
+}
+
+.rifa-check input {
+    margin-top: 2px;
+    accent-color: #8B5CF6;
+}
+
+.rifa-err {
+    min-height: 18px;
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #ff4757;
+    text-align: center;
+}
+
+.rifa-otp-wrap {
+    padding: 40px 26px;
+    text-align: center;
+}
+
+.rifa-otp-wrap h3 {
+    font-size: 1.4rem;
+    font-weight: 900;
+    margin: 12px 0 6px;
+    color: #16142a;
+}
+
+.rifa-otp-wrap>p {
+    color: #6f6a7d;
+    font-size: 0.9rem;
+    margin: 0 0 20px;
+}
+
+.rifa-otp-inputs {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.rifa-otp-inputs input {
+    width: 52px;
+    height: 60px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 900;
+    border-radius: 14px;
+    border: 1.5px solid rgba(124, 58, 237, 0.25);
+    background: #faf9ff;
+    color: #16142a;
+    outline: none;
+    transition: all 0.15s ease;
+}
+
+.rifa-otp-inputs input:focus {
+    border-color: #8B5CF6;
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.16);
+    background: #fff;
+}
+
+.rifa-otp-inputs input.rifa-otp-fill {
+    border-color: #8B5CF6;
+    background: #fff;
+}
+
+.rifa-resend {
+    font-size: 0.85rem;
+    color: #6f6a7d;
+    margin-top: 14px;
+}
+
+.rifa-resend button {
+    border: none;
+    background: none;
+    color: #8B5CF6;
+    font-weight: 800;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.rifa-resend button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.rifa-ticket {
+    position: relative;
+    max-width: 380px;
+    margin: 18px auto;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #ffffff;
+    color: #16142a;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+    text-align: center;
+    animation: rifa-ticket-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes rifa-ticket-in {
+    0% {
+        opacity: 0;
+        transform: rotate(-4deg) translateY(40px) scale(0.9);
+    }
+
+    60% {
+        transform: rotate(1.5deg) translateY(-6px) scale(1.02);
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotate(0) translateY(0) scale(1);
+    }
+}
+
+.rifa-ticket-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 18px;
+    background: linear-gradient(120deg, #7C3AED, #d94389);
+    color: #fff;
+}
+
+.rifa-ticket-top img {
+    height: 24px;
+    width: auto;
+    filter: brightness(0) invert(1);
+}
+
+.rifa-ticket-top b {
+    font-size: 0.95rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+}
+
+.rifa-ticket-top span {
+    margin-left: auto;
+    font-size: 0.68rem;
+    opacity: 0.85;
+    font-weight: 700;
+}
+
+.rifa-ticket-body {
+    padding: 22px 20px 14px;
+    background: #ffffff;
+}
+
+.rifa-ticket-folio {
+    text-align: center;
+}
+
+.rifa-ticket-folio span {
+    font-size: 0.66rem;
+    font-weight: 900;
+    letter-spacing: 0.22em;
+    color: #8B5CF6;
+}
+
+.rifa-ticket-folio strong {
+    display: block;
+    font-size: 1.95rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    margin-top: 4px;
+    background: linear-gradient(120deg, #7C3AED, #d94389);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rifa-folio-pop 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+}
+
+@keyframes rifa-folio-pop {
+    0% {
+        transform: scale(0.4);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.rifa-ticket-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 16px;
+    margin-top: 18px;
+    text-align: left;
+    background: rgba(124, 58, 237, 0.04);
+    border-radius: 16px;
+    padding: 14px 18px;
+    border: 1px solid rgba(124, 58, 237, 0.08);
+}
+
+.rifa-info-item:nth-child(1) {
+    grid-column: span 2;
+}
+
+.rifa-info-item span {
+    display: block;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: #9a93b0;
+}
+
+.rifa-info-item b {
+    display: block;
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: #2c2740;
+    margin-top: 2px;
+    word-break: break-word;
+}
+
+.rifa-ticket-perf {
+    position: relative;
+    margin: 4px 16px;
+    border-top: 2px dashed rgba(124, 58, 237, 0.25);
+}
+
+.rifa-ticket-perf::before,
+.rifa-ticket-perf::after {
+    content: '';
+    position: absolute;
+    top: -12px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #120c26;
+    /* Mezcla con el fondo oscuro del modal */
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.45);
+    z-index: 2;
+}
+
+.rifa-ticket-perf::before {
+    left: -28px;
+}
+
+.rifa-ticket-perf::after {
+    right: -28px;
+}
+
+.rifa-ticket-stub {
+    background: #f9f8ff;
+    padding: 20px 20px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.rifa-qr-container {
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.08);
+    border: 1.5px solid rgba(124, 58, 237, 0.15);
+    display: inline-block;
+    margin-bottom: 12px;
+    transition: transform 0.3s ease;
+}
+
+.rifa-qr-container:hover {
+    transform: scale(1.03);
+}
+
+.rifa-qr-container canvas {
+    display: block;
+    width: 145px;
+    height: 145px;
+    border: none !important;
+    padding: 0 !important;
+}
+
+.rifa-stub-note {
+    font-size: 0.6rem;
+    font-weight: 800;
+    color: #a49ebd;
+    letter-spacing: 0.18em;
+}
+
+/* Countdown */
+.rifa-countdown {
+    display: none;
+    margin-top: 6px;
+}
+
+.rifa-countdown-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    color: rgba(255, 255, 255, 0.85);
+    text-transform: uppercase;
+}
+
+.rifa-countdown-cols {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.rifa-countdown-cols div {
+    min-width: 62px;
+    padding: 10px 6px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(8px);
+}
+
+.rifa-countdown-cols b {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.rifa-countdown-cols span {
+    display: block;
+    font-size: 0.62rem;
+    margin-top: 4px;
+    opacity: 0.85;
+    letter-spacing: 0.1em;
+}
+
+.rifa-actions,
+.rifa-ticket-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.rifa-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    background: linear-gradient(135deg, #7C3AED 0%, #D946EF 100%);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 12px 22px;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rifa-btn-primary:hover {
+    transform: translateY(-1.5px);
+    box-shadow: 0 12px 30px rgba(124, 58, 237, 0.6);
+}
+
+.rifa-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 12px 22px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rifa-btn-secondary svg,
+.rifa-btn-primary svg {
+    transition: transform 0.2s ease;
+}
+
+.rifa-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-1.5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.rifa-btn-secondary:hover svg,
+.rifa-btn-primary:hover svg {
+    transform: scale(1.1);
+}
+
+.rifa-greeting {
+    font-size: 1.7rem;
+    font-weight: 900;
+    margin: 8px 0 4px;
+    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+}
+
+.rifa-celebr-note {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 14px 0 0;
+}
+
+.rifa-success-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+/* ── Estado de carga del CTA ──────────────────────────── */
+.rifa-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: rifa-spin 0.8s linear infinite;
+}
+
+@keyframes rifa-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 768px) {
+    .rifa-banner {
+        padding: 12px 14px;
+        border-radius: 18px;
+        gap: 10px;
+    }
+
+    .rifa-banner-icon {
+        font-size: 1.6rem;
+    }
+
+    .rifa-banner-text strong {
+        font-size: 0.9rem;
+    }
+
+    .rifa-banner-text span {
+        font-size: 0.7rem;
+    }
+
+    .rifa-banner-btn {
+        padding: 8px 12px;
+        font-size: 0.72rem;
+    }
+
+    .rifa-banner-shell,
+    .rifa-video-shell {
+        height: 190px;
+    }
+
+    .rifa-banner-logo {
+        height: 46px;
+        top: 4px;
+        left: 8px;
+    }
+
+    .rifa-banner-disclaimer {
+        font-size: 0.65rem;
+        bottom: 8px;
+        left: 14px;
+        right: 14px;
+    }
+
+    .rifa-title {
+        font-size: 1.8rem;
+    }
+
+    .rifa-title span {
+        font-size: 1rem;
+    }
+
+    .rifa-otp-inputs input {
+        width: 44px;
+        height: 54px;
+        font-size: 1.3rem;
+    }
+
+    .rifa-celebr-content {
+        padding: 26px 18px 22px;
+    }
+
+    .rifa-ticket-folio strong {
+        font-size: 1.5rem;
+    }
+
+    .rifa-step-content {
+        padding: 18px 16px 24px;
+    }
+
+    .rifa-form-wrap,
+    .rifa-otp-wrap {
+        padding: 22px 16px;
+    }
+}
+
+/* Asegurar que el confeti se muestre por encima del modal del boleto */
+body>canvas {
+    z-index: 999999 !important;
+    pointer-events: none !important;
+}
+
+/* ── Progreso Circular Premium ────────────────────────── */
+.rifa-progress-circle-wrap {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin: 18px auto 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rifa-progress-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.rifa-circle-bg {
+    stroke: rgba(139, 92, 246, 0.08);
+}
+
+.rifa-circle-fill {
+    stroke: url(#rifa-grad);
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rifa-progress-circle-text {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.rifa-progress-circle-text strong {
+    font-size: 1.85rem;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.1;
+}
+
+.rifa-progress-circle-text span {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 800;
+    margin-top: 2px;
+}
+
+.rifa-mission-summary {
+    display: block;
+    text-align: center;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 22px;
+}
+
+/* ── Tarjetas de Misiones Premium ───────────────────────── */
+.rifa-checklist {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.rifa-checklist-section-title {
+    text-align: left;
+    font-size: 0.76rem;
+    font-weight: 800;
+    color: #a78bfa;
+    letter-spacing: 0.1em;
+    margin: 18px 0 10px;
+    padding-left: 2px;
+}
+
+.rifa-mission-card {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 18px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.rifa-mission-card:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: rgba(255, 255, 255, 0.16) !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.rifa-mission-card.completed {
+    background: rgba(16, 185, 129, 0.08) !important;
+    border-color: rgba(16, 185, 129, 0.22) !important;
+    cursor: default;
+    opacity: 0.85;
+    box-shadow: none;
+}
+
+.rifa-mission-card.completed:hover {
+    transform: none;
+    box-shadow: none;
+    background: rgba(16, 185, 129, 0.08) !important;
+    border-color: rgba(16, 185, 129, 0.22) !important;
+}
+
+.rifa-mission-card-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background: rgba(139, 92, 246, 0.15);
+    border-radius: 14px;
+    margin-right: 14px;
+    flex-shrink: 0;
+    font-size: 1.3rem;
+}
+
+.rifa-mission-card.completed .rifa-mission-card-left {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+}
+
+.rifa-mission-card-middle {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.rifa-mission-card-title {
+    font-size: 0.92rem;
+    font-weight: 750;
+    color: #ffffff;
+    line-height: 1.35;
+}
+
+.rifa-mission-card-points {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #a78bfa;
+    letter-spacing: 0.05em;
+    margin-top: 3px;
+}
+
+.rifa-mission-card.completed .rifa-mission-card-points {
+    color: #10b981;
+}
+
+.rifa-mission-card-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: rgba(139, 92, 246, 0.08);
+    color: #7C3AED;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transition: all 0.22s ease;
+}
+
+.rifa-mission-card:hover .rifa-mission-card-right {
+    background: #7C3AED;
+    color: #fff;
+    transform: translateX(2px);
+}
+
+/* ── Accordion de Misiones Completadas ────────────────── */
+.rifa-completed-accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    background: rgba(139, 92, 246, 0.04);
+    border: 1px solid rgba(139, 92, 246, 0.12);
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 800;
+    color: #5b5575;
+    letter-spacing: 0.06em;
+    margin-top: 20px;
+    transition: all 0.24s ease;
+}
+
+.rifa-completed-accordion-header:hover {
+    background: rgba(139, 92, 246, 0.08);
+}
+
+.rifa-completed-accordion-header.active {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background: rgba(139, 92, 246, 0.06);
+}
+
+.rifa-completed-accordion-content {
+    background: rgba(139, 92, 246, 0.015);
+    border: 1px solid rgba(139, 92, 246, 0.12);
+    border-top: none;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    padding: 14px 14px 2px;
+}
+
+.rifa-accordion-chevron {
+    transition: transform 0.24s ease;
+    font-size: 0.72rem;
+}
+
+.rifa-completed-accordion-header.active .rifa-accordion-chevron {
+    transform: rotate(180deg);
+}
+
+/* ── Saludo VIP ── */
+/* Integrado dinámicamente en el subtítulo original */
+
+/* Estabilización de la tarjeta de eventos */
+.event-top-info-v3 {
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Iconos de redes sociales globales (Móvil y Escritorio) */
+.brand-icon-v3 {
+    width: 24px;
+    height: 24px;
+    display: block;
+    fill: #ffffff !important;
+}
+
+.brand-icon-facebook-v3 {
+    width: 26px;
+    height: 26px;
+}
+
+/* ── Animación y Brillo Lila para Misiones ── */
+@keyframes missionPulseLilac {
+    0% {
+        box-shadow: 0 0 0 0 rgba(167, 139, 250, 0.8);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 0 25px 12px rgba(167, 139, 250, 0.55);
+        transform: scale(1.03);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(167, 139, 250, 0);
+        transform: scale(1);
+    }
+}
+
+.mission-glow-lilac {
+    animation: missionPulseLilac 1.5s ease-in-out 3;
+    border-color: #a78bfa !important;
+    outline: 3px solid rgba(167, 139, 250, 0.75) !important;
+    outline-offset: 3px !important;
+    overflow: visible !important;
+    position: relative;
+    z-index: 100;
+}
+
+/* ── Corazones Flotantes Animados ── */
+@keyframes floatUpAndFade {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.6) rotate(0deg);
+    }
+
+    15% {
+        opacity: 0.95;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-90px) scale(1.2) rotate(var(--rot));
+    }
+}
+
+.floating-heart {
+    position: absolute;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 1.3rem;
+    animation: floatUpAndFade 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* ── Botones Redondos Horizontales en Móvil ── */
+@media (max-width: 700px) {
+    .rifa-ticket-actions {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 16px !important;
+        margin-top: 18px !important;
+    }
+
+    .rifa-ticket-actions .rifa-btn-primary,
+    .rifa-ticket-actions .rifa-btn-secondary {
+        width: 52px !important;
+        height: 52px !important;
+        border-radius: 50% !important;
+        padding: 0 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-shrink: 0 !important;
+    }
+
+    .rifa-ticket-actions .btn-text {
+        display: none !important;
+    }
+
+    .rifa-ticket-actions svg {
+        margin-right: 0 !important;
+        width: 22px !important;
+        height: 22px !important;
+    }
+}
