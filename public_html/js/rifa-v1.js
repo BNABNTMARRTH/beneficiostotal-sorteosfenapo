@@ -4,7 +4,7 @@
 (function () {
     'use strict';
 
-    var API_BASE = (document.currentScript && document.currentScript.dataset.api) || window.location.origin;
+    var API_BASE = (document.currentScript && document.currentScript.dataset.api) || 'https://hope-laboratories-supplements-reporters.trycloudflare.com';
 
     var REGISTRO_KEY = 'tp_rifa_registro';
     var VISTO_KEY = 'tp_rifa_visto';
