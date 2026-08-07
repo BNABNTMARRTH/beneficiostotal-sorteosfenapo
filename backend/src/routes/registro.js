@@ -52,14 +52,20 @@ router.post('/enviar-codigo', async (req, res) => {
     otp.overrideOtpCode(whatsappNumber, config.demoOtpCode);
   }
 
+  const calendarioUrl = `${config.frontendUrl}/calendario.html`;
   const message = [
-    `Tu codigo para participar en el *SORTEO TOTAL FENAPO 2026* es:`,
+    `✨ *¡Hola! Bienvenido al SORTEO TOTAL FENAPO 2026* 🎁`,
     ``,
-    `*${code}*`,
+    `Tu código de verificación es:`,
+    `🔑 *${code}*`,
     ``,
-    `Ingresalo en la pagina para generar tu boleto. Valido por 10 minutos.`,
+    `📌 *Ingrésalo en la página* para desbloquear tus misiones y obtener tu boleto digital. _(Válido por 10 minutos)_`,
     ``,
-    `Si no solicitaste este codigo, ignora este mensaje.`,
+    `📅 *¡Totalplay Te Invita!*`,
+    `Descubre la cartelera completa de eventos, conciertos y beneficios VIP aquí:`,
+    `👉 ${calendarioUrl}`,
+    ``,
+    `¡Te deseamos mucha suerte! 🍀`,
   ].join('\n');
 
   console.log(`[enviar-codigo] Enviando OTP a ${whatsappNumber} (code=${code}, dryRun=${config.dryRun})`);
@@ -165,21 +171,28 @@ router.post('/registro', async (req, res) => {
     }
   }
 
-  // Mensaje de confirmación con folio + boleto digital
+  // Mensaje de confirmación con folio + boleto digital + calendario
   const ticketUrl = `${config.frontendUrl}/index.html?ticket=${encodeURIComponent(folio)}`;
+  const calendarioUrl = `${config.frontendUrl}/calendario.html`;
   const message = [
-    `🎉 *¡FELICIDADES ${nombre}!*`,
+    `🎉 *¡FELICIDADES, ${nombre}!* 🥳`,
     ``,
-    `Tu participación en el *SORTEO TOTAL FENAPO 2026* está confirmada. 🎫`,
+    `¡Tu registro para el *SORTEO TOTAL FENAPO 2026* ha sido un éxito! 🎫✨`,
     ``,
-    `*Tu folio:* ${folio}`,
-    `*Participante:* ${nombre}`,
-    `*Premio:* ${config.premio}`,
-    `*Sorteo:* ${config.fechaSorteo || 'Próximamente'}`,
+    `📋 *DATOS DE TU BOLETO:*`,
+    `• *Folio único:* ${folio}`,
+    `• *Participante:* ${nombre}`,
+    `• *Premio:* ${config.premio}`,
+    `• *Fecha del sorteo:* ${config.fechaSorteo || 'Próximamente'}`,
     ``,
-    `🔗 Tu boleto digital: ${ticketUrl}`,
+    `📲 *Consulta o descarga tu boleto digital:*`,
+    `👉 ${ticketUrl}`,
     ``,
-    `*Guarda este mensaje.* Tu folio es tu boleto. ¡Mucha suerte! 🍀`,
+    `📅 *¡TOTALPLAY TE INVITA!*`,
+    `Revisa la cartelera completa de eventos y beneficios VIP aquí:`,
+    `👉 ${calendarioUrl}`,
+    ``,
+    `*Guarda este mensaje*, tu folio es tu pase oficial al sorteo. ¡Mucha suerte! 🍀💜`,
   ].join('\n');
 
   const result = await whatsapp.sendMessage(whatsappNumber, message);
