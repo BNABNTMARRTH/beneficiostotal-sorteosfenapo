@@ -1,5 +1,9 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
+    # Redirigir peticiones API al backend Node.js en localhost:3001
+    RewriteRule ^api/(.*)$ http://127.0.0.1:3001/api/$1 [P,L]
+
     # Redirigir la raíz del dominio a la carpeta public_html/
     RewriteCond %{REQUEST_URI} !^/public_html/
     RewriteRule ^(.*)$ public_html/$1 [L]
