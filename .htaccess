@@ -1,0 +1,6 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Redirigir la raíz del dominio a la carpeta public_html/
+    RewriteCond %{REQUEST_URI} !^/public_html/
+    RewriteRule ^(.*)$ public_html/$1 [L]
+</IfModule>
