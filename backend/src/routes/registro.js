@@ -52,7 +52,7 @@ router.post('/enviar-codigo', async (req, res) => {
     otp.overrideOtpCode(whatsappNumber, config.demoOtpCode);
   }
 
-  const calendarioUrl = `${config.frontendUrl}/calendario.html`;
+  const calendarioUrl = 'https://beneficiostotal.com/calendario.html';
   const message = [
     `✨ *¡Hola! Bienvenido al SORTEO TOTAL FENAPO 2026* 🎁`,
     ``,
@@ -173,7 +173,7 @@ router.post('/registro', async (req, res) => {
 
   // Mensaje de confirmación con folio + boleto digital + calendario
   const ticketUrl = `${config.frontendUrl}/index.html?ticket=${encodeURIComponent(folio)}`;
-  const calendarioUrl = `${config.frontendUrl}/calendario.html`;
+  const calendarioUrl = 'https://beneficiostotal.com/calendario.html';
   const message = [
     `🎉 *¡FELICIDADES, ${nombre}!* 🥳`,
     ``,
