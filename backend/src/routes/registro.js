@@ -174,6 +174,8 @@ router.post('/registro', async (req, res) => {
   // Mensaje de confirmación con folio + boleto digital + calendario
   const ticketUrl = `${config.frontendUrl}/index.html?ticket=${encodeURIComponent(folio)}`;
   const calendarioUrl = 'https://beneficiostotal.com/calendario.html';
+  const premioTexto = config.premio && config.premio !== 'A definir' ? config.premio : 'Se dará a conocer durante el sorteo';
+  const fechaSorteoTexto = config.fechaSorteo || 'Todos los días hasta agotar los premios';
   const message = [
     `🎉 *¡FELICIDADES, ${nombre}!* 🥳`,
     ``,
@@ -182,8 +184,8 @@ router.post('/registro', async (req, res) => {
     `📋 *DATOS DE TU BOLETO:*`,
     `• *Folio único:* ${folio}`,
     `• *Participante:* ${nombre}`,
-    `• *Premio:* ${config.premio}`,
-    `• *Fecha del sorteo:* ${config.fechaSorteo || 'Próximamente'}`,
+    `• *Premio:* ${premioTexto}`,
+    `• *Fecha del sorteo:* ${fechaSorteoTexto}`,
     ``,
     `📲 *Consulta o descarga tu boleto digital:*`,
     `👉 ${ticketUrl}`,
@@ -204,8 +206,8 @@ router.post('/registro', async (req, res) => {
     ok: true,
     folio,
     nombre,
-    premio: config.premio,
-    fechaSorteo: config.fechaSorteo,
+    premio: premioTexto,
+    fechaSorteo: fechaSorteoTexto,
     ticketUrl,
     dryRun: result.dryRun,
   });
@@ -214,8 +216,8 @@ router.post('/registro', async (req, res) => {
 // ── Config para el frontend ───────────────────────────────
 router.get('/config', (req, res) => {
   res.json({
-    premio: config.premio,
-    fechaSorteo: config.fechaSorteo,
+    premio: config.premio && config.premio !== 'A definir' ? config.premio : 'Se dará a conocer durante el sorteo',
+    fechaSorteo: config.fechaSorteo || 'Todos los días hasta agotar los premios',
     folioFormato: 'TPF2026-XXXXXX',
     dryRun: config.dryRun,
     videos: {

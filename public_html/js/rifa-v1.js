@@ -10,7 +10,7 @@
     var VISTO_KEY = 'tp_rifa_visto';
 
     var modal, steps;
-    var configData = { premio: 'A definir', fechaSorteo: '', dryRun: false };
+    var configData = { premio: 'Se dará a conocer durante el sorteo', fechaSorteo: 'Todos los días hasta agotar los premios', dryRun: false };
     var pendingWhatsapp = '';
     var resendInterval = null;
     var countdownInterval = null;
@@ -27,9 +27,9 @@
         } catch (e) {
             console.warn('[rifa] No se pudo leer config del backend:', e);
         }
-        $('rifa-prize').textContent = configData.premio || 'A definir';
+        $('rifa-prize').textContent = configData.premio || 'Se dará a conocer durante el sorteo';
         var bannerPrize = $('rifa-banner-prize');
-        if (bannerPrize) bannerPrize.textContent = configData.premio || 'Premio a definir';
+        if (bannerPrize) bannerPrize.textContent = configData.premio || 'Se dará a conocer durante el sorteo';
     }
 
     /* ── Modal / pasos ────────────────────────────────── */
@@ -319,10 +319,10 @@
         if (elNombre) elNombre.textContent = opts.nombre || 'Participante';
 
         var elPremio = $('rifa-ticket-premio');
-        if (elPremio) elPremio.textContent = configData.premio || 'A definir';
+        if (elPremio) elPremio.textContent = configData.premio || 'Se dará a conocer durante el sorteo';
 
         var elFecha = $('rifa-ticket-fecha');
-        if (elFecha) elFecha.textContent = configData.fechaSorteo ? formatFecha(configData.fechaSorteo) : 'Próximamente';
+        if (elFecha) elFecha.textContent = configData.fechaSorteo ? formatFecha(configData.fechaSorteo) : 'Todos los días hasta agotar los premios';
 
         var elGreeting = $('rifa-greeting');
         if (elGreeting) {
