@@ -41,8 +41,8 @@ if (curl_errno($ch)) {
     exit;
 }
 
-$headerSize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
-$httpCode = curl_getinfo($ch, CURLINFO_HTTPCODE);
+$headerSize = curl_getinfo($ch, 2097163); // CURLINFO_HEADER_SIZE
+$httpCode = curl_getinfo($ch, 2097154); // CURLINFO_HTTPCODE
 curl_close($ch);
 
 $resHeaders = substr($response, 0, $headerSize);
