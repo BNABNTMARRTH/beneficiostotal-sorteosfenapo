@@ -369,6 +369,38 @@ tr:hover .row-acts { opacity:1; }
 .btn-lg { min-height:48px; padding:0 22px; font-size:14px; border-radius:var(--radius-md); }
 .btn-sm { min-height:34px; padding:0 12px; font-size:11.5px; }
 
+/* ── Date Dropdown Multiselect ── */
+.date-dd-wrap { position:relative; display:inline-block; }
+.date-dd-btn {
+  display:inline-flex; align-items:center; gap:8px; min-height:40px; padding:0 14px;
+  background:var(--bg-2); border:1px solid var(--glass-border); border-radius:var(--radius-sm);
+  color:var(--text-1); font-family:var(--font); font-size:12.5px; font-weight:600;
+  cursor:pointer; transition:all .2s var(--ease); user-select:none;
+}
+.date-dd-btn:hover { border-color:rgba(139,92,246,.4); color:var(--accent-2); }
+.date-dd-btn svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2; transition:transform .2s; }
+.date-dd-btn.open svg { transform:rotate(180deg); }
+.date-dd-menu {
+  position:absolute; top:calc(100% + 6px); left:0; z-index:100;
+  min-width:230px; padding:10px; border-radius:var(--radius-md);
+  background:var(--bg-base); border:1px solid var(--glass-strong);
+  box-shadow:0 12px 32px rgba(0,0,0,.8);
+  display:none; flex-direction:column; gap:6px;
+  animation:rise .2s var(--ease);
+}
+.date-dd-menu.open { display:flex; }
+.date-pill {
+  display:flex; align-items:center; gap:8px;
+  padding:7px 10px; border-radius:var(--radius-sm); font-size:12px; font-weight:500;
+  background:var(--bg-2); border:1px solid var(--glass-border); color:var(--text-3);
+  cursor:pointer; transition:all .15s var(--ease); user-select:none;
+}
+.date-pill:hover { border-color:rgba(139,92,246,.35); color:var(--text-1); }
+.date-pill.on {
+  background:rgba(139,92,246,.18); border-color:var(--accent-1); color:#fff;
+}
+.date-pill input { accent-color:var(--accent-1); width:14px; height:14px; cursor:pointer; }
+
 /* ── Checkbox (pool) ── */
 .check {
   display:inline-flex; align-items:center; gap:8px;
@@ -1189,6 +1221,14 @@ tr:hover .row-acts { opacity:1; }
       </div>
       <div class="toolbar">
         <input class="input" id="q" type="text" placeholder="Buscar por nombre, folio, WhatsApp...">
+        <div class="date-dd-wrap" id="ddWrapRegistros">
+          <button class="date-dd-btn" id="ddBtnRegistros" onclick="toggleDateDropdown('Registros', event)">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span id="ddLabelRegistros">Fechas</span>
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="date-dd-menu" id="ddMenuRegistros" onclick="event.stopPropagation()"></div>
+        </div>
         <button class="btn btn-g" onclick="loadReg()"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg> Actualizar</button>
         <button class="btn btn-p" onclick="dlCSV()"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Exportar CSV</button>
         <span class="cnt" id="tCount"></span>
@@ -1210,7 +1250,18 @@ tr:hover .row-acts { opacity:1; }
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M16.2 7.8l-2 6.3-6.4 2.1 2-6.3z"/></svg>
           Sorteo en vivo
         </div>
-        <p class="sorteo-head">Selecciona un ganador al azar entre los participantes del pool. Usa el filtro para sortear solo a los confirmados.</p>
+        <p class="sorteo-head">Selecciona un ganador al azar entre los participantes del pool. Usa el filtro para sortear solo a los confirmados y por fecha.</p>
+      </div>
+
+      <div style="margin-top:10px; margin-bottom:16px;">
+        <div class="date-dd-wrap" id="ddWrapSorteo">
+          <button class="date-dd-btn" id="ddBtnSorteo" onclick="toggleDateDropdown('Sorteo', event)">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span id="ddLabelSorteo">Fechas a sortear</span>
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="date-dd-menu" id="ddMenuSorteo" onclick="event.stopPropagation()"></div>
+        </div>
       </div>
 
       <!-- Wheel Stage -->
@@ -1221,7 +1272,7 @@ tr:hover .row-acts { opacity:1; }
       <!-- Status Bar -->
       <div class="sorteo-status-bar">
         <div class="pool-pill">
-          <svg viewBox="0 0 24 24" class="icon-sm"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <svg viewBox="0 0 24 24" class="icon-sm"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           Pool <b id="poolCount">0</b> participantes
         </div>
         <div class="status-badge ready" id="wheelStatusBadge">
@@ -1425,13 +1476,109 @@ async function loadDash() {
   } catch (e) { console.error(e); }
 }
 
-/* ── Registros ── */
+/* ── Registros y Filtro de Fechas ── */
+let selectedDates = [];
+let datesInitialized = false;
+
+function toggleDateDropdown(name, e) {
+  if (e) e.stopPropagation();
+  const btn = document.getElementById('ddBtn' + name);
+  const menu = document.getElementById('ddMenu' + name);
+  if (!btn || !menu) return;
+  const isOpen = menu.classList.contains('open');
+  // cerrar todos
+  document.querySelectorAll('.date-dd-menu').forEach(function(m){ m.classList.remove('open'); });
+  document.querySelectorAll('.date-dd-btn').forEach(function(b){ b.classList.remove('open'); });
+  if (!isOpen) {
+    menu.classList.add('open');
+    btn.classList.add('open');
+  }
+}
+document.addEventListener('click', function() {
+  document.querySelectorAll('.date-dd-menu').forEach(function(m){ m.classList.remove('open'); });
+  document.querySelectorAll('.date-dd-btn').forEach(function(b){ b.classList.remove('open'); });
+});
+
+function renderDateFilters() {
+  const datesSet = new Set();
+  REG.forEach(function(r) { if (r.fecha) datesSet.add(r.fecha); });
+  const dates = Array.from(datesSet).sort(function(a,b){ return a.localeCompare(b); });
+  
+  if (!datesInitialized && dates.length) {
+    selectedDates = dates.slice();
+    datesInitialized = true;
+  }
+
+  const sections = ['Registros', 'Sorteo'];
+  sections.forEach(function(sec) {
+    const menu = document.getElementById('ddMenu' + sec);
+    const lbl = document.getElementById('ddLabel' + sec);
+    if (!menu || !lbl) return;
+
+    if (!dates.length) {
+      menu.innerHTML = '<span style="font-size:11px;color:var(--text-4)">Sin fechas registradas</span>';
+      lbl.textContent = 'Fechas';
+      return;
+    }
+
+    const allChecked = selectedDates.length === dates.length;
+    if (allChecked) {
+      lbl.textContent = 'Todas las fechas (' + dates.length + ')';
+    } else if (selectedDates.length === 0) {
+      lbl.textContent = 'Sin fechas seleccionadas';
+    } else {
+      lbl.textContent = selectedDates.length + ' de ' + dates.length + ' fechas';
+    }
+
+    let html = '<label class="date-pill' + (allChecked ? ' on' : '') + '">' +
+      '<input type="checkbox" ' + (allChecked ? 'checked' : '') + ' onchange="toggleAllDateFilters()">' +
+      '<span>Todas las fechas</span></label>';
+
+    dates.forEach(function(d) {
+      const isChecked = selectedDates.includes(d);
+      const safeD = esc(d);
+      html += '<label class="date-pill' + (isChecked ? ' on' : '') + '">' +
+        '<input type="checkbox" ' + (isChecked ? 'checked' : '') + ' data-date="' + safeD + '" onchange="toggleDateFilter(this.dataset.date, this.checked)">' +
+        '<span>' + safeD + '</span></label>';
+    });
+
+    menu.innerHTML = html;
+  });
+}
+
+function toggleAllDateFilters() {
+  const datesSet = new Set();
+  REG.forEach(function(r) { if (r.fecha) datesSet.add(r.fecha); });
+  const dates = Array.from(datesSet);
+  // Si actualmente están todas seleccionadas, deshabilitar todas. De lo contrario, seleccionar todas.
+  if (selectedDates.length === dates.length) {
+    selectedDates = [];
+  } else {
+    selectedDates = dates.slice();
+  }
+  renderDateFilters();
+  applyFilter();
+  updatePool();
+}
+
+function toggleDateFilter(dateStr, checked) {
+  if (checked) {
+    if (!selectedDates.includes(dateStr)) selectedDates.push(dateStr);
+  } else {
+    selectedDates = selectedDates.filter(function(d) { return d !== dateStr; });
+  }
+  renderDateFilters();
+  applyFilter();
+  updatePool();
+}
+
 async function ensureReg() {
   if (REG.length) return REG;
   try {
     const r = await fetch('/api/admin/registros');
     const d = await r.json();
     REG = d.data || [];
+    renderDateFilters();
   } catch (e) {}
   return REG;
 }
@@ -1442,7 +1589,8 @@ async function loadReg() {
     const r = await fetch('/api/admin/registros');
     const { data } = await r.json();
     REG = data || [];
-    drawTable(REG);
+    renderDateFilters();
+    applyFilter();
   } catch {
     b.innerHTML = '<tr><td colspan="10" style="color:var(--rose);padding:24px;text-align:center">Error al cargar registros</td></tr>';
   }
@@ -1454,7 +1602,7 @@ function drawTable(list) {
   if (!list.length) {
     const q = document.getElementById('q').value.trim();
     b.innerHTML = '<tr><td colspan="10"><div class="empty">' +
-      (q ? 'Sin coincidencias para &ldquo;' + esc(q) + '&rdquo;' : 'Aun no hay registros') +
+      (q ? 'Sin coincidencias para &ldquo;' + esc(q) + '&rdquo;' : 'Aun no hay registros para las fechas seleccionadas') +
       '</div></td></tr>';
     cnt.textContent = '';
     return;
@@ -1483,7 +1631,7 @@ function drawTable(list) {
       '<td>' + acts + '</td></tr>';
   }).join('');
   const q = document.getElementById('q').value.trim();
-  cnt.textContent = q ? (list.length + ' de ' + REG.length + ' resultados') : (list.length + ' registros');
+  cnt.textContent = q ? (list.length + ' de ' + REG.length + ' resultados') : (list.length + ' de ' + REG.length + ' registros');
 }
 function copyFolio(i) {
   const r = CUR[i];
@@ -1494,8 +1642,10 @@ function copyFolio(i) {
 }
 function applyFilter() {
   const s = document.getElementById('q').value.trim().toLowerCase();
-  if (!s) return drawTable(REG);
   drawTable(REG.filter(function(r) {
+    const matchDate = selectedDates.length ? selectedDates.includes(r.fecha) : true;
+    if (!matchDate) return false;
+    if (!s) return true;
     return String(r.nombre || '').toLowerCase().includes(s)
       || String(r.folio || '').toLowerCase().includes(s)
       || String(r.whatsapp || '').includes(s)
@@ -1686,13 +1836,16 @@ function drawWheel() {
 
 function updatePool() {
   const onlyOk = document.getElementById('onlyOk').checked;
-  const p = REG.filter(function(r) {
+  pool = REG.filter(function(r) {
     if (!r.folio) return false;
+    if (selectedDates.length && !selectedDates.includes(r.fecha)) return false;
     if (!onlyOk) return true;
     const env = (r.enviado || '').toUpperCase();
     return env === 'SÍ' || env === 'SI';
   });
-  document.getElementById('poolCount').textContent = p.length;
+  names = pool.map(function(r) { return r.nombre || r.folio; });
+  document.getElementById('poolCount').textContent = pool.length;
+  drawWheel();
 }
 
 var currentWinner = null;
@@ -1831,6 +1984,7 @@ async function spin() {
   var onlyOk = document.getElementById('onlyOk').checked;
   pool = REG.filter(function(r) {
     if (!r.folio) return false;
+    if (selectedDates.length && !selectedDates.includes(r.fecha)) return false;
     if (!onlyOk) return true;
     var env = (r.enviado || '').toUpperCase();
     return env === 'SÍ' || env === 'SI';
