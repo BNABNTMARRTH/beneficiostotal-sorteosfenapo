@@ -254,6 +254,27 @@ router.get('/registro/consulta', async (req, res) => {
   }
 });
 
+// ── Verificación de mensaje de usuario a Wicho (Misión 1) ──
+router.get('/verificar-whatsapp', (req, res) => {
+  const { phone } = req.query || {};
+  if (!phone) {
+    return res.status(400).json({ ok: false, verified: false, error: 'Escribe tu número de WhatsApp.' });
+  }
+
+  const whatsappNumber = canonicalizePhone(phone);
+  if (!whatsappNumber) {
+    return res.status(400).json({ ok: false, verified: false, error: 'Número inválido. Usa 10 dígitos.' });
+  }
+
+  const verified = config.dryRun ? true : whatsapp.hasUserSentMessage(whatsappNumber);
+  return res.json({
+    ok: true,
+    verified,
+    dryRun: config.dryRun,
+    phone: whatsappNumber,
+  });
+});
+
 router.get('/whatsapp/status', (req, res) => {
   res.json(whatsapp.getWhatsAppStatus());
 });

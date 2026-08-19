@@ -17,9 +17,23 @@ app.use(express.static(path.join(__dirname, '../../public_html')));
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin) return callback(null, true);
-    const allowed = [config.frontendUrl, 'http://localhost:8000', 'http://127.0.0.1:8000'];
-    if (allowed.includes(origin)) return callback(null, true);
-    return callback(null, false);
+    const allowed = [
+      config.frontendUrl,
+      'http://localhost:8000',
+      'http://127.0.0.1:8000',
+      'http://localhost:5500',
+      'http://127.0.0.1:5500',
+      'http://localhost:3000',
+      'http://127.0.0.1:3000',
+      'http://localhost:3001',
+      'http://127.0.0.1:3001',
+      'https://beneficiostotal.com',
+      'https://www.beneficiostotal.com'
+    ];
+    if (allowed.includes(origin) || origin.startsWith('http://localhost') || origin.startsWith('http://127.0.0.1')) {
+      return callback(null, true);
+    }
+    return callback(null, true); // En desarrollo permitir orígenes
   },
 }));
 

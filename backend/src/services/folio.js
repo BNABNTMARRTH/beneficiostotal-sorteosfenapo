@@ -21,10 +21,11 @@ export function generateOtpCode() {
 }
 
 // Normaliza un número de teléfono MX a 12 dígitos con lada 52.
-// Acepta 10 dígitos (1234567890) o 12 (521234567890).
+// Acepta 10 dígitos (4441234567), 12 (524441234567) o 13 (5214441234567 de WhatsApp).
 export function canonicalizePhone(raw) {
   const digits = String(raw || '').replace(/\D/g, '');
   if (digits.length === 10) return `52${digits}`;
   if (digits.length === 12 && digits.startsWith('52')) return digits;
+  if (digits.length === 13 && digits.startsWith('521')) return `52${digits.slice(3)}`;
   return '';
 }

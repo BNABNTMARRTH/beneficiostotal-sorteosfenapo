@@ -6,6 +6,7 @@ import pino from 'pino';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import config from '../config.js';
+import { canonicalizePhone } from './folio.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const AUTH_DIR = path.resolve(__dirname, '../../data/baileys-auth');
@@ -20,6 +21,27 @@ let state = {
   userPhone: '',
 };
 let starting = false;
+
+// Registro de mensajes entrantes de usuarios (para corroborar la Misión 1)
+const incomingMessagesMap = new Map();
+
+export function registerIncomingMessage(fromNumber, text = '') {
+  const clean = canonicalizePhone(fromNumber);
+  if (clean) {
+    incomingMessagesMap.set(clean, {
+      text,
+      at: Date.now(),
+      date: new Date().toISOString(),
+    });
+    console.log(`[whatsapp] ✓ Mensaje entrante registrado de ${clean}: "${String(text).slice(0, 60)}"`);
+  }
+}
+
+export function hasUserSentMessage(phone) {
+  const clean = canonicalizePhone(phone);
+  if (!clean) return false;
+  return incomingMessagesMap.has(clean);
+}
 
 // Último estado de entrega por JID (para diagnóstico)
 const deliveryMap = new Map();
@@ -183,6 +205,61 @@ export async function startWhatsApp() {
           : 'recibido';
         deliveryMap.set(jid, { statusName: state, status: 99, error: '', at: new Date().toISOString(), id: u?.key?.id || '', receipt: true });
         console.log(`[whatsapp] Receipt ${jid}: ${state}`);
+      }
+    });
+
+    // ── Mensajes entrantes (corrobora Misión 1 y auto-responde con chiste) ──
+    sock.ev.on('messages.upsert', async (mUpdate) => {
+      try {
+        const msgs = mUpdate?.messages || [];
+        for (const msg of msgs) {
+          if (!msg.message) continue;
+          if (msg.key?.fromMe) continue;
+          const remoteJid = msg.key?.remoteJid || '';
+          if (!remoteJid || remoteJid.includes('@g.us')) continue; // ignora grupos
+
+          const rawPhone = remoteJid.split('@')[0].split(':')[0];
+          const text = msg.message?.conversation ||
+            msg.message?.extendedTextMessage?.text ||
+            msg.message?.imageMessage?.caption || '';
+
+          registerIncomingMessage(rawPhone, text);
+
+          const lower = String(text).toLowerCase();
+          const isRifaIntent = lower.includes('sorteo') ||
+            lower.includes('fenapo') ||
+            lower.includes('wicho') ||
+            lower.includes('beneficio') ||
+            lower.includes('boleto') ||
+            lower.includes('hola');
+
+          if (isRifaIntent) {
+            const jokes = [
+              '— ¿Qué le dice un jardinero a otro? ¡Nos vemos cuando podamos! 😂🌱',
+              '— ¿Qué hace una abeja en el gimnasio? ¡Zumba! 🐝🏋️',
+              '— ¿Por qué los pájaros no usan Facebook? ¡Porque ya tienen Twitter! 🐦📱',
+              '— ¿Cuál es el colmo de un electricista? ¡Que no le sigan la corriente! ⚡😄',
+              '— ¿Qué le dice un semáforo a otro? ¡No me mires que me estoy cambiando! 🚦🤣',
+            ];
+            const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+            const autoReply = [
+              `✨ *¡Hola! Soy el asistente de Wicho y Totalplay San Luis* 💜`,
+              ``,
+              `¡Confirmado! Tu mensaje ha sido recibido exitosamente para la *Misión 1 del Gran Sorteo FENAPO 2026* 🎁🎉`,
+              ``,
+              `Aquí tienes tu chiste de la buena suerte:`,
+              `${randomJoke}`,
+              ``,
+              `👉 *Regresa ahora a la página de Beneficios Totalplay* para continuar con tu Misión 2 (Aprender con el tutorial) y registrar tu boleto. 🚀`,
+              ``,
+              `¡Mucho éxito! 🍀`,
+            ].join('\n');
+
+            await sendMessage(rawPhone, autoReply);
+          }
+        }
+      } catch (err) {
+        console.error('[whatsapp] Error procesando messages.upsert:', err?.message || err);
       }
     });
   } catch (err) {

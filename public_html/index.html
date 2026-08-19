@@ -1287,7 +1287,7 @@
                             <span>TU AVANCE</span>
                         </div>
                     </div>
-                    <span class="rifa-mission-summary" id="rifa-mission-summary">0 / 7 Misiones completadas</span>
+                    <span class="rifa-mission-summary" id="rifa-mission-summary">0 / 3 Misiones completadas</span>
                     <div class="rifa-checklist" id="rifa-checklist"></div>
                     <p class="rifa-note">Durante el sorteo se dará preferencia a los boletos de clientes para los
                         mejores premios. 💜</p>
@@ -1851,6 +1851,18 @@
 
         const tutorialFallback = [
             {
+                ID: 'demo-beneficios-totalplay',
+                Titulo: 'Cómo usar la página de beneficios sí soy cliente de Totalplay San Luis',
+                Plataforma: 'WEB',
+                Categoria: 'Beneficios',
+                Descripcion: 'Aprende a aprovechar todos los beneficios, sorteos y eventos exclusivos si eres cliente Totalplay en San Luis Potosí.',
+                LinkTikTok: '',
+                Duracion: '1:30',
+                Orden: 1,
+                Activo: 'SI',
+                Destacado: 'SI'
+            },
+            {
                 ID: 'demo-app-totalplay',
                 Titulo: 'Cómo usar la app Totalplay',
                 Plataforma: 'App Totalplay',
@@ -1858,7 +1870,7 @@
                 Descripcion: 'Conoce las funciones principales de la app.',
                 LinkTikTok: '',
                 Duracion: '1:00',
-                Orden: 1,
+                Orden: 2,
                 Activo: 'SI',
                 Destacado: 'SI'
             }
@@ -2354,6 +2366,48 @@
             renderTutorials();
             if (window.lucide) lucide.createIcons();
         }
+
+        window.openTutorialDirectly = async function (queryOrId = 'beneficios') {
+            if (!tutorialModal) return;
+            selectedTutorialCategory = 'Todos';
+            tutorialSearchQuery = '';
+            if (tutorialSearchInput) tutorialSearchInput.value = '';
+
+            tutorialModal.classList.add('open');
+            tutorialModal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('tutorial-modal-open');
+            renderTutorialLoading();
+
+            await loadTutorials();
+
+            // Buscar tutorial por ID o título que contenga "beneficios" o "página"
+            let match = tutorials.find(t =>
+                t.id === queryOrId ||
+                t.title.toLowerCase().includes('beneficios') ||
+                t.title.toLowerCase().includes('página de beneficios') ||
+                t.title.toLowerCase().includes('pagina de beneficios')
+            );
+            if (!match) {
+                match = findTutorialByQuery(queryOrId) || tutorials[0];
+            }
+
+            if (match) {
+                selectedTutorialId = match.id;
+            }
+            renderTutorials();
+            if (match) {
+                selectTutorial(match.id, { openVideo: true });
+                setTimeout(() => {
+                    const card = document.querySelector(`[data-tutorial-id="${match.id}"]`);
+                    if (card) {
+                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        card.classList.add('mission-glow-lilac');
+                        setTimeout(() => card.classList.remove('mission-glow-lilac'), 4000);
+                    }
+                }, 300);
+            }
+            if (window.lucide) lucide.createIcons();
+        };
 
         async function openTutorialModal(event) {
             if (!tutorialModal) return;

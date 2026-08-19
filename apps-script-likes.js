@@ -15,18 +15,18 @@ function doGet(e) {
  */
 function doPost(e) {
   try {
-    const body     = JSON.parse(e.postData.contents);
+    const body = JSON.parse(e.postData.contents);
     const eventoId = body.id;
 
     if (!eventoId) {
       return jsonResponse({ ok: false, error: 'Falta el campo id' });
     }
 
-    const sheet   = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
-    const data    = sheet.getDataRange().getValues();
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
+    const data = sheet.getDataRange().getValues();
     const headers = data[0];
 
-    let idCol    = headers.indexOf('id');
+    let idCol = headers.indexOf('id');
     const likesCol = headers.indexOf('likes');
 
     // CORRECCIÓN: Si la primera columna no se llama "id" (está vacía o tiene espacios),
@@ -42,7 +42,7 @@ function doPost(e) {
     // Buscar la fila del evento
     for (let i = 1; i < data.length; i++) {
       if (String(data[i][idCol]).trim() === String(eventoId).trim()) {
-        const current  = parseInt(data[i][likesCol]) || 0;
+        const current = parseInt(data[i][likesCol]) || 0;
         const newCount = current + 1;
 
         // Escribir el nuevo valor

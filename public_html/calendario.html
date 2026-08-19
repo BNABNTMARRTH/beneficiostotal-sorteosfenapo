@@ -3905,7 +3905,456 @@
         // ============================================================
         //  DATOS DE EJEMPLO (Se dejan vacíos para usar solo el Sheet)
         // ============================================================
-        const DEMO_EVENTS = [];
+        const DEMO_EVENTS = [
+    {
+        "id": "evento-001",
+        "nombre": "Cross Tamasopo",
+        "categoria": "Deporte",
+        "fecha": "2026-05-03",
+        "hora": "20:00",
+        "lugar": "Tamasopo, San Luis Potosí",
+        "direccion": "Jardín Principal de Tamasopo",
+        "descripcion": "Este evento se ha logrado consolidar como la carrera atlética más esperada y concurrida del Estado. La carrera a campo traviesa en modalidad Cross Training, está conformada por tres distancias 5, 10 y 21 km, a través de ríos, cascadas y cañaverales. ¡Toda una experiencia que no te puedes perder!",
+        "foto_portada": "https://drive.google.com/file/d/1nYyiapvIAk7BzCM-V50FQvSeeAs5fVIn/view?usp=sharing",
+        "likes": "2777",
+        "video": "<blockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"https://www.instagram.com/reel/DXKVybSDl2e/?utm_source=ig_embed&amp;utm_campaign=loading\" data-instgrm-version=\"14\" style=\" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);\"><div style=\"padding:16px;\"> <a href=\"https://www.instagram.com/reel/DXKVybSDl2e/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;\" target=\"_blank\"> <div style=\" display: flex; flex-direction: row; align-items: center;\"> <div style=\"background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;\"></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;\"></div></div></div><div style=\"padding: 19% 0;\"></div> <div style=\"display:block; height:50px; margin:0 auto 12px; width:50px;\"><svg width=\"50px\" height=\"50px\" viewBox=\"0 0 60 60\" version=\"1.1\" xmlns=\"https://www.w3.org/2000/svg\" xmlns:xlink=\"https://www.w3.org/1999/xlink\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-511.000000, -20.000000)\" fill=\"#000000\"><g><path d=\"M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631\"></path></g></g></g></svg></div><div style=\"padding-top: 8px;\"> <div style=\" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;\">Ver esta publicación en Instagram</div></div><div style=\"padding: 12.5% 0;\"></div> <div style=\"display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;\"><div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);\"></div> <div style=\"background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;\"></div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);\"></div></div><div style=\"margin-left: 8px;\"> <div style=\" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;\"></div> <div style=\" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)\"></div></div><div style=\"margin-left: auto;\"> <div style=\" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);\"></div> <div style=\" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);\"></div> <div style=\" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);\"></div></div></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;\"></div></div></a><p style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;\"><a href=\"https://www.instagram.com/reel/DXKVybSDl2e/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;\" target=\"_blank\">Una publicación compartida por CROSS TAMASOPO (@crosstamasopo)</a></p></div></blockquote>\n",
+        "latitud": "21.922552",
+        "longitud": "-99.392224",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-002",
+        "nombre": "Santas VS El calor de Cancún",
+        "categoria": "Deporte",
+        "fecha": "2026-05-12",
+        "hora": "20:00",
+        "lugar": "Aditorio Miguel Barragán",
+        "direccion": "Av Himno Nacional 4000, Issste, 78280 San Luis Potosí, S.L.P.",
+        "descripcion": "Santas del Potosí, visitarán a El Calor en Cancún, viernes 8 y sábado 9, a las 7:15 p.m. (horario del centro de México), ambos en el Poliforum Cancún. Y el martes 12 sería a las 8:00 p.m. (horario centro de México) en el auditorio Miguel Barragán.Por lo pronto, las jugadoras y cuerpo técnico se encu",
+        "foto_portada": "https://drive.google.com/file/d/1W68rzbYUIcuuA_tDkLnjTvJ7mxFSwrPE/view?usp=sharing",
+        "likes": "135",
+        "video": "<blockquote class=\"tiktok-embed\" cite=\"https://www.tiktok.com/@consultoriaslp/video/7627640182107393287\" data-video-id=\"7627640182107393287\" style=\"max-width: 605px;min-width: 325px;\" > <section> <a target=\"_blank\" title=\"@consultoriaslp\" href=\"https://www.tiktok.com/@consultoriaslp?refer=embed\">@consultoriaslp</a> Consultoría Totalplay en los mejores eventos <a title=\"tendencia\" target=\"_blank\" href=\"https://www.tiktok.com/tag/tendencia?refer=embed\">#tendencia</a> <a title=\"viraltiktok\" target=\"_blank\" href=\"https://www.tiktok.com/tag/viraltiktok?refer=embed\">#viraltiktok</a> <a title=\"parati\" target=\"_blank\" href=\"https://www.tiktok.com/tag/parati?refer=embed\">#parati</a> <a target=\"_blank\" title=\"♬ sonido original - ConsultoríaSLP\" href=\"https://www.tiktok.com/music/sonido-original-7627640243432327957?refer=embed\">♬ sonido original - ConsultoríaSLP</a> </section> </blockquote> ",
+        "latitud": "22.136952",
+        "longitud": "-100.985329",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-003",
+        "nombre": "Feria de la Salud",
+        "categoria": "Salud",
+        "fecha": "2026-05-13",
+        "hora": "20:00",
+        "lugar": "Universidad Politécnica de San Luis Potosí",
+        "direccion": "C. Urbano Villalón 500, La Ladrillera, 78369 San Luis Potosí, S.L.P.",
+        "descripcion": "Llega nuestra Feria de la Salud, un espacio donde podrás reconectar contigo y encontrar herramientas para sentirte mejor en todos los aspectos de tu vida: Salud mental, Salud física y Servicios de bienestar.\nAdemás: Descuentos especiales, Clases muestra, Atención cercana y personalizada.\nCuidarte ta",
+        "foto_portada": "https://drive.google.com/file/d/1kROJ0EC9d5cVJHiAS1C8-JOobBHbYVLK/view?usp=sharing",
+        "likes": "186",
+        "video": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/DztTndWJ_gY?si=v9vajvxCgsbM68Xz\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+        "latitud": "22.124557",
+        "longitud": "-100.983673",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-004",
+        "nombre": "Carrera Magisterial",
+        "categoria": "Deporte",
+        "fecha": "2026-05-14",
+        "hora": "20:00",
+        "lugar": "Parque Tangamanga 1",
+        "direccion": "Av. Salvador Nava Martínez, Parque Tangamanga I, 78294 San Luis Potosí, S.L.P.",
+        "descripcion": "La 5ª Carrera Atlética Magisterial en San Luis Potosí se celebrará el 14 de mayo de 2026 a las 19:00 horas en el Parque Tangamanga I, celebrando el Día del Maestro. El evento nocturno de 10 km (y opciones de 3 km) espera más de 1,500 corredores y se integra por primera vez al Serial Trail Rutas y Pu",
+        "foto_portada": "https://drive.google.com/file/d/13nS4uC7S_ZUD0MP4Lc6NNNH8-7swUh3J/view?usp=sharing",
+        "likes": "750",
+        "video": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/97h6MrV3fOA?si=B_V0_9yKmNt7urrc\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+        "latitud": "22.135937",
+        "longitud": "-100.995251",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-005",
+        "nombre": "Marca Registrada",
+        "categoria": "Concierto",
+        "fecha": "2026-05-14",
+        "hora": "20:00",
+        "lugar": "Arena Potosí",
+        "direccion": "Av Simon Díaz 245, Satelite, 78380 San Luis Potosí, S.L.P.",
+        "descripcion": "Prepárate para una noche llena de música, energía y grandes éxitos este próximo 14 de mayo. Además, lo recaudado será en beneficio de la Universidad Politécnica de San Luis Potosí.",
+        "foto_portada": "https://drive.google.com/file/d/1_yLcRUx569tMXJt2dGnrMvOb0safcrNi/view?usp=sharing",
+        "likes": "1248",
+        "video": "https://youtube.com/shorts/mDiRmA6yuvY?si=mK2U-vmj0LSJlzSV",
+        "latitud": "22.106348",
+        "longitud": "-100.951808",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-006",
+        "nombre": "Metal Fest",
+        "categoria": "Concierto",
+        "fecha": "2026-05-16",
+        "hora": "20:00",
+        "lugar": "Teatro del pueblo",
+        "direccion": "Francisco Martínez de La Vega 255, Tepeyac, 78384 San Luis Potosí, S.L.P.",
+        "descripcion": "La ciudad de San Luis Potosí será anfitriona de uno de los festivales dirigido para la comunidad metalera en 2026: el San Luis Metal Fest, bajo el concepto “The Awakening of Darkness”. Este evento, programado para el 16 y 17 de mayo en el Teatro del Pueblo de la Feria Nacional Potosina (FENAPO), rea",
+        "foto_portada": "https://drive.google.com/file/d/1BwmxAsoxjY0EWyijhQbQapE-rBoDtVJM/view?usp=sharing",
+        "likes": "355",
+        "video": "<blockquote class=\"instagram-media\" data-instgrm-captioned data-instgrm-permalink=\"https://www.instagram.com/p/DWE1hn6Fofk/?utm_source=ig_embed&amp;utm_campaign=loading\" data-instgrm-version=\"14\" style=\" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);\"><div style=\"padding:16px;\"> <a href=\"https://www.instagram.com/p/DWE1hn6Fofk/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;\" target=\"_blank\"> <div style=\" display: flex; flex-direction: row; align-items: center;\"> <div style=\"background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;\"></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;\"></div></div></div><div style=\"padding: 19% 0;\"></div> <div style=\"display:block; height:50px; margin:0 auto 12px; width:50px;\"><svg width=\"50px\" height=\"50px\" viewBox=\"0 0 60 60\" version=\"1.1\" xmlns=\"https://www.w3.org/2000/svg\" xmlns:xlink=\"https://www.w3.org/1999/xlink\"><g stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\"><g transform=\"translate(-511.000000, -20.000000)\" fill=\"#000000\"><g><path d=\"M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631\"></path></g></g></g></svg></div><div style=\"padding-top: 8px;\"> <div style=\" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;\">Ver esta publicación en Instagram</div></div><div style=\"padding: 12.5% 0;\"></div> <div style=\"display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;\"><div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);\"></div> <div style=\"background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;\"></div> <div style=\"background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);\"></div></div><div style=\"margin-left: 8px;\"> <div style=\" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;\"></div> <div style=\" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)\"></div></div><div style=\"margin-left: auto;\"> <div style=\" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);\"></div> <div style=\" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);\"></div> <div style=\" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);\"></div></div></div> <div style=\"display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;\"> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;\"></div> <div style=\" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;\"></div></div></a><p style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;\"><a href=\"https://www.instagram.com/p/DWE1hn6Fofk/?utm_source=ig_embed&amp;utm_campaign=loading\" style=\" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;\" target=\"_blank\">Una publicación compartida por Intense Metal (@intensemetal)</a></p></div></blockquote>\n",
+        "latitud": "22.110065",
+        "longitud": "-100.957088",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-007",
+        "nombre": "Banda MS",
+        "categoria": "Concierto",
+        "fecha": "2026-05-16",
+        "hora": "20:00",
+        "lugar": "Arena Potosí",
+        "direccion": "Av Simon Díaz 245, Satelite, 78380 San Luis Potosí, S.L.P.",
+        "descripcion": "¡La banda más taquillera de México regresa a San Luis Potosí con su Tour Somos MS! Vive una noche llena de éxitos, espectáculo y la energía inigualable de Banda MS.",
+        "foto_portada": "https://drive.google.com/file/d/1aneosVh4GpUyPyglwvLbBJiHwzFDclD8/view?usp=sharing",
+        "likes": "855",
+        "video": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/eOeiImlwovw?si=W9SVHS23VSKcJ_H3\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+        "latitud": "22.106348",
+        "longitud": "-100.951808",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-008",
+        "nombre": "Metal Fest",
+        "categoria": "Concierto",
+        "fecha": "2026-05-17",
+        "hora": "20:00",
+        "lugar": "Teatro del pueblo",
+        "direccion": "Francisco Martínez de La Vega 255, Tepeyac, 78384 San Luis Potosí, S.L.P.",
+        "descripcion": "La ciudad de San Luis Potosí será anfitriona de uno de los festivales dirigido para la comunidad metalera en 2026: el San Luis Metal Fest, bajo el concepto “The Awakening of Darkness”. Este evento, programado para el 16 y 17 de mayo en el Teatro del Pueblo de la Feria Nacional Potosina (FENAPO), rea",
+        "foto_portada": "https://drive.google.com/file/d/1BwmxAsoxjY0EWyijhQbQapE-rBoDtVJM/view?usp=sharing",
+        "likes": "912",
+        "video": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/FNKRtDwCViM?si=LGAJqZpEnHjPx_NX&amp;controls=0\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+        "latitud": "22.110065",
+        "longitud": "-100.957088",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-009",
+        "nombre": "Sebastian Yatra",
+        "categoria": "Concierto",
+        "fecha": "2026-05-30",
+        "hora": "21:00",
+        "lugar": "Parque Tangamanga II",
+        "direccion": "Av. Fray Diego de la Magdalena 455, Industrial Aviacion 1ra Secc, 78140 San Luis Potosí, S.L.P.",
+        "descripcion": "La ciudad se prepara para recibir a una de las estrellas más versátiles y carismáticas del pop latino, Sebastián Yatra. Su música, una fusión de géneros que va del pop romántico al reggaetón y la balada, es un reflejo de su talento innato para componer canciones que conectan con el corazón. Ha sido ",
+        "foto_portada": "https://drive.google.com/file/d/1chvRLXWudXWR0IOCSLTjn8YhiYLSkwXY/view?usp=sharing",
+        "likes": "0",
+        "video": "https://youtu.be/Qz9gmiLBVFA?si=FgXsSQros1otIjwL",
+        "latitud": "22.175510",
+        "longitud": "-100.988196",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-010",
+        "nombre": "Festival master parrillero Master Class",
+        "categoria": "Gastronomia",
+        "fecha": "2026-06-13",
+        "hora": "10:00",
+        "lugar": "La Loma, Centro Deportivo · San Luis Potosí",
+        "direccion": "Av. de la Victoria 100, Mixto la Loma, 78216 San Luis Potosí, S.L.P.",
+        "descripcion": "🔥🥩 Vive el festival parrillero más grande del año: Master Class, gastronomía, networking y el Concurso “Maestros del Fuego” en un fin de semana de pura brasa.",
+        "foto_portada": "https://drive.google.com/file/d/1B-agV6sNw-zIlZ-Xjv4cWUUnXvB_tuas/view?usp=sharing",
+        "likes": "4",
+        "video": "https://vt.tiktok.com/ZSxKNEGbC/",
+        "latitud": "22.13282",
+        "longitud": "-10103694",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-011",
+        "nombre": "Festival master parrillero (concurso)",
+        "categoria": "Gastronomia",
+        "fecha": "2026-06-14",
+        "hora": "14:00",
+        "lugar": "La Loma, Centro Deportivo · San Luis Potosí",
+        "direccion": "Av. de la Victoria 100, Mixto la Loma, 78216 San Luis Potosí, S.L.P.",
+        "descripcion": "🔥🥩 Vive el festival parrillero más grande del año: Master Class, gastronomía, networking y el Concurso “Maestros del Fuego” en un fin de semana de pura brasa.",
+        "foto_portada": "https://drive.google.com/file/d/1B-agV6sNw-zIlZ-Xjv4cWUUnXvB_tuas/view?usp=sharing",
+        "likes": "18",
+        "video": "https://youtu.be/8UzSm4ztlp8?si=PB1O1rhtR5cbcQyX",
+        "latitud": "22.13282",
+        "longitud": "-10103694",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-012",
+        "nombre": "Expo Mi Evento",
+        "categoria": "Exposiciones",
+        "fecha": "2026-06-06",
+        "hora": "12:00",
+        "lugar": "Real Inn",
+        "direccion": "Carretera a Guadalajara 1100 Rinconada de los Andes Col, Frac. La Loma, 78216 San Luis Potosí, S.L.P.",
+        "descripcion": "🎉✨ ¡Todo para tu gran momento en un solo lugar! ✨🎉\n¿Estás organizando una boda, XV años, graduación, evento empresarial o celebración especial?\n📍 Ven a Expo Mi Evento en San Luis y conoce a los mejores proveedores de la región reunidos en un mismo lugar.\n💍 Wedding planners\n📸 Fotografía y video\n",
+        "foto_portada": "https://drive.google.com/file/d/1t946Rw8mWhEyP_dE9nQOnPZPxf64nCae/view?usp=sharing",
+        "likes": "2",
+        "video": "",
+        "latitud": "22.13282",
+        "longitud": "-101.03399",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-013",
+        "nombre": "Expo Mi Evento",
+        "categoria": "Exposiciones",
+        "fecha": "2026-06-07",
+        "hora": "12:00",
+        "lugar": "Real Inn",
+        "direccion": "Carretera a Guadalajara 1100 Rinconada de los Andes Col, Frac. La Loma, 78216 San Luis Potosí, S.L.P.",
+        "descripcion": "🎉✨ ¡Todo para tu gran momento en un solo lugar! ✨🎉\n¿Estás organizando una boda, XV años, graduación, evento empresarial o celebración especial?\n📍 Ven a Expo Mi Evento en San Luis y conoce a los mejores proveedores de la región reunidos en un mismo lugar.\n💍 Wedding planners\n📸 Fotografía y video\n",
+        "foto_portada": "https://drive.google.com/file/d/1t946Rw8mWhEyP_dE9nQOnPZPxf64nCae/view?usp=sharing",
+        "likes": "1",
+        "video": "",
+        "latitud": "22.13282",
+        "longitud": "-101.03399",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-014",
+        "nombre": "Carrera por la vida",
+        "categoria": "Deporte",
+        "fecha": "2026-06-14",
+        "hora": "7:30",
+        "lugar": "Jardín de Tequis",
+        "direccion": "Jardín de Tequisquiapan, De Tequisquiapan, 78250 San Luis Potosí, S.L.P.",
+        "descripcion": "No todas las carreras se corren por una meta… algunas se corren por una causa. Carrera por la Vida es uno de los proyectos que más nos representa. Más que un evento deportivo, une a la comunidad para promover la donación altruista de sangre, la solidaridad y la participación social. Cada edición reú",
+        "foto_portada": "https://drive.google.com/file/d/1t-1iUkFLgQ8fox49BErFhGVx_AxtX_P2/view?usp=sharing",
+        "likes": "22",
+        "video": "",
+        "latitud": "22.15083",
+        "longitud": "-100.99265",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-015",
+        "nombre": "Al ritmo de los sueños. Concierto sinfónico con causa.",
+        "categoria": "Concierto",
+        "fecha": "2026-06-26",
+        "hora": "19:00",
+        "lugar": "Campus EBC",
+        "direccion": "Periférico Poniente No. 3005, Morales, 78180 San Luis Potosí, S.L.P.",
+        "descripcion": "🎻✨ La música tiene el poder de transformar vidas, inspirar sueños y abrir oportunidades para las nuevas generaciones.\nTe invitamos a ser parte de “Al Ritmo de los Sueños”, un concierto sinfónico con causa presentado por la orquesta infantil MUVI, donde cada boleto representa un apoyo directo para c",
+        "foto_portada": "https://drive.google.com/file/d/1URzpf3dxRe_94IWhDoFWV57V2etXISPn/view?usp=sharing",
+        "likes": "35",
+        "video": "https://www.youtube.com/watch?v=Cx8n0vEqqCY",
+        "latitud": "22.15285",
+        "longitud": "-101.03153",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-016",
+        "nombre": "Clásico deportivo",
+        "categoria": "Deporte",
+        "fecha": "2026-06-05",
+        "hora": "18:00",
+        "lugar": "Campo sintético CDTAR",
+        "direccion": "Zenon Fernandez, Alamitos, 78280 San Luis Potosí, S.L.P.",
+        "descripcion": "",
+        "foto_portada": "",
+        "likes": "1",
+        "video": "",
+        "latitud": "",
+        "longitud": "",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-017",
+        "nombre": "Luchas AAA",
+        "categoria": "Deporte",
+        "fecha": "2026-07-11",
+        "hora": "19:00",
+        "lugar": "Arena Potosí",
+        "direccion": "Av Simon Díaz 245, Satelite, 78380 San Luis Potosí, S.L.P.",
+        "descripcion": "Este sábado 11 de julio la Arena Potosí recibirá una histórica función de Lucha Libre AAA Worldwide, que por primera vez llegará a San Luis Potosí bajo la dirección y producción de WWE. El evento iniciará a las 19:00 horas y proyecta al Estado como un destino para el entretenimiento. La cartelera re",
+        "foto_portada": "https://drive.google.com/file/d/1pE2T2g4SF2iWs80wpwTGfkDkSOKyhmwv/view?usp=sharing",
+        "likes": "0",
+        "video": "http://instagram.com/luchalibreaaa/?hl=es",
+        "latitud": "22.106348",
+        "longitud": "-100.951808",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-018",
+        "nombre": "Santos de San Luis vs Mineros de Zacatecas",
+        "categoria": "Deporte",
+        "fecha": "2026-07-23",
+        "hora": "20:00",
+        "lugar": "Auditorio Miguel Barragán",
+        "direccion": "Av Himno Nacional 4000, Issste, 78280 San Luis Potosí, S.L.P.",
+        "descripcion": "Aquí se juega diferente. Aquí se juega con la afición. Cada partido en casa es una cita con la pasión, la emoción y el orgullo de defender nuestros colores. Marca las fechas y prepárate para vivir una temporada inolvidable.\ntemporada inolvidable.",
+        "foto_portada": "https://drive.google.com/file/d/12enEpcCHO6kFBy5gimR0GWq1Mwl9VAtl/view?usp=sharing",
+        "likes": "0",
+        "video": "https://www.instagram.com/reel/Dal2u9pCRRn/?igsh=dmlzbGZldTJ6c3E2",
+        "latitud": "22.136952",
+        "longitud": "-100.985329",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-019",
+        "nombre": "Santos de San Luis vs Mineros de Zacatecas",
+        "categoria": "Deporte",
+        "fecha": "2026-07-24",
+        "hora": "20:00",
+        "lugar": "Auditorio Miguel Barragán",
+        "direccion": "Av Himno Nacional 4000, Issste, 78280 San Luis Potosí, S.L.P.",
+        "descripcion": "Aquí se juega diferente. Aquí se juega con la afición. Cada partido en casa es una cita con la pasión, la emoción y el orgullo de defender nuestros colores. Marca las fechas y prepárate para vivir una temporada inolvidable.\ntemporada inolvidable.",
+        "foto_portada": "https://drive.google.com/file/d/12enEpcCHO6kFBy5gimR0GWq1Mwl9VAtl/view?usp=sharing",
+        "likes": "0",
+        "video": "https://www.instagram.com/reel/Dal2u9pCRRn/?igsh=dmlzbGZldTJ6c3E2",
+        "latitud": "22.136952",
+        "longitud": "-100.985329",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-020",
+        "nombre": "Atlético vs Cruz Azul",
+        "categoria": "Deporte",
+        "fecha": "2026-07-17",
+        "hora": "19:00",
+        "lugar": "Estadio Libertad Financiera",
+        "direccion": "Malaquita 1030, Valle Dorado, 78399 San Luis Potosí, S.L.P.",
+        "descripcion": "El Apertura 2026 de la Liga MX inicia con uno de los duelos más atractivos de la primera jornada: Atlético de San Luis vs Cruz Azul. El encuentro se disputará a las 19:00 horas el viernes 17 de julio.",
+        "foto_portada": "https://drive.google.com/file/d/1oBBJuCbB9lCinShf79J_lDYC_OnZZYWN/view?usp=sharing",
+        "likes": "0",
+        "video": "",
+        "latitud": "22.14077",
+        "longitud": "-100.95145",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-021",
+        "nombre": "8.º Aniversario de Gym Sense: Hybrid Sense Games.",
+        "categoria": "Deporte",
+        "fecha": "2026-07-26",
+        "hora": "9:00",
+        "lugar": "Casa Loro",
+        "direccion": "Callejón del desierto 700, 78413 El Charquillo, S.L.P.",
+        "descripcion": "HYBRID SENSE GAMES🏋🏻💚👊🏻 26 DE JUNIO 9- 19:00 HRS BASES…\nRamas/Categorías:\n-Varonil\n-Femenil\n-Mixtos \nIntegrantes:\n-4 \nPremiación:\n-Trofeos 🏆 a los 3 primeros lugares \n-Medallas 🥇 para tod@s los participantes.\nDisfruta de este día especial lleno de energía y buena vibra. \nVen, desafíate, entre",
+        "foto_portada": "https://drive.google.com/file/d/1CO_XOnDV3DSBGYOhqSQaSmL3Uza4Rmkb/view?usp=sharing",
+        "likes": "0",
+        "video": "",
+        "latitud": "",
+        "longitud": "",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-022",
+        "nombre": "Atlético de San Luis vs Xholos de Tijuana",
+        "categoria": "Deporte",
+        "fecha": "2026-07-31",
+        "hora": "21:00",
+        "lugar": "Estadio Libertad Financiera",
+        "direccion": "Malaquita 1030, Valle Dorado, 78399 San Luis Potosí, S.L.P.",
+        "descripcion": "**¡Totalplay TE INVITA AL PARTIDO Atlético de San Luis!**   \n¿Listo para vivir la emoción del **Atlético de San Luis vs Xolos de Tijuana**?   \nParticipar es muy fácil:\n Sigue nuestra página en Facebook: Beneficios Totalplay y  encuentra las bases para ganar un pase doble.\n Tienes hasta el 30 de juli",
+        "foto_portada": "https://drive.google.com/file/d/1aaQDS9n1FOJO4gd3GU__5I6TP5-uDo9O/view?usp=sharing",
+        "likes": "0",
+        "video": "",
+        "latitud": "22.14077",
+        "longitud": "-100.95145",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-023",
+        "nombre": "La Firma y Siggno",
+        "categoria": "Concierto",
+        "fecha": "2026-08-01",
+        "hora": "21:00",
+        "lugar": "Teatro de la Ciudad, Parque Tangamanga I",
+        "direccion": "Av. Salvador Nava Martínez, Parque Tangamanga I, 78294 San Luis Potosí, S.L.P.",
+        "descripcion": "¡La música se vive mejor con los beneficios de Totalplay!   \n\nPorque ser parte de la familia Totalplay tiene grandes recompensas, te invitamos a disfrutar del concierto de La Firma y Siggno con una promoción exclusiva.\n\n Adquiere tus boletos al 2x1.\n\nSolo acude a taquilla, menciona que viste esta pr",
+        "foto_portada": "https://drive.google.com/file/d/1MF84GGLh0pREqsRlqkKG7IOpS3vaIUk-/view?usp=sharing",
+        "likes": "857",
+        "video": "",
+        "latitud": "22.135937",
+        "longitud": "-100.995251",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-024",
+        "nombre": "DINOASIS",
+        "categoria": "Recreativo",
+        "fecha": "2026-08-01",
+        "hora": "11:00",
+        "lugar": "Dinoasis Aqua Park",
+        "direccion": "Av. Salvador Nava Martínez, Parque Tangamanga I, 78294 San Luis Potosí, S.L.P.",
+        "descripcion": "¡Ser parte de la familia Totalplay tiene sus beneficios!  \n\nEste sábado vive una aventura llena de diversión en Dinoasis Aqua Park y disfruta de la promoción 2x1 exclusiva para clientes Totalplay.\n\n  Solo acude a la taquilla, menciona que eres cliente Totalplay y solicita tu beneficio para aprovecha",
+        "foto_portada": "https://drive.google.com/file/d/1EuTKlwWoJcdpVnKhQcfTHtevX_7WKoFw/view?usp=sharing",
+        "likes": "654",
+        "video": "",
+        "latitud": "22.135937",
+        "longitud": "-100.995251",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-025",
+        "nombre": "FENAPO 2026",
+        "categoria": "Concierto",
+        "fecha": "2026-08-07",
+        "hora": "14:00",
+        "lugar": "FENAPO",
+        "direccion": "Tepeyac, 78384 San Luis Potosí, S.L.P.",
+        "descripcion": "🎡🎉 ¡La diversión comienza y Totalplay estará contigo en la FENAPO 2026! 💜\nDel 7 al 30 de agosto, te esperamos todos los días en nuestra Zona de Activación Totalplay, donde hemos preparado una experiencia llena de sorpresas para toda la familia.\n🎁 Regalos\n🎊 Dinámicas y juegos\n🎟️ Rifas\n✨ Grandes",
+        "foto_portada": "https://drive.google.com/file/d/1GBpqzcxxJzmsiSlkpuLELPjmh4EoLHCT/view?usp=sharing",
+        "likes": "822",
+        "video": "",
+        "latitud": "",
+        "longitud": "",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-027",
+        "nombre": "Feria de Proveeduría 2026",
+        "categoria": "Cultura",
+        "fecha": "2026-08-13",
+        "hora": "20:00",
+        "lugar": "San Luis Potosí",
+        "direccion": "",
+        "descripcion": "🌟 ¡Totalplay te invita a la Feria de Proveeduría 2026!\n\nConoce nuevas oportunidades para fortalecer tu empresa y conecta con proveedores especializados en manufactura, logística, construcción, tecnología, servicios, salud y más.\n\n📅 13 y 14 de agosto\n📍 Eje 130, núm. 140, Zona Industrial\n🎙️ Confer",
+        "foto_portada": "",
+        "likes": "8",
+        "video": "",
+        "latitud": "",
+        "longitud": "",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-028",
+        "nombre": "Firma de autográfos Atlético de San Luis Femenil",
+        "categoria": "Deporte",
+        "fecha": "2026-08-13",
+        "hora": "19:00",
+        "lugar": "FENAPO",
+        "direccion": "Tepeyac, 78384 San Luis Potosí, S.L.P.",
+        "descripcion": "⚽✨ ¡Atención, comunidad futbolera!\nVive una experiencia única y conoce a las jugadoras del Atlético de San Luis en una emocionante firma de autógrafos. 🔴⚪\n📅 Jueves 13 de agosto\n⏰ 19:00 horas\n📍 Escenario Totalplay en FENAPO\nVen con tu familia, demuestra tu pasión por el futbol y disfruta de una ta",
+        "foto_portada": "https://drive.google.com/file/d/1kND_FJ7V6kMf-QTwPIDEN6Qgp4xtzBXL/view?usp=sharing",
+        "likes": "13",
+        "video": "",
+        "latitud": "22.14077",
+        "longitud": "-100.95145",
+        "activo": "SI"
+    },
+    {
+        "id": "evento-026",
+        "nombre": "Atlético de San Luis vs Cholos de Tijuana",
+        "categoria": "Deporte",
+        "fecha": "2026-08-23",
+        "hora": "17:00",
+        "lugar": "Estadio Libertad Financiera",
+        "direccion": "Malaquita 1030, Valle Dorado, 78399 San Luis Potosí, S.L.P.",
+        "descripcion": "",
+        "foto_portada": "https://drive.google.com/file/d/1vqZsNszoOimRFe4S10eBdbd0t4RHUsw9/view?usp=sharing|https://drive.google.com/file/d/1_w6ADSbTbA49mvwVfC5I4u0NSKfT8LCK/view?usp=sharing|https://drive.google.com/file/d/1_SCRyntDQYLpTqQ38BareCLbb1wxU5_J/view?usp=sharing",
+        "likes": "2490",
+        "video": "",
+        "latitud": "22.14077",
+        "longitud": "-100.95145",
+        "activo": "SI"
+    }
+];
 
         // ============================================================
         //  UTILIDADES DE FECHA
@@ -4478,7 +4927,10 @@
         //  SISTEMA DE FILTRADO GLOBAL
         // ============================================================
         function getGlobalFilteredEvents() {
-            let filtered = allEvents.filter(e => e.activo === 'SI');
+            const todayKey = formatDateKey(new Date());
+            let activeEvents = allEvents.filter(e => e.activo === 'SI');
+            let futureEvents = activeEvents.filter(e => e.fecha >= todayKey);
+            let filtered = futureEvents.length > 0 ? futureEvents : activeEvents;
 
             // 1. Filtro por Búsqueda (Cualquier fecha)
             if (searchQuery.trim() !== '') {
@@ -5233,7 +5685,7 @@
                     if (ev.video.includes('<')) {
                         // TikTok blockquote embed — extraer solo el blockquote, el script se carga por JS
                         if (ev.video.includes('tiktok-embed')) {
-                            const blockquote = ev.video.replace(/<script[\s\S]*?<\/script>/gi, '').trim();
+                            const blockquote = ev.video.replace(new RegExp('<' + 'script[\s\S]*?<' + '/script>', 'gi'), '').trim();
                             return `<div class="detail-video-wrapper tiktok-wrapper tiktok-blockquote-wrapper">${blockquote}</div>`;
                         }
                         return `<div class="detail-video-wrapper">${ev.video}</div>`;
@@ -5445,7 +5897,11 @@
                 allEvents = DEMO_EVENTS;
             }
 
-            if (window.innerWidth >= 1024 && selectedCategory === 'Todos') {
+            if (!allEvents || allEvents.length === 0) {
+                allEvents = DEMO_EVENTS;
+            }
+
+            if (selectedCategory === 'Todos') {
                 isDateFiltered = false;
             }
 

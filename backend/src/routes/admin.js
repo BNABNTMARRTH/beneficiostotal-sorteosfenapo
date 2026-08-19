@@ -67,10 +67,10 @@ router.post('/whatsapp/logout', async (req, res) => {
 router.post('/sorteo/notificar', async (req, res) => {
   const { whatsapp: to, nombre, esCliente, folio } = req.body;
   if (!to) return res.status(400).json({ ok: false, error: 'Numero de WhatsApp requerido' });
-  
+
   const clientType = String(esCliente || '').trim().toLowerCase();
   const isClient = clientType !== 'no' && clientType !== 'no es cliente' && clientType !== '' && clientType !== 'no cliente' && clientType !== '--';
-  
+
   let msg = '';
   if (isClient) {
     msg = `🎉 ¡Felicidades, *${nombre}*! 🎁 Eres el gran GANADOR del sorteo de Totalplay en la FENAPO 2026. Tu folio ganador es el *${folio}*. 🌟 Como valioso cliente de Totalplay, queremos agradecer tu lealtad; ¡eres muy importante para nosotros! Te contactaremos muy pronto para coordinar la entrega de tu premio. ¡Gracias por confiar en Totalplay! 🚀`;
