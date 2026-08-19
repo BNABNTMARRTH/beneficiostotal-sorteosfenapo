@@ -3,8 +3,7 @@
  * Puente Transparente de beneficiostotal.com/api/ hacia Node.js local (puerto 3001)
  */
 $requestUri = $_SERVER['REQUEST_URI'] ?? '/api';
-$tunnelUrl = 'https://pics-reputation-trackback-neural.trycloudflare.com';
-$nodeUrl = $tunnelUrl . $requestUri;
+$nodeUrl = 'http://127.0.0.1:3001' . $requestUri;
 
 $ch = curl_init($nodeUrl);
 
