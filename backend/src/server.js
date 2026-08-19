@@ -1,3 +1,8 @@
+import { webcrypto } from 'node:crypto';
+if (!globalThis.crypto?.subtle) {
+  globalThis.crypto = webcrypto;
+}
+
 import express from 'express';
 import cors from 'cors';
 import config from './config.js';

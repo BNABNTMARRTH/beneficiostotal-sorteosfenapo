@@ -6,8 +6,8 @@
   "type": "module",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "node --watch src/server.js"
+    "start": "node --require ./src/preload.cjs src/server.js",
+    "dev": "node --require ./src/preload.cjs --watch src/server.js"
   },
   "dependencies": {
     "@whiskeysockets/baileys": "^6.7.18",
