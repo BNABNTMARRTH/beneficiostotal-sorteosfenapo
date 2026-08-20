@@ -55,6 +55,20 @@ router.get('/whatsapp', (req, res) => {
   res.json({ ok: true, ...whatsapp.getWhatsAppStatus() });
 });
 
+router.get('/logs', (req, res) => {
+  try {
+    const logPath = path.resolve(__dirname, '../../server.log');
+    if (fs.existsSync(logPath)) {
+      const content = fs.readFileSync(logPath, 'utf8');
+      const lines = content.split('\n').filter(Boolean).slice(-80).join('\n');
+      return res.json({ ok: true, logs: lines });
+    }
+    return res.json({ ok: true, logs: 'Sin registros aún en server.log.' });
+  } catch (err) {
+    return res.json({ ok: false, error: err?.message || String(err) });
+  }
+});
+
 router.post('/whatsapp/logout', async (req, res) => {
   try {
     await whatsapp.logoutAndClearWhatsApp();
@@ -1339,6 +1353,13 @@ tr:hover .row-acts { opacity:1; }
         </div>
         <div class="wa-result" id="waRes"></div>
       </div>
+      <div class="card" style="margin-top: 18px; background: rgba(0,0,0,0.3); border: 1px solid rgba(167,139,250,0.2);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <span style="font-weight: 600; font-size: 13px; color: var(--text-1);">📟 Registro en Vivo de Baileys / WhatsApp (Console Logs):</span>
+          <button type="button" class="btn btn-g btn-sm" onclick="loadBackendLogs()">🔄 Refrescar Logs</button>
+        </div>
+        <pre id="serverLogsBox" style="background:#0a0814;color:#4ade80;padding:12px;border-radius:10px;font-size:11px;font-family:monospace;max-height:240px;overflow-y:auto;white-space:pre-wrap;border:1px solid rgba(255,255,255,0.08);margin:0;">Cargando logs del servidor...</pre>
+      </div>
       <div id="waQr" style="text-align:center;margin-top:18px"></div>
     </div>
   </section>
@@ -1699,6 +1720,7 @@ async function loadWA() {
     } else {
       qc.innerHTML = '<p style="color:var(--text-3);font-size:12px;margin-top:14px">Esperando generacion de QR...</p>';
     }
+    loadBackendLogs();
   } catch { document.getElementById('waGrid').innerHTML = '<div style="color:var(--rose)">Error al obtener estado</div>'; }
 }
 function rLine(k, v) {
@@ -1736,12 +1758,28 @@ async function testWA() {
     }
     res.innerHTML = html;
     res.classList.add('show');
+    loadBackendLogs();
   } catch (e) {
     res.innerHTML = rLine('Error', esc(e && e.message ? e.message : String(e)));
     res.classList.add('show');
   }
   btn.disabled = false;
   btn.textContent = 'Probar envio';
+}
+
+async function loadBackendLogs() {
+  const box = document.getElementById('serverLogsBox');
+  if (!box) return;
+  try {
+    const r = await fetch('/api/admin/logs');
+    const d = await r.json();
+    if (d.ok) {
+      box.textContent = d.logs || 'Sin logs disponibles.';
+      box.scrollTop = box.scrollHeight;
+    }
+  } catch (err) {
+    box.textContent = 'Error al cargar logs: ' + err.message;
+  }
 }
 
 async function logoutWA() {
