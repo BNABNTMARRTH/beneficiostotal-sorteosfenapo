@@ -1,9 +1,6 @@
 import makeWASocket, {
   useMultiFileAuthState,
   DisconnectReason,
-  fetchLatestBaileysVersion,
-  Browsers,
-  makeCacheableSignalKeyStore,
 } from '@whiskeysockets/baileys';
 import pino from 'pino';
 import path from 'node:path';
@@ -107,15 +104,14 @@ async function resolveJid(number) {
   try {
     const res = await sock.onWhatsApp(`${number}@s.whatsapp.net`);
     const found = Array.isArray(res) ? res[0] : res;
-    if (found?.jid) {
-      jid = String(found.jid).split('@')[0];
-    }
-  } catch (err) {
-    console.warn('[whatsapp] onWhatsApp error:', err?.message || err);
-  }
+    const real = found?.jid ? String(found.jid).split('@')[0] : '';
+    if (real) jid = real;
+  } catch { /* usa el número canónico */ }
 
   jidCache.set(number, { jid, at: Date.now() });
-  console.log(`[whatsapp] 🔎 JID resuelto: ${number} → ${jid}`);
+  if (jid !== number) {
+    console.log(`[whatsapp] JID resuelto: ${number} → ${jid}`);
+  }
   return jid;
 }
 
@@ -134,9 +130,6 @@ export async function waitForDelivery(jids, timeoutMs = 6000) {
   return { statusName: 'pendiente', status: 0, timedOut: true, error: '' };
 }
 
-// Store de mensajes enviados para responder a los retries de cifrado E2EE
-const sentMessagesStore = new Map();
-
 export async function startWhatsApp() {
   if (starting) return;
   starting = true;
@@ -146,35 +139,11 @@ export async function startWhatsApp() {
   try {
     const { state: authState, saveCreds } = await useMultiFileAuthState(AUTH_DIR);
     const logger = pino({ level: config.baileysLogLevel || 'silent' });
-    let version = [2, 3000, 1017531287];
-    try {
-      const v = await fetchLatestBaileysVersion();
-      if (v?.version) version = v.version;
-    } catch (e) {
-      console.warn('[whatsapp] Usando versión fallback de WhatsApp:', e?.message || e);
-    }
 
     sock = makeWASocket({
-      version,
-      auth: {
-        creds: authState.creds,
-        keys: makeCacheableSignalKeyStore(authState.keys, logger),
-      },
+      auth: authState,
       logger,
-      browser: Browsers.macOS('Chrome'),
-      syncFullHistory: false,
-      markOnlineOnConnect: true,
-      generateHighQualityLinkPreview: true,
-      defaultQueryTimeoutMs: 60000,
-      shouldIgnoreJid: (jid) => jid?.includes('@broadcast'),
-      getMessage: async (key) => {
-        if (key?.id && sentMessagesStore.has(key.id)) {
-          const stored = sentMessagesStore.get(key.id);
-          console.log(`[whatsapp] ✓ Retrying E2EE message for key ${key.id}`);
-          return stored;
-        }
-        return { conversation: '' };
-      }
+      browser: ['Totalplay SLP', 'Chrome', '120.0'],
     });
 
     touch(() => sock.ev.on('creds.update', saveCreds));
@@ -310,29 +279,12 @@ export async function sendMessage(to, text) {
 
   const target = await resolveJid(to);
   const jid = `${target}@s.whatsapp.net`;
-  console.log(`[whatsapp] 🚀 Iniciando envío a ${jid} (canonical=${to}, conectado=${state.connected})`);
+  console.log(`[whatsapp] Enviando a ${jid} (canonical=${to}, conectado=${state.connected})`);
   try {
-    try {
-      await sock.presenceSubscribe(jid);
-      await sock.sendPresenceUpdate('composing', jid);
-      await new Promise(r => setTimeout(r, 200));
-    } catch (e) {
-      console.warn('[whatsapp] Warning presencia:', e?.message || e);
-    }
-
-    const sent = await sock.sendMessage(jid, { text });
-    if (sent?.key?.id && sent?.message) {
-      sentMessagesStore.set(sent.key.id, sent.message);
-      console.log(`[whatsapp] ✓ Mensaje enviado y cacheado en store para retries (ID: ${sent.key.id})`);
-    }
-
-    try {
-      await sock.sendPresenceUpdate('paused', jid);
-    } catch {}
-
-    return { sent: true, dryRun: false, jid, messageId: sent?.key?.id };
+    await sock.sendMessage(jid, { text });
+    return { sent: true, dryRun: false, jid };
   } catch (err) {
-    console.error('[whatsapp] ❌ Error al enviar:', err?.message || err);
+    console.error('[whatsapp] Error al enviar:', err?.message || err);
     return { sent: false, dryRun: false, error: String(err?.message || err), jid };
   }
 }
