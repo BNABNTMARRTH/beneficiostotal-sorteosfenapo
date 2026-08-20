@@ -136,6 +136,9 @@ export async function waitForDelivery(jids, timeoutMs = 6000) {
   return { statusName: 'pendiente', status: 0, timedOut: true, error: '' };
 }
 
+// Store de mensajes enviados para responder a los retries de cifrado E2EE
+const sentMessagesStore = new Map();
+
 export async function startWhatsApp() {
   if (starting) return;
   starting = true;
@@ -167,7 +170,12 @@ export async function startWhatsApp() {
       defaultQueryTimeoutMs: 60000,
       shouldIgnoreJid: (jid) => jid?.includes('@broadcast'),
       getMessage: async (key) => {
-        return { conversation: 'Hola' };
+        if (key?.id && sentMessagesStore.has(key.id)) {
+          const stored = sentMessagesStore.get(key.id);
+          console.log(`[whatsapp] ✓ Retrying E2EE message for key ${key.id}`);
+          return stored;
+        }
+        return { conversation: '' };
       }
     });
 
@@ -304,23 +312,29 @@ export async function sendMessage(to, text) {
 
   const target = await resolveJid(to);
   const jid = `${target}@s.whatsapp.net`;
-  console.log(`[whatsapp] Enviando a ${jid} (canonical=${to}, conectado=${state.connected})`);
+  console.log(`[whatsapp] 🚀 Iniciando envío a ${jid} (canonical=${to}, conectado=${state.connected})`);
   try {
     try {
       await sock.presenceSubscribe(jid);
       await sock.sendPresenceUpdate('composing', jid);
-      await new Promise(r => setTimeout(r, 250));
-    } catch {}
+      await new Promise(r => setTimeout(r, 200));
+    } catch (e) {
+      console.warn('[whatsapp] Warning presencia:', e?.message || e);
+    }
 
-    await sock.sendMessage(jid, { text });
+    const sent = await sock.sendMessage(jid, { text });
+    if (sent?.key?.id && sent?.message) {
+      sentMessagesStore.set(sent.key.id, sent.message);
+      console.log(`[whatsapp] ✓ Mensaje enviado y cacheado en store para retries (ID: ${sent.key.id})`);
+    }
 
     try {
       await sock.sendPresenceUpdate('paused', jid);
     } catch {}
 
-    return { sent: true, dryRun: false, jid };
+    return { sent: true, dryRun: false, jid, messageId: sent?.key?.id };
   } catch (err) {
-    console.error('[whatsapp] Error al enviar:', err?.message || err);
+    console.error('[whatsapp] ❌ Error al enviar:', err?.message || err);
     return { sent: false, dryRun: false, error: String(err?.message || err), jid };
   }
 }
