@@ -1,7 +1,13 @@
 import { Router } from 'express';
+import path from 'node:path';
+import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import config, { sheetsConfigured } from '../config.js';
 import * as sheets from '../services/sheets.js';
 import * as whatsapp from '../services/whatsapp.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const router = Router();
 
