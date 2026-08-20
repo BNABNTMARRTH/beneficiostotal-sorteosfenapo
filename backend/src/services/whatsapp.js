@@ -99,26 +99,15 @@ export async function checkOnWhatsApp(number) {
   }
 }
 
-// Resuelve el JID real de WhatsApp del número (en México los móviles suelen
-// estar registrados con el prefijo "1", p. ej. 5214443862158 en vez de
-// 524443862158). Enviar al JID equivocado deja el mensaje en "pendiente".
 async function resolveJid(number) {
-  const cached = jidCache.get(number);
-  if (cached && Date.now() - cached.at < 5 * 60 * 1000) return cached.jid;
-
-  let jid = number;
-  try {
-    const res = await sock.onWhatsApp(`${number}@s.whatsapp.net`);
-    const found = Array.isArray(res) ? res[0] : res;
-    const real = found?.jid ? String(found.jid).split('@')[0] : '';
-    if (real) jid = real;
-  } catch { /* usa el número canónico */ }
-
-  jidCache.set(number, { jid, at: Date.now() });
-  if (jid !== number) {
-    console.log(`[whatsapp] JID resuelto: ${number} → ${jid}`);
+  let clean = String(number || '').replace(/\D/g, '');
+  // En México (+52) los números móviles canónicos para E2EE son 52 + 10 dígitos (12 dígitos en total)
+  if (clean.startsWith('521') && clean.length === 13) {
+    clean = '52' + clean.slice(3);
+  } else if (clean.length === 10) {
+    clean = '52' + clean;
   }
-  return jid;
+  return clean;
 }
 
 export async function waitForDelivery(jids, timeoutMs = 6000) {
