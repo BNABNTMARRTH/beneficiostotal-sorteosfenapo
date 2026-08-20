@@ -147,6 +147,13 @@ export async function startWhatsApp() {
       auth: authState,
       logger,
       browser: ['Totalplay SLP', 'Chrome', '120.0'],
+      syncFullHistory: false,
+      markOnlineOnConnect: true,
+      generateHighQualityLinkPreview: true,
+      shouldIgnoreJid: (jid) => jid?.includes('@broadcast'),
+      getMessage: async (key) => {
+        return { conversation: 'Hola' };
+      }
     });
 
     touch(() => sock.ev.on('creds.update', saveCreds));
