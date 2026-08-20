@@ -291,7 +291,18 @@ export async function sendMessage(to, text) {
   const jid = `${target}@s.whatsapp.net`;
   console.log(`[whatsapp] Enviando a ${jid} (canonical=${to}, conectado=${state.connected})`);
   try {
+    try {
+      await sock.presenceSubscribe(jid);
+      await sock.sendPresenceUpdate('composing', jid);
+      await new Promise(r => setTimeout(r, 250));
+    } catch {}
+
     await sock.sendMessage(jid, { text });
+
+    try {
+      await sock.sendPresenceUpdate('paused', jid);
+    } catch {}
+
     return { sent: true, dryRun: false, jid };
   } catch (err) {
     console.error('[whatsapp] Error al enviar:', err?.message || err);
