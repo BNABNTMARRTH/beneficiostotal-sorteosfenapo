@@ -1,6 +1,9 @@
 import makeWASocket, {
   useMultiFileAuthState,
   DisconnectReason,
+  fetchLatestBaileysVersion,
+  Browsers,
+  makeCacheableSignalKeyStore,
 } from '@whiskeysockets/baileys';
 import pino from 'pino';
 import path from 'node:path';
@@ -142,14 +145,26 @@ export async function startWhatsApp() {
   try {
     const { state: authState, saveCreds } = await useMultiFileAuthState(AUTH_DIR);
     const logger = pino({ level: config.baileysLogLevel || 'silent' });
+    let version = [2, 3000, 1017531287];
+    try {
+      const v = await fetchLatestBaileysVersion();
+      if (v?.version) version = v.version;
+    } catch (e) {
+      console.warn('[whatsapp] Usando versión fallback de WhatsApp:', e?.message || e);
+    }
 
     sock = makeWASocket({
-      auth: authState,
+      version,
+      auth: {
+        creds: authState.creds,
+        keys: makeCacheableSignalKeyStore(authState.keys, logger),
+      },
       logger,
-      browser: ['Totalplay SLP', 'Chrome', '120.0'],
+      browser: Browsers.macOS('Chrome'),
       syncFullHistory: false,
       markOnlineOnConnect: true,
       generateHighQualityLinkPreview: true,
+      defaultQueryTimeoutMs: 60000,
       shouldIgnoreJid: (jid) => jid?.includes('@broadcast'),
       getMessage: async (key) => {
         return { conversation: 'Hola' };
