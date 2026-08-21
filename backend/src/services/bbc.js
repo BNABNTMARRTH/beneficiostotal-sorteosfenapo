@@ -10,11 +10,15 @@ export function bbcConfigured() {
   return Boolean(config.bbcProjectId && config.bbcApiKey);
 }
 
-// Normaliza a E.164 sin "+": 52XXXXXXXXXX (BBC lo requiere así).
+// Normaliza para BBC: en México los móviles requieren 521XXXXXXXXXX (13 dígitos).
 function toBbcNumber(phone) {
   let clean = String(phone || '').replace(/[^0-9]/g, '');
   if (!clean) return '';
-  if (clean.length === 10) clean = `52${clean}`;
+  if (clean.length === 10) {
+    clean = `521${clean}`;
+  } else if (clean.startsWith('52') && clean.length === 12 && !clean.startsWith('521')) {
+    clean = `521${clean.slice(2)}`;
+  }
   return clean;
 }
 
