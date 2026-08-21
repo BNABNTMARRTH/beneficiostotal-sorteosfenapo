@@ -163,11 +163,10 @@
                 throw new Error(json.error || 'No pudimos enviar el código.');
             }
 
-            $('rifa-otp-demo-hint').style.display = (configData.dryRun || json.dryRun) ? 'block' : 'none';
+$('rifa-otp-demo-hint').style.display = (configData.dryRun || json.dryRun) ? 'block' : 'none';
             resetOtpInputs();
             goStep(3);
-            startResendTimer(60);
-            $('rifa-otp-err').textContent = '';
+            $('rifa-otp-err').textContent = json.pending ? 'El código se está enviando… puede tardar unos segundos. ⏳' : '';
             $('rifa-otp-box').querySelector('input').focus();
         } catch (err) {
             setFormError(err.message || 'Ocurrió un error. Intenta de nuevo.');

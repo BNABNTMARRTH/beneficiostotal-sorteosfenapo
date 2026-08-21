@@ -1706,10 +1706,12 @@ async function loadWA() {
       '<div class="wa-hero-s">' + (d.connected
         ? 'Remitente: +' + (d.userPhone || 'sin numero')
         : (d.hasQr ? 'Escanea el QR para vincular' : 'Sin QR disponible')) + '</div></div>';
+    const salidaTxt = d.outbound === 'bbc' ? 'BBC Cloud' : (d.outbound === 'auto' ? 'Baileys + BBC' : 'Baileys');
+    const salidaCol = d.outbound === 'bbc' ? 'var(--accent-2)' : 'var(--text-3)';
     document.getElementById('waGrid').innerHTML =
       '<div class="wa-card"><svg viewBox="0 0 24 24" stroke="' + col + '"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><div class="wa-label">Estado</div><div class="wa-val" style="color:' + col + '">' + txt + '</div></div>' +
       '<div class="wa-card"><svg viewBox="0 0 24 24" stroke="var(--accent-2)"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><div class="wa-label">Modo</div><div class="wa-val">' + (d.dryRun ? 'Demo' : 'Produccion') + '</div></div>' +
-      '<div class="wa-card"><svg viewBox="0 0 24 24" stroke="var(--text-3)"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><div class="wa-label">Remitente</div><div class="wa-val">' + (d.userPhone ? '+' + d.userPhone : 'No asignado') + '</div></div>' +
+      '<div class="wa-card"><svg viewBox="0 0 24 24" stroke="' + salidaCol + '"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9 22 2z"/></svg><div class="wa-label">Salida</div><div class="wa-val" style="color:' + salidaCol + '">' + salidaTxt + '</div></div>' +
       '<div class="wa-card"><svg viewBox="0 0 24 24" stroke="var(--text-3)"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><rect x="7" y="7" width="3" height="3"/><rect x="14" y="7" width="3" height="3"/><rect x="7" y="14" width="3" height="3"/><rect x="14" y="14" width="3" height="3"/></svg><div class="wa-label">QR</div><div class="wa-val">' + (d.hasQr ? 'Disponible' : 'No') + '</div></div>';
     const qc = document.getElementById('waQr');
     if (!d.connected && d.hasQr) {
@@ -1759,6 +1761,9 @@ async function testWA() {
       if (d.onWhatsApp && d.onWhatsApp.jid) html += rLine('JID', '<span style="font-size:11px">' + esc(d.onWhatsApp.jid) + '</span>');
       html += rLine('Enviado', d.sent ? '<b style="color:var(--green)">SI</b>' : '<b style="color:var(--rose)">NO</b>');
       html += rLine('Entrega', '<b style="color:' + c + '">' + esc(String(stName).toUpperCase()) + '</b>');
+      if (d.via === 'bbc') html += rLine('Canal', '<b style="color:var(--accent-2)">BBC CLOUD</b> (Baileys sin confirmar, reenviado por BuilderBot)');
+      else html += rLine('Canal', 'Baileys');
+      if (d.bbcError) html += rLine('Error BBC', esc(d.bbcError));
       if (d.timedOut) html += rLine('TimedOut', '<b style="color:var(--amber)">SI</b>');
       if (d.error) html += rLine('Error', esc(d.error));
     }

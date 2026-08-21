@@ -4,6 +4,7 @@ import { canonicalizePhone, generateFolio } from '../services/folio.js';
 import * as otp from '../services/otp.js';
 import * as sheets from '../services/sheets.js';
 import * as whatsapp from '../services/whatsapp.js';
+import { bbcConfigured } from '../services/bbc.js';
 
 const router = Router();
 
@@ -69,12 +70,13 @@ router.post('/enviar-codigo', async (req, res) => {
   ].join('\n');
 
   console.log(`[enviar-codigo] Enviando OTP a ${whatsappNumber} (code=${code}, dryRun=${config.dryRun})`);
-  const result = await whatsapp.sendMessage(whatsappNumber, message);
-  console.log(`[enviar-codigo] Resultado: sent=${result.sent}, dryRun=${result.dryRun}, error=${result.error || 'ninguno'}`);
+  const result = await whatsapp.sendMessage(whatsappNumber, message, { waitMs: 9000, checkOnWhatsApp: true });
+  console.log(`[enviar-codigo] Resultado: sent=${result.sent}, delivery=${result.delivery || result.dryRun}, deliveredToDevice=${Boolean(result.deliveredToDevice)}, error=${result.error || 'ninguno'}`);
 
   if (!result.sent && !result.dryRun) {
-    return res.status(502).json({
-      error: 'No pudimos enviar el codigo. Verifica que el numero tenga WhatsApp activo.',
+    const status = result.exists === false ? 400 : 502;
+    return res.status(status).json({
+      error: result.error || 'No pudimos enviar el codigo. Verifica que el numero tenga WhatsApp activo.',
     });
   }
 
@@ -82,6 +84,10 @@ router.post('/enviar-codigo', async (req, res) => {
     ok: true,
     dryRun: result.dryRun,
     seconds: 60,
+    delivered: Boolean(result.delivered),
+    pending: Boolean(result.delivered === false && !result.dryRun),
+    delivery: result.delivery || (result.dryRun ? 'dry-run' : ''),
+    via: result.via || 'baileys',
   });
 });
 
@@ -197,8 +203,8 @@ router.post('/registro', async (req, res) => {
     `*Guarda este mensaje*, tu folio es tu pase oficial al sorteo. ¡Mucha suerte! 🍀💜`,
   ].join('\n');
 
-  const result = await whatsapp.sendMessage(whatsappNumber, message);
-  if (result.sent) {
+  const result = await whatsapp.sendMessage(whatsappNumber, message, { waitMs: 7000, checkOnWhatsApp: true });
+  if (result.sent && result.delivered) {
     try { await sheets.markSent(folio); } catch { /* noop */ }
   }
 
@@ -210,6 +216,10 @@ router.post('/registro', async (req, res) => {
     fechaSorteo: fechaSorteoTexto,
     ticketUrl,
     dryRun: result.dryRun,
+    delivered: Boolean(result.delivered),
+    delivery: result.delivery || (result.dryRun ? 'dry-run' : ''),
+    via: result.via || 'baileys',
+    whatsappError: result.error || (result.delivered ? null : 'El folio se generó, pero el mensaje de confirmación aún no confirma entrega.'),
   });
 });
 
@@ -232,6 +242,8 @@ router.get('/health', (req, res) => {
     ok: true,
     whatsapp: whatsapp.getWhatsAppStatus(),
     sheets: sheets.isConfigured(),
+    bbc: bbcConfigured(),
+    outbound: config.whatsappOutbound || 'bbc',
   });
 });
 
@@ -281,38 +293,41 @@ router.get('/whatsapp/status', (req, res) => {
 
 // ── Prueba rápida de entrega de WhatsApp ──────────────────
 router.post('/whatsapp/test', async (req, res) => {
-  const { whatsapp: rawWhatsapp } = req.body || {};
+  const { whatsapp: rawWhatsapp, device } = req.body || {};
   const numero = canonicalizePhone(rawWhatsapp);
   if (!numero) {
     return res.status(400).json({ error: 'Número inválido. Usa 10 dígitos (ej. 4441234567).' });
   }
 
-  const jid = `${numero}@s.whatsapp.net`;
   const texto = `🧪 Mensaje de prueba del SORTEO TOTAL FENAPO 2026.\nSi recibes esto, el envío de WhatsApp funciona correctamente.`;
 
   const status = whatsapp.getWhatsAppStatus();
-  if (!status.connected && !status.dryRun) {
-    return res.json({ ok: false, sent: false, error: 'WhatsApp no conectado.' });
+  // Con canal de salida BBC no se requiere la sesión de Baileys para enviar.
+  const puedeEnviar = status.connected || status.dryRun || bbcConfigured();
+  if (!puedeEnviar) {
+    return res.json({ ok: false, sent: false, error: 'WhatsApp no conectado y BBC no configurado.' });
   }
   if (status.dryRun) {
     return res.json({ ok: true, sent: false, dryRun: true, error: 'En modo demo no se envía.' });
   }
 
-  const result = await whatsapp.sendMessage(numero, texto);
+  const result = await whatsapp.sendMessage(numero, texto, { waitMs: 12000, device });
   const onWa = await whatsapp.checkOnWhatsApp(numero);
-  const watchedJids = [result.jid || jid];
-  if (onWa?.lid) watchedJids.push(`${onWa.lid}`);
-  const delivery = await whatsapp.waitForDelivery(watchedJids, 6000);
+  const deliveryName = result.delivery || 'sin-estado';
 
-  console.log(`[whatsapp/test] ${numero} → sent=${result.sent}, jid=${result.jid}, delivery=${delivery?.statusName}, error=${delivery?.error || result.error || 'ninguno'}, onWhatsApp=${onWa?.exists}`);
+  console.log(`[whatsapp/test] ${numero} → sent=${result.sent}, jid=${result.jid}, delivery=${deliveryName}, deliveredToDevice=${Boolean(result.deliveredToDevice)}, via=${result.via || 'baileys'}, error=${result.error || 'ninguno'}, onWhatsApp=${onWa?.exists}, retriedViaLid=${Boolean(result.retriedViaLid)}`);
 
   return res.json({
     ok: true,
     sent: result.sent,
-    delivery: delivery?.statusName || 'sin-estado',
-    status: delivery?.status,
-    error: delivery?.error || result.error || null,
-    timedOut: Boolean(delivery?.timedOut),
+    delivery: deliveryName,
+    delivered: Boolean(result.delivered),
+    deliveredToDevice: Boolean(result.deliveredToDevice),
+    via: result.via || 'baileys',
+    bbcError: result.bbcError || null,
+    error: result.error || null,
+    timedOut: Boolean(!result.deliveredToDevice && (result.via || 'baileys') === 'baileys'),
+    retriedViaLid: Boolean(result.retriedViaLid),
     onWhatsApp: onWa,
   });
 });
